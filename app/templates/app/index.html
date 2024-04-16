@@ -4,7 +4,69 @@
 Home 
 {% endblock %}
 {% block content %}
+<style>
+  .nav-pills .nav-link {
+    border-radius: 0px;
+    background-color: #422727;
+    color: white;
+  }
 
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: #131414;
+}
+</style>
+
+ <!-- ======= Hero Section ======= -->
+ <section id="hero">
+  <div class="hero-container">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/05/Web-Headers-2022-01-1536x624.jpg); ">
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/07/Web-Headers-2024-March-25-1536x624.jpg); ">
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/05/Web-Headers-2022-02-1536x624.jpg); ">
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
 
 <main id="main">
 
@@ -12,148 +74,368 @@ Home
   <section id="featured" class="featured">
     <div class="container">
 
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="icon-box">
-            <i class="bi bi-card-checklist"></i>
-            <h3><a href="">Lorem Ipsum</a></h3>
-            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+      <div class="row mb-4">
+          <div class="col-lg-12">
+            <h3 class="text-center text-bold text-uppercase">SOLUTIONS</h3>
+            <div class="text-center">
+              We provide the full spectrum of facilities management services through our integrated units and subsidiaries
+            </div>
           </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="bi bi-bar-chart"></i>
-            <h3><a href="">Dolor Sitema</a></h3>
-            <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="bi bi-binoculars"></i>
-            <h3><a href="">Sed ut perspiciatis</a></h3>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-        </div>
       </div>
 
+
+      <!-- solution -->
+      <div class="row ">
+        <!-- first section -->
+        <div class="col-lg-6 ps-md-0 pe-md-0">
+          <img src="https://img.freepik.com/premium-photo/photo-working-hard-building-man-construction-worker-labor-day-concept_742418-1225.jpg" class="img-fluid h-100">
+        </div>
+
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://st2.depositphotos.com/1011382/10487/i/450/depositphotos_104877106-stock-photo-an-architect-holding-drawing-plans.jpg" class="img-fluid h-100">
+        </div>
+
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://cdn.create.vista.com/api/media/small/442857544/stock-photo-happy-architect-helmet-standing-crossed-arms-blueprints-desk" class="img-fluid h-100">
+        </div>
+        <!-- end first section -->
+
+        <!-- section section -->
+
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://as2.ftcdn.net/v2/jpg/01/05/45/95/1000_F_105459552_1QrrEK6E3W43tttyygS7iMAH8c0qDNr4.jpg" class="img-fluid h-100" alt="667 *1000 image" alt>
+        </div>
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://cdn.create.vista.com/api/media/small/442857544/stock-photo-happy-architect-helmet-standing-crossed-arms-blueprints-desk" class="img-fluid h-100" alt="667 *1000 image" alt>
+        </div>
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://as2.ftcdn.net/v2/jpg/01/05/45/95/1000_F_105459552_1QrrEK6E3W43tttyygS7iMAH8c0qDNr4.jpg" class="img-fluid h-100" alt="667 *1000 image">
+        </div>
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://cdn.create.vista.com/api/media/small/442857544/stock-photo-happy-architect-helmet-standing-crossed-arms-blueprints-desk" class="img-fluid h-100" alt="667 *1000 image">
+        </div>
+
+        <!--end section section -->
+
+        <!-- third section -->
+        
+
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://st2.depositphotos.com/1011382/10487/i/450/depositphotos_104877106-stock-photo-an-architect-holding-drawing-plans.jpg" class="img-fluid h-100">
+        </div>
+
+        <div class="col-lg-6 ps-md-0 pe-md-0">
+          <img src="https://img.freepik.com/premium-photo/photo-working-hard-building-man-construction-worker-labor-day-concept_742418-1225.jpg" class="img-fluid h-100">
+        </div>
+
+        <div class="col-lg-3 ps-md-0 pe-md-0">
+          <img src="https://cdn.create.vista.com/api/media/small/442857544/stock-photo-happy-architect-helmet-standing-crossed-arms-blueprints-desk" class="img-fluid h-100">
+        </div>
+        <!-- end third section -->
+
+      </div>
+      <!-- end solution -->
+
+      
     </div>
   </section><!-- End Featured Section -->
 
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
-    <div class="container">
 
-      <div class="row">
-        <div class="col-lg-6">
-          <img src="{% static 'app/assets/img/about.jpg' %}" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-6 pt-4 pt-lg-0 content">
-          <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-          <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-            <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-            <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-          </ul>
-          <p>
-            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum
-          </p>
-        </div>
-      </div>
-
+  <!-- SECTORS section start -->
+  <div class="container-fluid " style="background-image:url(https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/Sector_Bg@3x.png);">
+    <div class="row ">
+      <strong class="fs-2 text-center pt-5 pb-5 text-bold text-white">SECTORS</strong>
     </div>
-  </section><!-- End About Section -->
 
-  <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4><a href="">Lorem Ipsum</a></h4>
-            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+    <section id="services" class="services pb-5">
+      <div class="container">
+  
+        <div class="row ">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box pt-4 pb-3">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="" class="fs-6">Sed ut perspiciatis</a></h4>
+            </div>
           </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4 ">
+            <div class="icon-box pt-4 pb-3 " >
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="" class="fs-6">Sed ut perspiciatis</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="" class="fs-6">Magni Dolores</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4><a href="" class="fs-6">Nemo Enim</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-slideshow"></i></div>
+              <h4><a href="" class="fs-6">Dele cardo</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-arch"></i></div>
+              <h4><a href="" class="fs-6">Divera don</a></h4>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box pt-4 pb-3">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="" class="fs-6">Sed ut perspiciatis</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4 ">
+            <div class="icon-box pt-4 pb-3 " >
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="" class="fs-6">Sed ut perspiciatis</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="" class="fs-6">Magni Dolores</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4><a href="" class="fs-6">Nemo Enim</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-slideshow"></i></div>
+              <h4><a href="" class="fs-6">Dele cardo</a></h4>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch mb-4">
+            <div class="icon-box  pt-4 pb-3 " style="padding:0px;" >
+              <div class="icon"><i class="bx bx-arch"></i></div>
+              <h4><a href="" class="fs-6">Divera don</a></h4>
+            </div>
+          </div>
+
+          
+  
+        </div>
+        
+  
+      </div>
+    </section>
+    
+  </div>
+  <!--END SECTORS section start -->
+
+
+    <!-- ======= Start Location Section ======= -->
+    <section id="clients" class="clients mt-5 pb-0">
+      <div class="container">
+  
+        <div class="section-title">
+          <h2>Location </h2>
+          <p>Find us all over the UAE</p>
+        </div>
+        
+
+        <!-- nav tab section-->
+        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+          <li class="nav-item m-2" role="presentation">
+              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">UAE</button>
+          </li>
+          <li class="nav-item m-2" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Oman</button>
+          </li>
+        </ul>
+        <div class="rectangle_line"></div>        
+        <div class="tab-content" id="pills-tabContent">
+            <!-- start first tab-->
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+              <div class="" style="
+                position: relative;
+                background-image:url(https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/map_oman.png); background-size: contain;
+                background-position: top center;
+                background-repeat: no-repeat;
+                height: 500px;
+                ">
+                  <div class="card  border-dark size-1" style="width: 20rem;top:10%; left: 15%; 
+                  ">
+                    <i class="bi bi-caret-right fs-1 border-dark" style="
+                    position: absolute;
+                    top: 70px;
+                    right: -27px;
+                    "></i>                
+                        
+
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE9ippPYWaDv3-7WlYRCqdpaAy0kKEzbvcMQpf6yBjQ&s" class="img-fluid" style="width:80px; height:50px;">
+                        <h5 class="align-item-center pt-2" style="font-weight:600;">GOLD PLAYER</h5>
+                      </div>
+                      PO Box: 19, Postal Code: 321, Al-Traif, Sohar, Sultanate of Oman.
+                      <br>
+                      <strong class="text-bold">Ramadan Hours:</strong>Monday - Friday 8:30 AM - 2:30 PM
+                      <br>
+                      <strong>Phone:</strong> +977-9865326598
+                      
+                      <div class="d-flex justify-content-relative">
+                        <div class="btn text-white m-1" style="border-radius:0px;  background-color:#173d6e; font-weight:bold;">Contact Us</div>
+                        <div class="btn text-white m-1"  style="border-radius:0px; background-color:#caa978; font-weight:bold;">Get Direction</div>
+
+                      </div>
+                    
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- end first tab -->
+            <!-- start second tab-->
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+              <div class="" style="
+                position: relative;
+                background-image:url(https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/map_uae.png); background-size: contain;
+                background-position: top center;
+                background-repeat: no-repeat;
+                height: 500px;
+                ">
+                  <div class="card  border-dark size-1" style="width: 20rem;top:10%; left: 15%; 
+                  ">
+                    <i class="bi bi-caret-right fs-1 border-dark" style="
+                    position: absolute;
+                    top: 70px;
+                    right: -27px;
+                    "></i>                
+                        
+
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE9ippPYWaDv3-7WlYRCqdpaAy0kKEzbvcMQpf6yBjQ&s" class="img-fluid" style="width:80px; height:50px;">
+                        <h5 class="align-item-center pt-2" style="font-weight:600;">GOLD PLAYER</h5>
+                      </div>
+                      PO Box: 19, Postal Code: 321, Al-Traif, Sohar, Sultanate of Oman.
+                      <br>
+                      <strong class="text-bold">Ramadan Hours:</strong>Monday - Friday 8:30 AM - 2:30 PM
+                      <br>
+                      <strong>Phone:</strong> +977-9865326598
+                      
+                      <div class="d-flex justify-content-relative">
+                        <div class="btn text-white m-1" style="border-radius:0px;  background-color:#173d6e; font-weight:bold;">Contact Us</div>
+                        <div class="btn text-white m-1"  style="border-radius:0px; background-color:#caa978; font-weight:bold;">Get Direction</div>
+
+                      </div>
+                    
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- end section tab-->
+        </div>
+        <div class="rectangle_line"></div>
+      </div>
+    </section>
+    <!-- End Location Section -->
+  
+    <!-- client section start -->
+    <section id="clients" class="clients pb-0">
+      <div class="container">
+        <div class="section-title">
+          <h2 class="pt-0">Clients</h2>
+          <p>We serve a portfolio of over 3,000 clients including some of the region’s top companies</p>
         </div>
 
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-file"></i></div>
-            <h4><a href="">Sed ut perspiciatis</a></h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
-            <h4><a href="">Magni Dolores</a></h4>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-world"></i></div>
-            <h4><a href="">Nemo Enim</a></h4>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-slideshow"></i></div>
-            <h4><a href="">Dele cardo</a></h4>
-            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-arch"></i></div>
-            <h4><a href="">Divera don</a></h4>
-            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-          </div>
-        </div>
+        <div class="clients-slider swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+          <div class="swiper-wrapper align-items-center" id="swiper-wrapper-28a77e5599049f3e" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-412px, 0px, 0px); transition-delay: 0ms;">
+            
+            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="2 / 8" data-swiper-slide-index="1"><img src="{% static 'app/assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide swiper-slide-prev" style="width: 86px; margin-right: 120px;" role="group" aria-label="3 / 8" data-swiper-slide-index="2"><img src="{% static 'app/assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide swiper-slide-active" style="width: 86px; margin-right: 120px;" role="group" aria-label="4 / 8" data-swiper-slide-index="3"><img src="{% static 'app/assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide swiper-slide-next" style="width: 86px; margin-right: 120px;" role="group" aria-label="5 / 8" data-swiper-slide-index="4"><img src="{% static 'app/assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="6 / 8" data-swiper-slide-index="5"><img src="{% static 'app/assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="7 / 8" data-swiper-slide-index="6"><img src="{% static 'app/assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide" role="group" aria-label="8 / 8" data-swiper-slide-index="7" style="width: 86px; margin-right: 120px;"><img src="{% static 'app/assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
+          <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="1 / 8" data-swiper-slide-index="0"><img src="{% static 'app/assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div></div>
+          <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span></div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+          
+        <div class="rectangle_line"></div>
 
       </div>
+    </section>
+    <!-- end client section -->
 
+
+<!-- ======= Testimonials Section ======= -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-center m-auto">
+      <h2>Testimonials</h2>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel -->
+        <div class="carousel-inner">
+          <div class="item carousel-item active">
+            <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
+            <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+            <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+          </div>
+          <div class="item carousel-item">
+            <div class="img-box"><img src="https://i.ibb.co/5FF1vqz/img2.jpg" alt=""></div>
+            <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+            <p class="overview"><b>Dauglas McNun</b>, Financial Advisor</p>
+          </div>
+          <div class="item carousel-item">
+            <div class="img-box"><img src="https://i.ibb.co/Trv7hDv/img3.jpg" alt=""></div>
+            <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+            <p class="overview"><b>Hellen Wright</b>, Athelete</p>
+          </div>
+        </div>
+        <!-- Carousel Controls -->
+        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
     </div>
-  </section><!-- End Services Section -->
+  </div>
+  <div class="rectangle_line"></div>
 
-  <!-- ======= Clients Section ======= -->
-  <section id="clients" class="clients">
-    <div class="container">
+</div>
+<!-- ======= end Testimonials Section ======= -->
 
-      <div class="section-title">
-        <h2>Clients</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
 
-      <div class="clients-slider swiper">
-        <div class="swiper-wrapper align-items-center">
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
 
-    </div>
-  </section><!-- End Clients Section -->
+   
+
 
 </main><!-- End #main -->
 
-
+<script>
+  <script>
+    $('#myCarousel').carousel({
+        interval: 3000, 
+        pause: 'hover' 
+    });
+</script>
+</script>
 {% endblock %}
