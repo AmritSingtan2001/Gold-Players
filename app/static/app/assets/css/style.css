@@ -532,6 +532,52 @@ h6 {
   text-decoration: none;
 }
 
+/*solution */
+.solution-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-container:hover img {
+  opacity: 0.5; 
+  transition: opacity 0.5s ease; 
+
+}
+
+.solution-container .text-content {
+  position: absolute;
+  transform: translate(50%,0,50%);
+  text-align: center;
+  color: white;
+  padding: 10px; 
+  z-index: 1; 
+  font-weight: bold;
+  width: 90%;
+}
+
+
+.solution-container .text-content p{
+  display: none;
+  color: white; /* Change text color to white when container is hovered */
+  font-weight: 600;
+}
+
+.solution-container:hover .text-content {
+  color: black; 
+  opacity: 1; 
+  font-weight: 600;
+}
+
+.solution-container:hover .text-content p {
+  color: black; 
+  opacity: 1; 
+  display: block;
+  font-weight: 600;
+  
+}
+
+
+
 @media (max-height: 768px),
 (max-width: 1200px) {
   #hero {
@@ -554,9 +600,14 @@ h6 {
 
   #hero .carousel-item {
     height: 30vh;
-    object-fit: contain;
+    object-fit: cover;
   }
+  
+  
+
+  
 }
+
 
 @media (min-width: 1024px) {
   #hero p {
