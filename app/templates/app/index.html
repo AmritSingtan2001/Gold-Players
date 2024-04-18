@@ -488,7 +488,7 @@ Home
               <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-news" type="button" role="tab" aria-controls="pills-news" aria-selected="true">News</button>
           </li>
           <li class="nav-item m-2" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-insights" type="button" role="tab" aria-controls="pills-insights" aria-selected="false">Insights</button>
+            <button class="nav-link" id="pills-insights-tab" data-bs-toggle="pill" data-bs-target="#pills-insights" type="button" role="tab" aria-controls="pills-insights" aria-selected="false">Insights</button>
           </li>
 
           <li class="nav-item m-2" role="presentation">
@@ -496,31 +496,30 @@ Home
           </li>
 
         </ul>
-        <div class="rectangle_line"></div>        
         <div class="tab-content" id="pills-tabContent">
             <!-- start first tab-->
             <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab" tabindex="0">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <div id="news" class="carousel slide" data-ride="carousel">
                 <!-- Carousel -->
                 <div class="carousel-inner">
                   <div class="item carousel-item active">
                       <div class="row justify-content-center">
-                        <div class="col-md-5 card p-3">
-                          <div class="img-box ">
-                            <img src="https://i.ibb.co/d5DY64w/img1.jpg" alt="">
+                        <div class=" col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
                           </div>
-                          <p class="testimonial">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.
-                          </p>
-                          <p class="overview">
-                            <b>Jennifer Smith</b>,
-                             Office Worker
-                          </p>
+                          
                         </div>
-                        <div class="col-md-5 card p-3">
-                          <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
-                          <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-                          <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+                        <div class="col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
+                          </div>
                         </div>
                       </div>
                   </div>
@@ -528,35 +527,31 @@ Home
 
                   <div class="item carousel-item ">
                     <div class="row justify-content-center">
-                      <div class="col-md-5 card p-3">
-                        <div class="img-box ">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" alt="">
+                      <div class=" col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
                         </div>
-                        <p class="testimonial">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.
-                        </p>
-                        <p class="overview">
-                          <b>Jennifer Smith</b>,
-                           Office Worker
-                        </p>
+                        
                       </div>
-                      <div class="col-md-5 card p-3">
-                        <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
-                        <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-                        <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+                      <div class="col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
+                        </div>
                       </div>
                     </div>
                   </div>
-
-
-                  
-                  
                 </div>
                 <!-- Carousel Controls -->
-                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <a class="carousel-control left carousel-control-prev" href="#news" data-slide="prev">
                   <i class="fa fa-angle-left"></i>
                 </a>
-                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                <a class="carousel-control right carousel-control-next" href="#news" data-slide="next">
                   <i class="fa fa-angle-right"></i>
                 </a>
               </div>
@@ -565,14 +560,124 @@ Home
 
             <!-- start second tab-->
             <div class="tab-pane fade" id="pills-insights" role="tabpanel" aria-labelledby="pills-insights-tab" tabindex="0">
-              <h1>insights</h1>
+              <div id="insights" class="carousel slide" data-ride="carousel">
+                <!-- Carousel -->
+                <div class="carousel-inner">
+                  <div class="item carousel-item active">
+                      <div class="row justify-content-center">
+                        <div class=" col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
+                          </div>
+                          
+                        </div>
+                        <div class="col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+
+                  <div class="item carousel-item ">
+                    <div class="row justify-content-center">
+                      <div class=" col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
+                        </div>
+                        
+                      </div>
+                      <div class="col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Carousel Controls -->
+                <a class="carousel-control left carousel-control-prev" href="#insights" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right carousel-control-next" href="#insights" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </div>
             </div>
             <!-- end section tab-->
 
 
             <!-- start second tab-->
             <div class="tab-pane fade" id="pills-cash_studies" role="tabpanel" aria-labelledby="pills-cash_studies-tab" tabindex="0">
-              <h1>cash_studies</h1>
+              <div id="cash_studies" class="carousel slide" data-ride="carousel">
+                <!-- Carousel -->
+                <div class="carousel-inner">
+                  <div class="item carousel-item active">
+                      <div class="row justify-content-center">
+                        <div class=" col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
+                          </div>
+                          
+                        </div>
+                        <div class="col-md-4 card p-3 m-2">
+                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                          <div class="testimonial card-body">
+                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <br>
+                            <a href="" class="btn btn-danger mt-2">Read More</a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+
+                  <div class="item carousel-item ">
+                    <div class="row justify-content-center">
+                      <div class=" col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
+                        </div>
+                        
+                      </div>
+                      <div class="col-md-4 card p-3 m-2">
+                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
+                        <div class="testimonial card-body">
+                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <br>
+                          <a href="" class="btn btn-danger mt-2">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Carousel Controls -->
+                <a class="carousel-control left carousel-control-prev" href="#cash_studies" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right carousel-control-next" href="#cash_studies" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </div>
             </div>
             <!-- end section tab-->
 
@@ -591,7 +696,7 @@ Home
   <div class="row">
     <div class="col-md-8 col-center m-auto">
       <h2>Testimonials</h2>
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div id="testimonial" class="carousel slide" data-ride="carousel">
         <!-- Carousel -->
         <div class="carousel-inner">
           <div class="item carousel-item active">
@@ -611,10 +716,10 @@ Home
           </div>
         </div>
         <!-- Carousel Controls -->
-        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <a class="carousel-control left carousel-control-prev" href="#testimonial" data-slide="prev">
           <i class="fa fa-angle-left"></i>
         </a>
-        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+        <a class="carousel-control right carousel-control-next" href="#testimonial" data-slide="next">
           <i class="fa fa-angle-right"></i>
         </a>
       </div>
@@ -630,14 +735,30 @@ Home
    
 
 
-</main><!-- End #main -->
+</main>
+<!-- End #main -->
 
 <script>
-  <script>
+  $(document).ready(function() {
     $('#myCarousel').carousel({
-        interval: 3000, 
-        pause: 'hover' 
+      interval: 3000, 
+      pause: 'hover' 
     });
-</script>
+
+    $('#testimonial').carousel({
+      interval: 3000, 
+      pause: 'hover' 
+    });
+
+    $('#cash_studies').carousel({
+      interval: 3000, 
+      pause: 'hover' 
+    });
+
+    $('#insights').carousel({
+      interval: 3000, 
+      pause: 'hover' 
+    });
+  });
 </script>
 {% endblock %}

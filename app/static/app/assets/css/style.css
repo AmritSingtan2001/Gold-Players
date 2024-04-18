@@ -591,6 +591,7 @@ h6 {
   #hero .carousel-indicators li {
     margin-bottom: 0;
   }
+  
 }
 
 @media (max-width: 768px) {
@@ -603,8 +604,6 @@ h6 {
     object-fit: cover;
   }
   
-  
-
   
 }
 
@@ -704,7 +703,7 @@ padding: 0 70px;
 color: #999;
 font-size: 14px;
   text-align: center;
-overflow: hidden;
+  overflow: hidden;
   min-height: 290px;
 }
 .carousel .item .img-box {
@@ -724,6 +723,25 @@ border-radius: 50%;
 .carousel .testimonial {
 padding: 30px 0 10px;
 }
+
+.carousel .card .card-body {
+  font-size: 14pt;
+  font-weight: bold;
+  /* color: #173d6e; */
+  position: relative;
+  z-index: 10;
+}
+
+.carousel .card .card-body:hover {
+  font-size: 14pt;
+  font-weight: bold;
+  background-color: #173d6e;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
 .carousel .overview {	
 font-style: italic;
 }
@@ -799,6 +817,180 @@ box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
   color: #6e6e6e;
   content: "/";
 }
+
+/*--------------------------------------------------------------
+# Side bar
+--------------------------------------------------------------*/
+
+.pmenu {
+	position: fixed;
+	right: 20px;
+	top: 30%;
+	z-index: 50;
+	padding: 0;
+}
+.pmenu li {
+	list-style: none;
+	position: relative
+}
+.pmenu li a {
+	display: block;
+	text-align: center;
+	border: 1.5px solid #173d6e;
+	background-color: #fff;
+	width: 25px;
+	height: 25px;
+	border-radius: 15px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+.pmenu li a:focus,
+.pmenu li a:active,
+.pmenu li a:hover {
+	border: 1.5px solid #caa978;
+	color: #caa978;
+}
+.pmenu li a span {
+	position: absolute;
+	right: 35px;
+	background: rgba(202,169,120,0.9);
+	border-radius: 3px;
+	color: #fff;
+	padding: 0 10px;
+	margin-top: 0;
+	display: none;
+}
+.pmenu > li > a:hover > span {
+	display: inline-block;
+}
+.pmenu > li > a > i {
+	position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    font-size: 11.5pt;
+	color: #173d6e;
+}
+.pmenu > li > a:hover > i, .pmenu > li > a:focus > i {
+	color: #caa978;
+} 
+
+/*--------------------------------------------------------------
+# Sticky button
+--------------------------------------------------------------*/
+
+.btn-sticky {
+	position: fixed;
+	bottom: 37%;
+	left: 30px;
+	z-index: 10;
+	min-width: 200px;
+	height: 50px;
+	display: block;
+}
+.btn-sticky.hmpro_stick {
+	bottom: 29%;
+}
+.btn-sticky.hmpro_stick .icon img {
+	  max-width: 90%;
+    margin-left: 5px;
+}
+.btn-sticky.isnd_stick {
+	bottom: 21%;
+}
+.btn-sticky.isnd_stick .icon img,
+.btn-sticky.vs_stick .icon img {
+	  max-width: 85%;
+}
+.btn-sticky.vs_stick {
+	bottom: 13%;
+}
+.btn-sticky.farz_stick {
+	bottom: 5%;
+}
+
+.btn-sticky h3 {
+	font-size: 5pt;
+	text-transform: uppercase;
+	text-align: center !important;
+	display: none;
+	text-align: right;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: normal;
+  min-width: 180px;
+  position: absolute;
+  left: 60px;
+  top: 0;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.btn-sticky a {display:block;}
+.btn-sticky a:hover {
+	color: #173d6e;
+}
+.btn-sticky a:hover h3 {
+	display: block;
+	visibility: visible;
+	background: #caa978;
+	border-radius: 30px;
+	color: #ffffff;
+}
+.btn-sticky .icon {
+	position: absolute;
+	left: 0;
+	  width: 60px;
+    height: 60px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 30px;
+	border: 1px solid #caa978;
+}
+.btn-sticky .icon img {
+	font-size: 20pt;
+	line-height: 60px;
+	padding: 8px
+}
+.btn-sticky .icon::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  bottom: -2px;
+  right: -2px;
+  border-radius: 50%;
+}
+.btn-sticky:hover .icon::before {
+	border: 1px solid #caa978;
+  -webkit-animation: btnIconRipple 1s cubic-bezier(0.23, 1, 0.32, 1) both infinite;
+  animation: btnIconRipple 1s cubic-bezier(0.23, 1, 0.32, 1) both infinite;
+}
+
+@-webkit-keyframes btnIconRipple {
+  0% {
+    border-width: 4px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    border-width: 1px;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  80% {
+    border-width: 1px;
+    -webkit-transform: scale(1.9);
+    transform: scale(1.9);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 
 /*--------------------------------------------------------------
 # Featured
