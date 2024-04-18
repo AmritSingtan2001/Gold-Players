@@ -1,0 +1,167 @@
+{% extends 'app/base.html' %}
+{% load static %} 
+{% block title %}
+Careers 
+{% endblock %}
+{% block content %}
+<style>
+    .form-control{
+        width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    }
+
+    .job_types {
+        display:flex; 
+        zoom: 1;
+        background: #f9f9f9;
+        border-top: 1px solid #e5e5e5;
+        font-size: .83em;
+        list-style: none outside;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" style="
+      background-image:url(https://4984701.fs1.hubspotusercontent-na1.net/hubfs/4984701/Imdaad_2019/Images/Blog/News-01-01-01.jpg);
+      background-size:cover;">
+      <div class="container ">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white">Careers</li>
+        </ol>
+        <center>
+          <h2 class="text-white bg-danger w-50 p-3">Careers</h2>
+        </center>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- Careers Section  start -->
+    <div class="container">
+        <div class="row justify-content-between p-5" style="background: #ededed;">
+            <div class="col-md-12 text-center">
+                <h4>COME WORK WITH US </h4>
+            </div>
+            <div class="col-md-6 pt-2 pb-2">
+                <input type="text" class="form-control" placeholder="Keywords">
+            </div>
+            <div class="col-md-6 pt-2 pb-2">
+                <input type="text" class="form-control" placeholder="Keywords">
+
+            </div>
+
+            <div class="col-md-12 pt-2 pb-2">
+                <select class="form-control">
+                    <option>Careers</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-12 my-3 text-center">
+                <button class="btn btn-dark">Search Job</button>
+            </div>
+            <div class="col-md-12  ">
+                <ul class=" d-flex justify-content-between job_types p-3">
+					<li><label class=" pe-2 freelance"><input type="checkbox" name="filter_job_type[]" value="freelance" checked="checked" id="job_type_freelance"> Freelance</label>|</li>
+					<li><label class=" pe-2 full-time"><input type="checkbox" name="filter_job_type[]" value="full-time" checked="checked" id="job_type_full-time"> Full Time</label>| </li>
+					<li><label  class=" pe-2 internship"><input type="checkbox" name="filter_job_type[]" value="internship" checked="checked" id="job_type_internship"> Internship</label>| </li>
+					<li><label class=" pe-2 part-time"><input type="checkbox" name="filter_job_type[]" value="part-time" checked="checked" id="job_type_part-time"> Part Time</label>| </li>
+					<li><label class=" pe-2 temporary"><input type="checkbox" name="filter_job_type[]" value="temporary" checked="checked" id="job_type_temporary"> Temporary</label>| </li>
+			    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end careers section -->
+
+    <section id="blog" class="blog pt-2" >
+        <div class="container" data-aos="fade-up">
+  
+          <div class="row bg-white shadow py-2 my-2 ">
+            <div class="col-md-2">
+                <div class="pt-1">
+                    <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid h-75 w-75">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href=""  >
+                    <div class="pt-3">
+                        Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia.
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> Dubae</div>
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> 3 month ago.</div>
+            </div>
+          </div>
+
+          <div class="row bg-white shadow py-2 my-2 ">
+            <div class="col-md-2">
+                <div class="pt-1">
+                    <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid h-75 w-75">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href=""  >
+                    <div class="pt-3">
+                        Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia.
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> Dubae</div>
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> 3 month ago.</div>
+            </div>
+          </div>
+
+          <div class="row bg-white shadow py-2 my-2 ">
+            <div class="col-md-2">
+                <div class="pt-1">
+                    <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid h-75 w-75">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href=""  >
+                    <div class="pt-3">
+                        Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia.
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> Dubae</div>
+            </div>
+            <div class="col-md-2">
+                <div class="text-muted pt-3"> 3 month ago.</div>
+            </div>
+          </div>
+
+          
+          
+  
+          
+          <div class="blog-pagination my-5">
+            <ul class="justify-content-center">
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+            </ul>
+          </div>
+  
+        </div>
+      </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

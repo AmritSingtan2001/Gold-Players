@@ -1,0 +1,250 @@
+{% extends 'app/base.html' %}
+{% load static %} 
+{% block title %}
+Sectors
+{% endblock %}
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" 
+    style="background-image:url(https://www.imdaad.ae/wp-content/uploads/2023/11/Group-01.webp);
+    background-size:cover;">
+      <div class="container">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white">Sectors </li>
+        </ol>
+        <h2 class="text-white">Sectors </h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- =======  Sectors  ======= -->
+    <section id="about" class="about pb-0">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-2">
+            <img src="{% static 'app/assets/img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-10 pt-4 pt-lg-0 content">
+            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+           
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum
+              <br>
+              <br>
+              Imdaad is owned by Investment Corporation of Dubai (ICD) and is comprised of a group of companies which provide integrated and sustainable facilities management services. Established in 2007, the company is headquartered in Dubai with site offices and branches across the UAE, including Abu Dhabi.
+              <br>
+              <br>
+              Imdaad is known for enhancing the operational capabilities of its clients, amongst which are Free Zones, Residential Communities, Banks and Malls.
+              <br>
+              <br>
+              Hard FM and Environmental Services are provided directly under the main Imdaad brand, whilst FARZ (Materials Recovery Facility), Isnaad (Soft FM), Imtedaad (Energy Management), HomePro (Residential Maintenance), Vision Safety (Fire Safety), Nigma (Automation) and Imdaad Al-Batinah (Waste Collection) are all companies within the group that can unite to offer a complete turnkey solution for any client.
+              <br>
+              <br>
+              Imdaad is certified to ISO 9001, ISO 14001, ISO 50001 and OHSAS 18000 standards since 2006. It has won 32+ prestigious awards recognized by the industry, establishing itself as the partner of choice for property owners and managers.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="rectangle_line"></div>
+
+    </section>
+
+    <!-- End About Section -->
+
+
+
+    <!-- ======= Solution Section ======= -->
+ <section id="featured" class="featured">
+   <div class="container">
+
+     <div class="row mb-4">
+         <div class="col-lg-12">
+           <h3 class="text-center text-bold text-uppercase">SECTORS</h3>
+           
+         </div>
+     </div>
+
+
+     <!-- solution -->
+     <div class="row solution">
+       <!-- first section -->
+       <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
+            <a href="{% url 'app:sector_detail' %}">
+                <div class="position-absolute top-50 start-50 translate-middle text-content">
+                    <i class="bi bi-ev-station fs-1"></i><br>
+                    <span class=" fs-4 text-center">Hard works</span>
+                
+                </div>
+                <img src="https://doforms.com/wp-content/uploads/2022/11/construction-site-preparation-checklist-hero-image.jpg" class="img-fluid object-fit-cover "   style="height: 319px; width: 100%;">
+            </a>
+        </div>
+       <div class="col-lg-6 ps-md-0 pe-md-0  bg-secondary">
+        <p class="position-relative top-50 start-50 translate-middle text-white p-3 text-center">
+            We serve a portfolio of over 3,000 clients including some of the region’s top companies
+        </p>
+        
+        </div>
+
+       
+
+       
+
+
+
+      
+
+   
+
+
+       <!-- end first section -->
+
+       <!-- section section -->
+
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute  top-50 start-50 translate-middle text-content">
+           <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center text-nowrap">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjcsKU-ylC7xAonDl16lttxqCsO-fiOs5gW_QxLyr76Q&s" class="img-fluid object-fit-cover "  style="height: 319px; width: 100%;">
+         
+       </div>
+
+
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute top-50 start-50 translate-middle text-content">
+           <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center text-nowrap">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://as2.ftcdn.net/v2/jpg/01/05/45/95/1000_F_105459552_1QrrEK6E3W43tttyygS7iMAH8c0qDNr4.jpg" class="img-fluid object-fit-cover "  alt="667 *1000 image"  style="height: 319px; width: 100%;" alt>
+         
+       </div>
+
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute  top-50 start-50 translate-middle text-content">
+            <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center text-nowrap">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://usw.ca/wp-content/uploads/2022/04/Screen-Shot-2022-04-01-at-2.38.09-PM.png" class="img-fluid object-fit-cover "  style="height: 319px; width: 100%;">
+         
+       </div>
+
+
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute top-50 start-50 translate-middle text-content">
+            <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center text-nowrap">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/Auto_BG@2x.png" class="img-fluid object-fit-cover "  alt="667 *1000 image"  style="height: 319px; width: 100%;" alt>
+         
+       </div>
+
+       <!--end section section -->
+
+       <!-- third section -->
+       
+
+       
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute top-50 start-50 translate-middle text-content">
+            <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center text-nowrap">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyD9BBL6_zv1i1DNCrzzMaOHjY9lVuX0Xq-otO74jUuA&s" class="img-fluid object-fit-cover " alt="667 *1000 image"  style="height: 319px; width: 100%;" alt>
+         
+       </div>
+
+       <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute top-50 start-50 translate-middle text-content">
+           <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://www.brookings.edu/wp-content/uploads/2023/09/shutterstock_1708245121-1.jpg" class="img-fluid object-fit-cover "  style="height: 319px; width: 100%;">
+         
+       </div>
+
+       
+       <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+         <div class="position-absolute top-50 start-50 translate-middle text-content">
+           <i class="bi bi-ev-station fs-1"></i><br>
+           <span class=" fs-4 text-center">Hard works</span>
+           <p class="">
+             We serve a portfolio of over 3,000 clients including some of the region’s top companies
+           </p>
+         </div>
+         <img src="https://thumbs.dreamstime.com/z/chinese-workers-construct-viaduct-chengdu-china-37021396.jpg" class="img-fluid object-fit-cover" alt="667 *1000 image"  style="height: 319px; width: 100%;" alt>
+         
+       </div>
+       <!-- end third section -->
+
+
+       <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
+        <a href="{% url 'app:sector_detail' %}">
+            <div class="position-absolute top-50 start-50 translate-middle text-content">
+                <i class="bi bi-ev-station fs-1"></i><br>
+                <span class=" fs-4 text-center">Hard works</span>
+            
+            </div>
+            <img src="https://doforms.com/wp-content/uploads/2022/11/construction-site-preparation-checklist-hero-image.jpg" class="img-fluid object-fit-cover "   style="height: 319px; width: 100%;">
+        </a>
+    </div>
+   <div class="col-lg-6 ps-md-0 pe-md-0  bg-secondary">
+    <p class="position-relative top-50 start-50 translate-middle text-white p-3 text-center">
+        We serve a portfolio of over 3,000 clients including some of the region’s top companies
+    </p>
+    
+    </div>
+
+     </div>
+     <!-- end solution -->
+
+     
+   </div>
+ </section><!-- End Solution Section -->
+
+
+
+ 
+   
+  </main><!-- End #main -->
+
+  {% endblock %}
