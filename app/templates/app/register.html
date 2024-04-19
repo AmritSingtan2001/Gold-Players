@@ -1,0 +1,160 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+Blogs 
+{% endblock %}
+{% block content %}
+<style>
+.password-toggle{position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none; 
+    border-color:black;
+}
+
+</style>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs mb-0" style="
+      background-image:url(https://4984701.fs1.hubspotusercontent-na1.net/hubfs/4984701/Imdaad_2019/Images/Blog/News-01-01-01.jpg);
+      background-size:cover;">
+      <div class="container ">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white">Register</li>
+        </ol>
+        <center>
+          <h2 class="text-white bg-danger w-50 p-3">Register</h2>
+        </center>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- Login 8 - Bootstrap Brain Component -->
+    <section class="bg-light p-sm-0 p-md-4 p-xl-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="card border-light-subtle shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-12 col-md-12 d-flex align-items-center justify-content-center">
+                                <div class="col-12 col-lg-11 col-xl-12">
+                                    <div class="card-body pt-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                            <div class="mb-3">
+                                                <div class="text-center mb-4">
+                                                <a href="#!">
+                                                    <img src="https://bootstrapbrain.com/demo/components/logins/login-8/assets/img/bsb-logo.svg" alt="BootstrapBrain Logo" width="175" height="57">
+                                                </a>
+                                                </div>
+                                                <h4 class="text-center">Register your new account !</h4>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <form action="">
+                                            <div class="row gy-3 gx-3 ">
+                                                <div class="col-6">
+                                                    <div class="form-floating">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="your full name" title="Please enter your name" required>
+                                                    <label for="name" class="form-label">Full Name</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-floating">
+                                                        <input type="tel" class="form-control" name="phone_no" id="phone_no" placeholder="977980000000" title="Please enter a valid 12-digit phone number" required>
+                                                        <label for="phone_no" class="form-label">Phone No</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-floating">
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" title="Please enter your email" required>
+                                                    <label for="email" class="form-label">Email</label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-6">
+                                                    <div class="form-floating">
+                                                        <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" title="Please enter your password" required>
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <span class="password-toggle" onclick="togglePasswordVisibility('password', 'togglePasswordIcon1')">
+                                                            <i class="bi bi-eye-slash" id="togglePasswordIcon1"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-6">
+                                                    <div class="form-floating">
+                                                        <input type="password" class="form-control" name="confirm_password" id="confirm_password" value="" placeholder="Confirm Password" title="Please enter your confirm password" required>
+                                                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                                                        <span class="password-toggle" onclick="togglePasswordVisibility('confirm_password', 'togglePasswordIcon2')">
+                                                            <i class="bi bi-eye-slash" id="togglePasswordIcon2"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                
+                                                <div class="col-12 ">
+                                                    <div class="d-grid justify-content-center">
+                                                        <button class="btn btn-dark btn-lg" type="submit">Register Now</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-3 mb-3">
+                                                    Already have account go to -<a href="{% url 'app:login' %}" class="link-secondary text-decoration-none">Login</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+  <!-- End #main -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.getElementById('phone_no');
+        phoneInput.addEventListener('input', function() {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+        });
+    });
+
+    
+
+    function togglePasswordVisibility(inputId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const togglePasswordIcon = document.getElementById(iconId);
+    
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            togglePasswordIcon.classList.remove('bi-eye-slash');
+            togglePasswordIcon.classList.add('bi-eye');
+        } else {
+            passwordInput.type = 'password';
+            togglePasswordIcon.classList.remove('bi-eye');
+            togglePasswordIcon.classList.add('bi-eye-slash');
+        }
+    }
+</script>
+
+  {% endblock %}
+ 
