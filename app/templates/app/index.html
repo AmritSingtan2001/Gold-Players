@@ -733,12 +733,31 @@ Home
 
 
    
-
+{% if messages %}
+      {% for message in messages %}
+        <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toastMessage">
+          <div class="d-flex">
+            <div class="toast-body">
+              {{ message }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
 
 </main>
 <!-- End #main -->
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var toastMessage = document.getElementById('toastMessage');
+    var bootstrapToast = new bootstrap.Toast(toastMessage);
+
+    // Show the toast message
+    bootstrapToast.show();
+  });
+
   $(document).ready(function() {
     $('#myCarousel').carousel({
       interval: 3000, 

@@ -1,0 +1,247 @@
+{% extends 'app/base.html' %}
+{% load static %} 
+{% block title %}
+Profile
+{% endblock %}
+{% block content %}
+<style>
+    .dashboard-menu ul {
+        padding: 0;
+        margin: 0;
+      }
+      
+      .dashboard-menu ul li {
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid #ececec;
+        border-radius: 10px;
+      }
+      
+      .dashboard-menu ul li a {
+        font-size: 16px;
+        color: black;
+        padding: 15px 30px;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+      }
+      
+      .dashboard-menu ul li a i {
+        color: #7E7E7E;
+        font-size: 19px;
+        opacity: 0.6;
+      }
+      
+      .dashboard-menu ul li a.active {
+        color: #fff;
+        background-color: black;
+        border-radius: 10px;
+      }
+      
+      .dashboard-menu ul li a.active i {
+        color: #fff;
+      }
+      
+      .dashboard-menu ul li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      
+      .tab-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+      }
+      
+      .tab-header .view-more {
+        font-family: "Quicksand", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        border-bottom: 2px solid #cce7d0;
+        margin-bottom: 20px;
+      }
+      
+      .tab-header .view-more i {
+        margin-left: 5px;
+        margin-top: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+      
+      .tab-header .view-more:hover i {
+        -webkit-transform: translateX(5px);
+                transform: translateX(5px);
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        
+      }
+      nav-link:focus, .nav-link:hover {
+        color: white;
+    }
+
+      
+</style>
+<main class="main pages">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" 
+    style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvaVjgcRgbOl4PiP5o8xsU6mjsqdb5BTCzaaeKe2p_&s);
+    background-size:cover;">
+      <div class="container">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white">Profile</li>
+        </ol>
+        <h2 class="text-white">Profile</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="page-content pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12"  style="margin-bottom: 50px;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="dashboard-menu">
+                                <ul class="nav flex-column  pb-3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active btn btn-outline-dark  " id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Home</a>
+                                    </li>
+                                  
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-outline-dark  " id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Change Password</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-outline-dark  " id="account-detail-tab" data-bs-toggle="tab" href="#account-detail1" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Delete Account</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9" >
+                            <div class="tab-content account dashboard-content pl-md-50">
+                                <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                    <div class="card">
+                                        
+                                        <div class="card-body text-center">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_ltpjJgGH41klIpqmCH1HbzMxn7aZnjbB0g&usqp=CAU" class="img-fluid rounded-circle" name="avatar" alt="No image found..">
+                                            <br>
+                                            <br>
+                                            <h6>Name : {{request.user.name}}</h6>
+                                            <h6>E-mail : {{request.user.email}}</h6>
+                                            <h6>Phone Number :+977 - {{request.user.phone_no}}</h6>
+                                            <br>
+                                            <br>
+                                            <p>
+                                               <b class="text-bold">Note:</b> From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>,<br />
+                                                manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
+                                    <div class="card">
+                                       
+                                        <div class="card-body">
+                                            <form method="post" action="{% url 'account:change_password' %}" >
+                                                {% csrf_token %}
+                                                {% if messages %}
+                                                    {% for msg in messages %}
+                                                        <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                            <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <div class="row">
+                                                   
+                                                    <div class="form-group col-md-12">
+                                                        <label class="pb-2 pt-2">Current Password <span class="required">*</span></label>
+                                                        <input required class="form-control" name="old_password" type="password" value="" />
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label class="pb-2 pt-2">New Password <span class="required">*</span></label>
+                                                        <input required="" class="form-control" name="new_password" type="password" />
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label class="pb-2 pt-2">Confirm Password <span class="required">*</span></label>
+                                                        <input required="" class="form-control" name="new_password2" type="password" />
+
+                                                    </div>
+                                                    <div class="col-md-12 pt-2 text-center">
+                                                        <button type="submit" class="btn btn-dark text-center submit font-weight-bold" name="submit" value="Submit">Update</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="account-detail1" role="tabpanel" aria-labelledby="track-orders-tab">
+                                    <div class="card">
+                                       
+                                        <div class="card-body contact-from-area">
+                                            <p>If you Delete Account Now. It Cannot be Recover .</p>
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    {% if request.user.is_authenticated %}
+
+                                                    <form class="contact-form-style mt-30 mb-50" action="" method="post">
+                                                        {% csrf_token %}
+                                                       
+                                                        <button class="submit submit-auto-width btn btn-danger" type="submit">Delete Account</button>
+                                                    </form>
+                                                    {%endif%}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content ">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Add New Shipping Address</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form method="post" action="">
+            {% csrf_token %}
+           
+            <input type="text" class="form-control form-control-sm mb-2" name="{{shipping_detail_from.fullname.name}}" placeholder="Full Name" />
+            <input type="text" class="form-control form-control-sm mb-2" name="{{shipping_detail_from.location.name}}" placeholder="Location" />
+            <input type="text" class="form-control form-control-sm mb-2" name="{{shipping_detail_from.landmark.name}}" placeholder="Landmark" />
+            <input type="number" class="form-control form-control-sm mb-2" name="{{shipping_detail_from.phoneNumber.name}}" placeholder="Phone Number" />
+            <input type="number" class="form-control form-control-sm mb-2" name="{{shipping_detail_from.alternativeNo.name}}" placeholder="Alt Phone Number" />
+
+
+            <div class="m-10 text-center">
+                <button type="submit" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Submit &amp; Add</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

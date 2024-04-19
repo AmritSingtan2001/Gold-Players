@@ -59,32 +59,41 @@ Blogs
                                             </div>
                                         </div>
                                         
-                                        <form action="">
+                                        <form method="post" action="{% url 'account:register' %}" >
+                                            {% csrf_token %}
+                                            {% if messages %}
+                                                {% for msg in messages %}
+                                                <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                                    <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                                </div>
+                                                {% endfor %}
+                                            {% endif %}
                                             <div class="row gy-3 gx-3 ">
                                                 <div class="col-6">
                                                     <div class="form-floating">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="your full name" title="Please enter your name" required>
+                                                    <input type="text" class="form-control" name="{{user_register_form.name.name}}" id="name" placeholder="your full name" title="Please enter your name" required>
                                                     <label for="name" class="form-label">Full Name</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-6">
                                                     <div class="form-floating">
-                                                        <input type="tel" class="form-control" name="phone_no" id="phone_no" placeholder="977980000000" title="Please enter a valid 12-digit phone number" required>
+                                                        <input type="tel" class="form-control" name="{{user_register_form.phone_no.name}}" id="phone_no" placeholder="977980000000" title="Please enter a valid 12-digit phone number" required>
                                                         <label for="phone_no" class="form-label">Phone No</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-6">
                                                     <div class="form-floating">
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" title="Please enter your email" required>
+                                                    <input type="email" class="form-control" name="{{user_register_form.email.name}}" id="email" placeholder="name@example.com" title="Please enter your email" required>
                                                     <label for="email" class="form-label">Email</label>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-6">
                                                     <div class="form-floating">
-                                                        <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" title="Please enter your password" required>
+                                                        <input type="password" class="form-control" name="{{user_register_form.password.name}}" id="password" value="" placeholder="Password" title="Please enter your password" required>
                                                         <label for="password" class="form-label">Password</label>
                                                         <span class="password-toggle" onclick="togglePasswordVisibility('password', 'togglePasswordIcon1')">
                                                             <i class="bi bi-eye-slash" id="togglePasswordIcon1"></i>
@@ -94,7 +103,7 @@ Blogs
                                                 
                                                 <div class="col-6">
                                                     <div class="form-floating">
-                                                        <input type="password" class="form-control" name="confirm_password" id="confirm_password" value="" placeholder="Confirm Password" title="Please enter your confirm password" required>
+                                                        <input type="password" class="form-control" name="{{user_register_form.confirm_password.name}}" id="confirm_password" value="" placeholder="Confirm Password" title="Please enter your confirm password" required>
                                                         <label for="confirm_password" class="form-label">Confirm Password</label>
                                                         <span class="password-toggle" onclick="togglePasswordVisibility('confirm_password', 'togglePasswordIcon2')">
                                                             <i class="bi bi-eye-slash" id="togglePasswordIcon2"></i>
@@ -111,10 +120,11 @@ Blogs
                                                 </div>
                                             </div>
                                         </form>
+
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-3 mb-3">
-                                                    Already have account go to -<a href="{% url 'app:login' %}" class="link-secondary text-decoration-none">Login</a>
+                                                    Already have account go to -<a href="{% url 'account:login' %}" class="link-secondary text-decoration-none">Login</a>
                                                 </div>
                                             </div>
                                         </div>

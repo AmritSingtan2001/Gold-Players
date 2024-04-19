@@ -35,8 +35,3 @@ def testimonials(request):
 def careers(request):
     return render(request,'app/careers.html')
 
-def login(request):
-    return render(request,'app/login.html')
-
-def register(request):
-    return render(request,'app/register.html')

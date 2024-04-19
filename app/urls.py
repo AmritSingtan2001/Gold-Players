@@ -15,7 +15,5 @@ urlpatterns = [
     path('sectors/detail', views.sector_detail, name='sector_detail'),
     path('location', views.location, name='location'),
     path('testimonials', views.testimonials, name='testimonials'),
-    path('careers', views.careers, name='careers'),
-    path('login', views.login, name='login'),
-    path('register', views.register, name='register'),
+    path('careers', views.careers, name='careers')
 ]

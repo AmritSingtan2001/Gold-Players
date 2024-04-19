@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager,AbstractBaseUser,PermissionsMixin
+from django.contrib.auth.hashers import check_password
 
 
 '''Custom User Manager'''
@@ -58,3 +59,15 @@ class User(AbstractBaseUser,PermissionsMixin):
     def is_staff(self):
         return self.is_admin 
     
+
+    def check_password(self, raw_password):
+        """Check the password against the user's previous password."""
+        return check_password(raw_password, self.password)
+
+    def change_password(self, old_password, new_password):
+        """Change the user's password after validating the old password."""
+        if self.check_password(old_password):
+            self.set_password(new_password)
+            self.save()
+            return True
+        return False

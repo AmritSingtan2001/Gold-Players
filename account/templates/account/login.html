@@ -71,44 +71,53 @@ Login
                                             <p class="text-center mt-4 mb-5">Or sign in with</p>
                                             </div>
                                         </div>  {% endcomment %}
-                                        <form action="">
+                                        <form method="POST" action="{% url 'account:login' %}">
+                                            {% csrf_token %} 
+                                            {% if messages %}
+                                                {% for msg in messages %}
+                                                <div class="alert alert-{{ msg.tags }} alert-dismissible text-white text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                                    <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                                </div>
+                                                {% endfor %}
+                                            {% endif %}
                                             <div class="row gy-3 overflow-hidden">
-                                            <div class="col-12">
-                                                <div class="form-floating">
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                                                <label for="email" class="form-label">Email</label>
+                                                <div class="col-12">
+                                                    <div class="form-floating">
+                                                    <input type="email" class="form-control" name="{{user_login_form.email.name}}" id="email" placeholder="name@example.com" required>
+                                                    <label for="email" class="form-label">Email</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-floating">
-                                                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
-                                                    <label for="password" class="form-label">Password</label>
-                                                    <span class="password-toggle" onclick="togglePasswordVisibility('password', 'togglePasswordIcon1')">
-                                                        <i class="bi bi-eye-slash" id="togglePasswordIcon1"></i>
-                                                    </span>
+                                                <div class="col-12">
+                                                    <div class="form-floating">
+                                                        <input type="password" class="form-control" name="{{user_login_form.password.name}}" id="password" value="" placeholder="Password" required>
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <span class="password-toggle" onclick="togglePasswordVisibility('password', 'togglePasswordIcon1')">
+                                                            <i class="bi bi-eye-slash" id="togglePasswordIcon1"></i>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             
                                             
-                                            <div class="col-12">
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
-                                                <label class="form-check-label text-secondary" for="remember_me">
-                                                    Keep me logged in
-                                                </label>
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                                                    <label class="form-check-label text-secondary" for="remember_me">
+                                                        Keep me logged in
+                                                    </label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="d-grid">
-                                                <button class="btn btn-dark btn-lg" type="submit">Log in now</button>
+                                                <div class="col-12">
+                                                    <div class="d-grid">
+                                                        <button type="submit" class="btn btn-dark btn-lg" type="submit">Log In</button>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             </div>
                                         </form>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-3 mb-2">
-                                                    <a href="{% url 'app:register' %}" class="link-secondary text-decoration-none">Create new account</a>
+                                                    <a href="{% url 'account:register' %}" class="link-secondary text-decoration-none">Create new account</a>
                                                     <a href="" class="link-secondary text-decoration-none">Forgot password</a>
                                                 </div>
                                             </div>

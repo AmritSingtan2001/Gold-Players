@@ -68,9 +68,43 @@
         </i>
         <span class="text-white">|</span>
         
-
-        <i class="ms-2 bi bi-globe-americas pe-2"><a href="{% url 'app:login' %}">Login</a></i>
+        {% if request.user.is_authenticated %}
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li class="dropdown">
+              <a href="" class="text-white">
+                {% if request.user.name %}{{request.user.name}}{% else %}{{ request.user.email}}{% endif %}
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <ul>
+                <li class="text-dark pt-2 d-flex ps-3 ">
+                  <i class="bi bi-person-badge text-dark fs-6"></i>
+                  <a href="{% url 'account:profile' %}" class="ps-0 text-dark fs-6">Profile</a>
+                </li>
+                {% if request.user.is_admin %}
+                <li class="text-dark  d-flex ps-3 pt-2 ">
+                  <i class="bi bi-gear text-dark fs-6"></i>
+                  <a href="/admin" class="ps-0 text-dark fs-6" target="_blank">Dashboard</a>
+                </li>
+                {% endif %}
+                <li class="text-dark  d-flex ps-3 pt-2">
+                  <i class="bi bi-box-arrow-left text-dark fs-6"></i>
+                  <a href="{% url 'account:logout' %}" class="ps-0  text-dark fs-6">
+                    Logout
+                  </a>
+                </li>
+                
+              </ul>
+            </li> 
+          </ul>
+        </nav>
+        
         <span class="text-white">|</span>
+        {% else%}    
+        <i class="ms-2 bi bi-globe-americas pe-2"><a href="{% url 'account:login' %}">Login</a></i>
+        <span class="text-white">|</span>
+        {% endif %}
+
 
 
         
@@ -234,6 +268,7 @@
 
 
 
+<!-- toast section -->
 
 
 <!-- ======= Footer ======= -->
