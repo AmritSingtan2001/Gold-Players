@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #local app
     'app',
+    'account'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# custom user model 
+AUTH_USER_MODEL = 'account.User'
+
+#unknow person image
+DEFAULT_UNKNOWN_PERSON_IMAGE_URL='https://www.svgrepo.com/show/311076/person-question-mark.svg'
