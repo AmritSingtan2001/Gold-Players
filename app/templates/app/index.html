@@ -176,21 +176,22 @@ Home
 
         <!-- nav tab section-->
         <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+          {% for location in locations %}
           <li class="nav-item m-2" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">UAE</button>
+              <button class="nav-link {% if forloop.first %}active{% endif %}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{location.country}}" type="button" role="tab" aria-controls="pills-{{location.country}}" aria-selected="{% if forloop.first %}true {% else %} false {% endif %}">{{location.country}}</button>
           </li>
-          <li class="nav-item m-2" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Oman</button>
-          </li>
+          {% endfor %}
+
         </ul>
         <div class="rectangle_line"></div>        
         <div class="tab-content" id="pills-tabContent">
-            <!-- start first tab-->
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            <!-- start tab section-->
+            {% for location in locations%}
+            <div class="tab-pane fade show {% if forloop.first %}active {% endif %}" id="pills-{{location.country}}" role="tabpanel" aria-labelledby="pills-{{location.country}}-tab" tabindex="0">
 
               <div class="" style="
                 position: relative;
-                background-image:url(https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/map_oman.png); background-size: contain;
+                background-image:url({{location.map_image.url}}); background-size: contain;
                 background-position: top center;
                 background-repeat: no-repeat;
                 height: 500px;
@@ -206,18 +207,20 @@ Home
 
                     <div class="card-body">
                       <div class="d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE9ippPYWaDv3-7WlYRCqdpaAy0kKEzbvcMQpf6yBjQ&s" class="img-fluid" style="width:80px; height:50px;">
-                        <h5 class="align-item-center pt-2" style="font-weight:600;">GOLD PLAYER</h5>
+                        <img src="{{location.logo.url}}" class="img-fluid object-fit-cover" style="width:80px; height:50px;">
+                        <h5 class="align-item-center pt-2 ps-2" style="font-weight:bold;">{{location.company_name}}</h5>
                       </div>
-                      PO Box: 19, Postal Code: 321, Al-Traif, Sohar, Sultanate of Oman.
+                      PO Box:{{location.post_box}}, Postal Code: {{location.postal_code}}, {{location.address}}.
                       <br>
-                      <strong class="text-bold">Ramadan Hours:</strong>Monday - Friday 8:30 AM - 2:30 PM
+                      <strong class="text-bold">Ramadan Hours:</strong>{{location.office_hours}}
                       <br>
-                      <strong>Phone:</strong> +977-9865326598
+                      <strong>Phone:</strong> +977-{{location.phone_number}}
                       
                       <div class="d-flex justify-content-relative">
                         <div class="btn text-white m-1" style="border-radius:0px;  background-color:#173d6e; font-weight:bold;">Contact Us</div>
-                        <div class="btn text-white m-1"  style="border-radius:0px; background-color:#caa978; font-weight:bold;">Get Direction</div>
+                        <div class="btn text-white m-1"  style="border-radius:0px; background-color:#caa978; font-weight:bold;">
+                          <a href="{{location.map_url}}" class="text-white" target ="_blank">Get Direction</a>
+                        </div>
 
                       </div>
                     
@@ -225,47 +228,8 @@ Home
                   </div>
               </div>
             </div>
-            <!-- end first tab -->
-            <!-- start second tab-->
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-              <div class="" style="
-                position: relative;
-                background-image:url(https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/map_uae.png); background-size: contain;
-                background-position: top center;
-                background-repeat: no-repeat;
-                height: 500px;
-                ">
-                  <div class="card  border-dark size-1" style="width: 20rem;top:10%; left: 15%; 
-                  ">
-                    <i class="bi bi-caret-right fs-1 border-dark" style="
-                    position: absolute;
-                    top: 70px;
-                    right: -27px;
-                    "></i>                
-                        
-
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE9ippPYWaDv3-7WlYRCqdpaAy0kKEzbvcMQpf6yBjQ&s" class="img-fluid" style="width:80px; height:50px;">
-                        <h5 class="align-item-center pt-2" style="font-weight:600;">GOLD PLAYER</h5>
-                      </div>
-                      PO Box: 19, Postal Code: 321, Al-Traif, Sohar, Sultanate of Oman.
-                      <br>
-                      <strong class="text-bold">Ramadan Hours:</strong>Monday - Friday 8:30 AM - 2:30 PM
-                      <br>
-                      <strong>Phone:</strong> +977-9865326598
-                      
-                      <div class="d-flex justify-content-relative">
-                        <div class="btn text-white m-1" style="border-radius:0px;  background-color:#173d6e; font-weight:bold;">Contact Us</div>
-                        <div class="btn text-white m-1"  style="border-radius:0px; background-color:#caa978; font-weight:bold;">Get Direction</div>
-
-                      </div>
-                    
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <!-- end section tab-->
+            {% endfor %}
+            <!-- end tab section -->
         </div>
         <div class="rectangle_line"></div>
       </div>
