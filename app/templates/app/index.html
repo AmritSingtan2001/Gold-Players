@@ -87,7 +87,6 @@ Home
         <div class="row justify-content-evenly">
           {% for solution in allsolutions %}
               {% if forloop.first %}
-                  <!-- First solution (half width) -->
                   <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
                       <div class="position-absolute top-50 start-50 translate-middle text-content">
                           <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
@@ -98,7 +97,6 @@ Home
                       <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
                   </div>
               {% elif forloop.last %}
-                  <!-- Last solution (half width) -->
                   <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
                       <div class="position-absolute top-50 start-50 translate-middle text-content">
                           <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
@@ -109,7 +107,6 @@ Home
                       <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
                   </div>
               {% else %}
-                  <!-- Middle solutions (quarter width) -->
                   <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
                       <div class="position-absolute top-50 start-50 translate-middle text-content">
                           <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">

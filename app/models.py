@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from autoslug import AutoSlugField
 
 ''' bannar model '''
 class Banner(models.Model):
@@ -26,4 +27,19 @@ class Solutions(models.Model):
     
     def get_absolute_url(self):
         return reverse('solution-detail', kwargs={'pk': self.pk})
+
+
+class Sector(models.Model):
+    icon_image = models.ImageField(upload_to='sectorsicon/',verbose_name='Choose Icon Image')
+    title = models.CharField(max_length=150,verbose_name='Enter Title')
+    descriptions = models.TextField(verbose_name='Enter descriptions')
+    slug = AutoSlugField(populate_from='title', unique=True, default=None)
+
+    def __str__(self):
+        return self.title
+    
+
+
+
+
     
