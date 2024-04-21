@@ -6,5 +6,5 @@ class Banner(models.Model):
 
 
     def __str__(self):
-        return self.bannar_image
+        return str(self.id)
     

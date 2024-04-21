@@ -1,8 +1,18 @@
+from typing import Any
+from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse
+from .models import Banner
+from django.views import generic
 
+class IndexView(generic.ListView):
+    model = Banner
+    template_name ='app/index.html'
+    
+    def get_context_data(self,*args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['banners'] = self.queryset
+        return context
 
-def index(request):
-    return render(request,'app/index.html')
 
 def aboutus(request):
     return render(request,'app/about.html')
