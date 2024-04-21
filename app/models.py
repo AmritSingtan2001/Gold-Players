@@ -55,7 +55,7 @@ class Location(models.Model):
     post_box = models.CharField(verbose_name='Enter Post Box Number', max_length=150,null=True,blank=True)
     postal_code = models.CharField(verbose_name='Enter Postal Code', max_length=150, null=True,blank=True)
     address = models.CharField(verbose_name='Enter Address', max_length=150)
-    office_hours = models.DateTimeField(verbose_name='Select Office Hours')
+    office_hours = models.CharField(max_length=150, verbose_name='Select Enter Office Hours')
     phone_number = models.CharField(verbose_name='Enter Phone Number', max_length=150)
     map_image  = models.ImageField(verbose_name='Please Upload map image like jpb,png',upload_to='mapimage/')
     map_url = models.URLField(verbose_name='Google Map Url', null=True,blank=True)
