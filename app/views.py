@@ -15,6 +15,7 @@ class IndexView(generic.ListView):
         context['first_solutions'] = solutions.first()
         context['solutions'] =solutions[1:len(solutions)-1]
         context['last_section_solutions'] = Solutions.objects.last()
+        context['allsolutions'] = Solutions.objects.all()
         return context
 
 
