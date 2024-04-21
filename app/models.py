@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+''' bannar model '''
+class Banner(models.Model):
+    bannar_image = models.ImageField(upload_to='bannerimage/')
+
+
+    def __str__(self):
+        return self.bannar_image
+    
