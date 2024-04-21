@@ -8,5 +8,5 @@ admin.site.register(Banner, BannerAdmin)
 
 class SolutionAdmin(admin.ModelAdmin):
     model = Solutions
-    list_display =['title','icon_image','image']
+    list_display =['title','icon_image','image','short_descriptions']
 admin.site.register(Solutions,SolutionAdmin)
