@@ -17,7 +17,7 @@ class Solutions(models.Model):
     descriptions = models.TextField(verbose_name='Enter your descriptions')
 
     class Meta:
-        ordering =['-id']
+        ordering =['id']
         verbose_name='Solution'
         verbose_name_plural = 'Solutions'
 
