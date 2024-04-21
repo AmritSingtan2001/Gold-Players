@@ -72,4 +72,10 @@ class Location(models.Model):
         return reverse('location-detail', kwargs={'pk': self.pk})
 
 
-    
+
+''' client models '''
+class Client(models.Model):
+    client_logo = models.ImageField(upload_to='clientlogo/',verbose_name='Clent Logo')
+
+    def __str__(self):
+        return str(self.id)
