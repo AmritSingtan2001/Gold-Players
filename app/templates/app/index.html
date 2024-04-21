@@ -25,33 +25,29 @@ Home
       <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
       <div class="carousel-inner" role="listbox">
-
+        {% for banner in banners|slice:"1" %}
         <!-- Slide 1 -->
-        <div class="carousel-item active " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/05/Web-Headers-2022-01-1536x624.jpg); ">
+        <div class="carousel-item active " style="background-image: url({{banner.bannar_image.url}}); ">
           <div class="carousel-container">
             <div class="carousel-content">
               <a href="" class="btn-get-started animate__animated animate__fadeInUp"><i class="bi bi-arrow-down fs-3"></i></a>
             </div>
           </div>
         </div>
+        {% endfor %}
 
+        {% for banner in banners|slice:"1:"%}
         <!-- Slide 2 -->
-        <div class="carousel-item " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/07/Web-Headers-2024-March-25-1536x624.jpg); ">
+        <div class="carousel-item " style="background-image: url({{banner.bannar_image.url}}); ">
           <div class="carousel-container">
             <div class="carousel-content">
               <a href="" class="btn-get-started animate__animated animate__fadeInUp"><i class="bi bi-arrow-down fs-3"></i></a>
             </div>
           </div>
         </div>
+        {% endfor %}
 
-        <!-- Slide 3 -->
-        <div class="carousel-item " style="background-image: url(https://www.imdaad.ae/wp-content/uploads/2023/05/Web-Headers-2022-02-1536x624.jpg); ">
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <a href="" class="btn-get-started animate__animated animate__fadeInUp"><i class="bi bi-arrow-down fs-3"></i></a>
-            </div>
-          </div>
-        </div>
+       
 
       </div>
 
