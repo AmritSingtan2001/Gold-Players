@@ -1,7 +1,7 @@
 from typing import Any
 from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse
-from .models import Banner,Solutions
+from .models import Banner,Solutions,Sector
 from django.views import generic
 
 class IndexView(generic.ListView):
@@ -11,11 +11,8 @@ class IndexView(generic.ListView):
     def get_context_data(self,*args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['banners'] = self.get_queryset
-        solutions  = Solutions.objects.all()
-        context['first_solutions'] = solutions.first()
-        context['solutions'] =solutions[1:len(solutions)-1]
-        context['last_section_solutions'] = Solutions.objects.last()
         context['allsolutions'] = Solutions.objects.all()
+        context['sectors'] = Sector.objects.all()
         return context
 
 
