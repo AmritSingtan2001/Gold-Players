@@ -247,21 +247,18 @@ Home
         <div class="clients-slider swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
           <div class="swiper-wrapper align-items-center" id="swiper-wrapper-28a77e5599049f3e" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-412px, 0px, 0px); transition-delay: 0ms;">
             
-            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="2 / 8" data-swiper-slide-index="1"><img src="{% static 'app/assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide swiper-slide-prev" style="width: 86px; margin-right: 120px;" role="group" aria-label="3 / 8" data-swiper-slide-index="2"><img src="{% static 'app/assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide swiper-slide-active" style="width: 86px; margin-right: 120px;" role="group" aria-label="4 / 8" data-swiper-slide-index="3"><img src="{% static 'app/assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide swiper-slide-next" style="width: 86px; margin-right: 120px;" role="group" aria-label="5 / 8" data-swiper-slide-index="4"><img src="{% static 'app/assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="6 / 8" data-swiper-slide-index="5"><img src="{% static 'app/assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="7 / 8" data-swiper-slide-index="6"><img src="{% static 'app/assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide" role="group" aria-label="8 / 8" data-swiper-slide-index="7" style="width: 86px; margin-right: 120px;"><img src="{% static 'app/assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
-          <div class="swiper-slide" style="width: 86px; margin-right: 120px;" role="group" aria-label="1 / 8" data-swiper-slide-index="0"><img src="{% static 'app/assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div></div>
+            {% for client in clients %}
+            <div class="swiper-slide swiper-slide-prev" style="width: 86px; margin-right: 120px;" role="group" aria-label="{{ forloop.counter }} / {{ clients|length }}" data-swiper-slide-index="{{forloop.counter}}"><img src="{{client.client_logo.url}}" class="img-fluid" alt=""></div>
+            {% endfor %}
+          </div>
           <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span></div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
           
         <div class="rectangle_line"></div>
 
       </div>
     </section>
+    
     <!-- end client section -->
 
     <!-- ======= Start RESOURCES Section ======= -->
@@ -283,7 +280,7 @@ Home
           </li>
 
           <li class="nav-item m-2" role="presentation">
-            <button class="nav-link" id="pills-cash_studies-tab" data-bs-toggle="pill" data-bs-target="#pills-cash_studies" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Cash Studies</button>
+            <button class="nav-link" id="pills-cash_studies-tab" data-bs-toggle="pill" data-bs-target="#pills-cash_studies" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Case Studies</button>
           </li>
 
         </ul>
