@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+{% load static %} 
+{% block title %}
+Solution detail
+{% endblock %}
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" 
+    style="background-image:url(https://www.imdaad.ae/wp-content/uploads/2023/11/Group-01.webp);
+    background-size:cover;">
+      <div class="container ">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white">Solution </li>
+        </ol>
+        <h2 class="text-white ">
+            <span class=" bg-danger px-3 py-2">
+                {{detail.sub_category_name}} 
+            </span>
+        </h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about pb-0">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-3">
+              <img src="{{detail.image.url}}" height="100"  class="img-fluid object-fit-cover" alt="">
+          </div>
+          <div class="col-lg-9  pt-4 pt-lg-0 content">
+            <h3>{{detail.sub_category_name}}</h3>
+            <p>
+              {{detail.short_descriptions|safe}}
+            </p>
+           
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              {{ detail.descriptions|safe }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="rectangle_line"></div>
+
+    </section>
+
+    <!-- End About Section -->
+
+   
+  </main><!-- End #main -->
+
+  {% endblock %}

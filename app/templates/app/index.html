@@ -86,41 +86,46 @@ Home
         <!-- first section -->
         <div class="row justify-content-evenly">
           {% for solution in allsolutions %}
-              {% if forloop.first %}
-                  <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
-                      <div class="position-absolute top-50 start-50 translate-middle text-content">
-                          <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
-                          <br>
-                          <span class="fs-4 text-center">{{ solution.title }}</span>
-                          <p>{{ solution.short_descriptions }}</p>
-                      </div>
-                      <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+          {% if forloop.first %}
+              <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
+                <a href="{% url 'app:solution_detail' solution.slug %}">
+                  <div class="position-absolute top-50 start-50 translate-middle text-content">
+                      <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
+                      <br>
+                      <span class="fs-4 text-center">{{ solution.title }}</span>
+                      <p>{{ solution.short_descriptions }}</p>
                   </div>
-              {% elif forloop.last %}
-                  <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
-                      <div class="position-absolute top-50 start-50 translate-middle text-content">
-                          <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
-                          <br>
-                          <span class="fs-4 text-center">{{ solution.title }}</span>
-                          <p>{{ solution.short_descriptions }}</p>
-                      </div>
-                      <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+                  <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+                </a>
+              </div>
+          {% elif forloop.last %}
+              <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
+                <a href="{% url 'app:solution_detail' solution.slug %}">
+                  <div class="position-absolute top-50 start-50 translate-middle text-content">
+                      <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
+                      <br>
+                      <span class="fs-4 text-center">{{ solution.title }}</span>
+                      <p>{{ solution.short_descriptions }}</p>
                   </div>
-              {% else %}
-                  <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
-                      <div class="position-absolute top-50 start-50 translate-middle text-content">
-                          <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
-                          <br>
-                          <span class="fs-4 text-center">{{ solution.title }}</span>
-                          <p>{{ solution.short_descriptions }}</p>
-                      </div>
-                      <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+                  <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+                </a>
+              </div>
+          {% else %}
+              <div class="col-lg-3 ps-md-0 pe-md-0 solution-container position-relative">
+                <a href="{% url 'app:solution_detail' solution.slug %}">
+                  <div class="position-absolute top-50 start-50 translate-middle text-content">
+                      <img src="{{ solution.icon_image.url }}" class="img-fluid" height="50" width="50">
+                      <br>
+                      <span class="fs-4 text-center">{{ solution.title }}</span>
+                      <p>{{ solution.short_descriptions }}</p>
                   </div>
-              {% endif %}
+                  <img src="{{ solution.image.url }}" class="img-fluid object-fit-cover" style="height: 319px; width: 100%;">
+                </a>
+              </div>
+          {% endif %}
           {% endfor %}
       </div>
       
-        <!-- end third section -->
 
       </div>
       <!-- end solution -->

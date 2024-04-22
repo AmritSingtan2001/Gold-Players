@@ -1,7 +1,7 @@
 from typing import Any
 from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse
-from .models import Banner,Solutions,Sector,Location,Client,Testimonials
+from .models import Banner,AboutSolution,Solutions,SolutionSubCategory,Sector,Location,Client,Testimonials
 from news.models import Resources
 from django.views import generic
 
@@ -33,11 +33,23 @@ def blog_detail(request):
     return render(request,'app/blog-single.html')
 
 def solution(request):
-    return render(request,'app/solutions.html')
+    about_solution = AboutSolution.objects.first()
+    allsolutions= Solutions.objects.all()
+    return render(request,'app/solutions.html',{'about_solution':about_solution,'allsolutions':allsolutions})
 
 
-def solution_detail(request):
-    return render(request,'app/solution_detail.html')
+class SolutionDetailView(generic.DetailView):
+    model = Solutions
+    template_name = 'app/solution_detail.html'
+    context_object_name = 'detail'
+    slug_url_kwarg = 'slug' 
+
+
+class SolutionSubDetailView(generic.DetailView):
+    model = SolutionSubCategory
+    template_name = 'app/solution_sub_category_detail.html'
+    context_object_name = 'detail'
+    slug_url_kwarg = 'slug' 
 
 def sectors(request):
     return render(request,'app/sectors.html')

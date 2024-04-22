@@ -120,7 +120,7 @@
         <h1><a href="/">Gold Player</a></h1>
       </div>
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar ">
         <ul>
           <li class="dropdown">
             <a href="{% url 'app:about' %}">
@@ -135,8 +135,22 @@
                 <i class="bi bi-chevron-down"></i>
             </a>
             <ul>
+
               {% for category in solution_category%}
-              <li><a href="#">{{category.title}}</a></li>
+              <li class="dropdown">
+                <a href="{% url 'app:solution_detail' category.slug %}">
+                  <span>{{category.title}}</span> 
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                {% if category.solution_sub_category%}
+                <ul>
+                  {% for sub_category in category.solution_sub_category.all %}
+                  <li><a href="{% url 'app:solution_sub_detail' sub_category.slug %}">{{sub_category.sub_category_name}}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+
               {% endfor %}
               
              
@@ -194,12 +208,10 @@
             
           </li>  
 
-
-
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      <i class="bi mobile-nav-toggle bi-x"></i>
     </div>
   </header><!-- End Header -->
 
@@ -343,6 +355,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'app/assets/js/main.js' %}"></script>
+
 
 </body>
 

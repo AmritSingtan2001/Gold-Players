@@ -1,5 +1,10 @@
 from django.contrib import admin
-from . models import Banner, Solutions,Sector,Location,Client,Testimonials
+from . models import Banner,AboutSolution, Solutions,SolutionSubCategory,Sector,Location,Client,Testimonials
+
+class AboutSolutionAdmin(admin.ModelAdmin):
+    model = AboutSolution
+    list_display =['title','bannar_image']
+admin.site.register(AboutSolution, AboutSolutionAdmin)
 
 class BannerAdmin(admin.ModelAdmin):
     model = Banner
@@ -11,6 +16,11 @@ class SolutionAdmin(admin.ModelAdmin):
     list_display =['title','icon_image','image','short_descriptions']
 admin.site.register(Solutions,SolutionAdmin)
 
+
+class SolutionSubCategoryAdmin(admin.ModelAdmin):
+    model = SolutionSubCategory
+    list_display =['sub_category_name','category','image']
+admin.site.register(SolutionSubCategory,SolutionSubCategoryAdmin)
 
 class SectorAdmin(admin.ModelAdmin):
     model= Sector

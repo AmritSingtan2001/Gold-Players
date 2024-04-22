@@ -14,6 +14,17 @@ class Banner(models.Model):
         return str(self.id)
     
 
+'''about slution'''
+class AboutSolution(models.Model):
+    bannar_image  = models.ImageField(verbose_name='Bannar Image',upload_to='bannarimage/', null=True,blank=True)
+    title = models.CharField(verbose_name='Title',max_length=150)
+    descriptions = RichTextField(verbose_name='Descriptions')
+
+    def __str__(self):
+        return self.title
+    
+
+
 class Solutions(models.Model):
     icon_image = models.ImageField(verbose_name='Solution Icon Image',upload_to='solutionimages/')
     image = models.ImageField(verbose_name='Solution Main Image',upload_to='solutionimages/')
@@ -32,6 +43,20 @@ class Solutions(models.Model):
     
     def get_absolute_url(self):
         return reverse('solution-detail', kwargs={'pk': self.pk})
+    
+
+''' solution sub-category'''
+class SolutionSubCategory(models.Model):
+    category = models.ForeignKey(Solutions, on_delete= models.CASCADE, related_name='solution_sub_category')
+    sub_category_name = models.CharField(max_length=150)
+    image = models.ImageField(verbose_name=' Main Image',upload_to='solutionimages/')
+    short_descriptions = RichTextField(verbose_name='Short Descriptions')
+    descriptions = RichTextField(verbose_name='Enter descriptions')
+    slug = AutoSlugField(populate_from='sub_category_name', unique=True, default=None)
+
+    def __str__(self):
+        return self.sub_category_name
+
 
 '''Sector model '''
 class Sector(models.Model):

@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %} 
 {% block title %}
-Solution detail
+{{detail.title}}
 {% endblock %}
 {% block content %}
   <main id="main">
@@ -16,8 +16,11 @@ Solution detail
           <li><a href="/" class="text-white">Home</a></li>
           <li class="text-white">Solution </li>
         </ol>
-        <h2 class="text-white">Solution </h2>
-
+        <h2 class="text-white ">
+          <span class=" bg-danger px-3 py-2">
+            {{detail.title}} 
+          </span>
+      </h2>
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -26,20 +29,14 @@ Solution detail
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-2">
-            <img src="{% static 'app/assets/img/about.jpg' %}" class="img-fluid" alt="">
+          <div class="col-lg-3">
+              <img src="{{detail.image.url}}" height="100"  class="img-fluid object-fit-cover" alt="">
           </div>
-          <div class="col-lg-10 pt-4 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+          <div class="col-lg-9  pt-4 pt-lg-0 content">
+            <h3>{{detail.title}}</h3>
+            <p>
+              {{detail.short_descriptions}}
             </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
            
           </div>
         </div>
@@ -47,21 +44,7 @@ Solution detail
         <div class="row">
           <div class="col-md-12">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-              <br>
-              <br>
-              Imdaad is owned by Investment Corporation of Dubai (ICD) and is comprised of a group of companies which provide integrated and sustainable facilities management services. Established in 2007, the company is headquartered in Dubai with site offices and branches across the UAE, including Abu Dhabi.
-              <br>
-              <br>
-              Imdaad is known for enhancing the operational capabilities of its clients, amongst which are Free Zones, Residential Communities, Banks and Malls.
-              <br>
-              <br>
-              Hard FM and Environmental Services are provided directly under the main Imdaad brand, whilst FARZ (Materials Recovery Facility), Isnaad (Soft FM), Imtedaad (Energy Management), HomePro (Residential Maintenance), Vision Safety (Fire Safety), Nigma (Automation) and Imdaad Al-Batinah (Waste Collection) are all companies within the group that can unite to offer a complete turnkey solution for any client.
-              <br>
-              <br>
-              Imdaad is certified to ISO 9001, ISO 14001, ISO 50001 and OHSAS 18000 standards since 2006. It has won 32+ prestigious awards recognized by the industry, establishing itself as the partner of choice for property owners and managers.
+              {{ detail.descriptions|safe }}
             </p>
           </div>
         </div>
@@ -129,18 +112,18 @@ Solution detail
     <section >
       <div class="container" data-aos="fade-up">
 
+        {% for solution in detail.solution_sub_category.all %}
         <div class="row shadow p-2 bg-white rounded">
           <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
+            <img src="{{solution.image.url}}"  alt="" class="img-fluid object-fit-cover mt-1" style="height:200px; width:100%;">
           </div>
           <div class="col-md-8">
             <h4 class="entry-title pt-3">
-              <a href="{% url 'app:blog_detail' %}">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              <a href="">{{solution.sub_category_name}}</a>
             </h4>
             <div class="entry-content">
               <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                {{solution.short_descriptions|safe|truncatechars:300}}
               </p>
               <div class="read-more btn " style="   
                     background: #173d6e;
@@ -148,64 +131,15 @@ Solution detail
                     color: #fff;
                     margin-right: 30px;
                 ">
-                <a href="{% url 'app:blog_detail' %}" class="text-white">Learn More </a>
+                <a href="{% url 'app:solution_sub_detail' solution.slug %}" class="text-white">Read More </a>
               </div>
             </div>
           </div>
         </div>
         <br>
+        {% endfor %}
 
-        <div class="row shadow p-2 bg-white rounded">
-          <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
-          </div>
-          <div class="col-md-8">
-            <h4 class="entry-title pt-3">
-              <a href="{% url 'app:blog_detail' %}">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-            </h4>
-            <div class="entry-content">
-              <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-              </p>
-              <div class="read-more btn " style="   
-                    background: #173d6e;
-                    padding: 10px 20px;
-                    color: #fff;
-                    margin-right: 30px;
-                ">
-                <a href="{% url 'app:blog_detail' %}" class="text-white">Learn More </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-
-        <div class="row shadow p-2 bg-white rounded">
-          <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
-          </div>
-          <div class="col-md-8">
-            <h4 class="entry-title pt-3">
-              <a href="{% url 'app:blog_detail' %}">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-            </h4>
-            <div class="entry-content">
-              <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-              </p>
-              <div class="read-more btn " style="   
-                    background: #173d6e;
-                    padding: 10px 20px;
-                    color: #fff;
-                    margin-right: 30px;
-                ">
-                <a href="{% url 'app:blog_detail' %}" class="text-white">Learn More </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
+        
 
         
       </div>
