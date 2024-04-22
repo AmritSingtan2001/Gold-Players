@@ -57,6 +57,18 @@ class SolutionSubCategory(models.Model):
     def __str__(self):
         return self.sub_category_name
 
+'''About sector '''
+class AboutSector(models.Model):
+    title = models.CharField(max_length=150)
+    image = models.ImageField(upload_to='sectorimage/')
+    short_descriptions = RichTextField()
+    descriptions = RichTextField()
+
+    def __str__(self):
+        return self.title
+    
+
+
 
 '''Sector model '''
 class Sector(models.Model):

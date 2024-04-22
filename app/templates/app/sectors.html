@@ -16,7 +16,7 @@ Sectors
           <li><a href="/" class="text-white">Home</a></li>
           <li class="text-white">Sectors </li>
         </ol>
-        <h2 class="text-white">Sectors </h2>
+        <h2 class="text-white">{{about_sectors.title}} </h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -27,19 +27,14 @@ Sectors
 
         <div class="row">
           <div class="col-lg-2">
-            <img src="{% static 'app/assets/img/about.jpg' %}" class="img-fluid" alt="">
+            <img src="{{about_sectors.image.url}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-10 pt-4 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>{{about_sectors.title}}</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              {{about_sectors.short_descriptions|safe}}
             </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
+            
            
           </div>
         </div>
@@ -47,21 +42,7 @@ Sectors
         <div class="row">
           <div class="col-md-12">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-              <br>
-              <br>
-              Imdaad is owned by Investment Corporation of Dubai (ICD) and is comprised of a group of companies which provide integrated and sustainable facilities management services. Established in 2007, the company is headquartered in Dubai with site offices and branches across the UAE, including Abu Dhabi.
-              <br>
-              <br>
-              Imdaad is known for enhancing the operational capabilities of its clients, amongst which are Free Zones, Residential Communities, Banks and Malls.
-              <br>
-              <br>
-              Hard FM and Environmental Services are provided directly under the main Imdaad brand, whilst FARZ (Materials Recovery Facility), Isnaad (Soft FM), Imtedaad (Energy Management), HomePro (Residential Maintenance), Vision Safety (Fire Safety), Nigma (Automation) and Imdaad Al-Batinah (Waste Collection) are all companies within the group that can unite to offer a complete turnkey solution for any client.
-              <br>
-              <br>
-              Imdaad is certified to ISO 9001, ISO 14001, ISO 50001 and OHSAS 18000 standards since 2006. It has won 32+ prestigious awards recognized by the industry, establishing itself as the partner of choice for property owners and managers.
+                {{about_sectors.descriptions|safe}}
             </p>
           </div>
         </div>
@@ -88,36 +69,32 @@ Sectors
 
 
      <!-- solution -->
-     <div class="row solution">
+      <div class="row solution">
        <!-- first section -->
+       {% for sector in sectors %}
+       {% if forloop.first %}
        <div class="col-lg-6 ps-md-0 pe-md-0 solution-container position-relative">
-            <a href="{% url 'app:sector_detail' %}">
+            <a href="">
                 <div class="position-absolute top-50 start-50 translate-middle text-content">
                     <i class="bi bi-ev-station fs-1"></i><br>
-                    <span class=" fs-4 text-center">Hard works</span>
+                    <span class=" fs-4 text-center">{{sector.title}}</span>
                 
                 </div>
                 <img src="https://doforms.com/wp-content/uploads/2022/11/construction-site-preparation-checklist-hero-image.jpg" class="img-fluid object-fit-cover "   style="height: 319px; width: 100%;">
             </a>
         </div>
        <div class="col-lg-6 ps-md-0 pe-md-0  bg-secondary">
-        <p class="position-relative top-50 start-50 translate-middle text-white p-3 text-center">
-            We serve a portfolio of over 3,000 clients including some of the region’s top companies
-        </p>
+        <div class="position-relative top-50 start-50 translate-middle ">
+          <span class="text-white  p-3 text-center">
+            {{sector.descriptions|safe|truncatewords:80}}
+          </span>
+        </div>
+        
         
         </div>
 
-       
-
-       
-
-
-
-      
-
-   
-
-
+        
+        {% elif   forloop.last %}
        <!-- end first section -->
 
        <!-- section section -->
@@ -171,6 +148,8 @@ Sectors
          <img src="https://www.imdaad.ae/wp-content/themes/imdaad-1.1/img/Auto_BG@2x.png" class="img-fluid object-fit-cover "  alt="667 *1000 image"  style="height: 319px; width: 100%;" alt>
          
        </div>
+       {% endif %}
+       {% endfor %}
 
        <!--end section section -->
 
@@ -226,13 +205,13 @@ Sectors
             </div>
             <img src="https://doforms.com/wp-content/uploads/2022/11/construction-site-preparation-checklist-hero-image.jpg" class="img-fluid object-fit-cover "   style="height: 319px; width: 100%;">
         </a>
-    </div>
-   <div class="col-lg-6 ps-md-0 pe-md-0  bg-secondary">
-    <p class="position-relative top-50 start-50 translate-middle text-white p-3 text-center">
-        We serve a portfolio of over 3,000 clients including some of the region’s top companies
-    </p>
-    
-    </div>
+      </div>
+      <div class="col-lg-6 ps-md-0 pe-md-0  bg-secondary">
+        <p class="position-relative top-50 start-50 translate-middle text-white p-3 text-center">
+            We serve a portfolio of over 3,000 clients including some of the region’s top companies
+        </p>
+      
+      </div>
 
      </div>
      <!-- end solution -->

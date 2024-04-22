@@ -1,7 +1,7 @@
 from typing import Any
 from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse
-from .models import Banner,AboutSolution,Solutions,SolutionSubCategory,Sector,Location,Client,Testimonials
+from .models import Banner,AboutSolution,Solutions,SolutionSubCategory,AboutSector,Sector,Location,Client,Testimonials
 from news.models import Resources
 from django.views import generic
 
@@ -52,7 +52,9 @@ class SolutionSubDetailView(generic.DetailView):
     slug_url_kwarg = 'slug' 
 
 def sectors(request):
-    return render(request,'app/sectors.html')
+    about_sectors = AboutSector.objects.first()
+    sectors = Sector.objects.all()
+    return render(request,'app/sectors.html',{'about_sectors':about_sectors,'sectors':sectors})
 
 def sector_detail(request):
     return render(request,'app/sectors_detail.html')

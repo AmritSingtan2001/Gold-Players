@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Banner,AboutSolution, Solutions,SolutionSubCategory,Sector,Location,Client,Testimonials
+from . models import Banner,AboutSolution, Solutions,SolutionSubCategory,Sector,AboutSector,Location,Client,Testimonials
 
 class AboutSolutionAdmin(admin.ModelAdmin):
     model = AboutSolution
@@ -21,6 +21,12 @@ class SolutionSubCategoryAdmin(admin.ModelAdmin):
     model = SolutionSubCategory
     list_display =['sub_category_name','category','image']
 admin.site.register(SolutionSubCategory,SolutionSubCategoryAdmin)
+
+
+class AboutSectorAdmin(admin.ModelAdmin):
+    model =AboutSector
+    list_display =['title','image']
+admin.site.register(AboutSector, AboutSectorAdmin)
 
 class SectorAdmin(admin.ModelAdmin):
     model= Sector
