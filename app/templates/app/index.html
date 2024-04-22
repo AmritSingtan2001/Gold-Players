@@ -292,46 +292,36 @@ Home
                 <div class="carousel-inner">
                   <div class="item carousel-item active">
                       <div class="row justify-content-center">
+                        {% for news in all_news|slice:"2" %}
                         <div class=" col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                          <img src="{{news.image.url}}" class=" card-img-top" alt="">
                           <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <a href="">{{news.title}}</a>
                             <br>
                             <a href="" class="btn btn-danger mt-2">Read More</a>
                           </div>
                           
                         </div>
-                        <div class="col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                          <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                            <br>
-                            <a href="" class="btn btn-danger mt-2">Read More</a>
-                          </div>
-                        </div>
+                        {% endfor %}
+
+                        
                       </div>
                   </div>
 
-
                   <div class="item carousel-item ">
                     <div class="row justify-content-center">
+                      {% for news in all_news|slice:"2:" %}
                       <div class=" col-md-4 card p-3 m-2">
-                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                        <img src="{{news.image.url}}" class=" card-img-top" alt="">
                         <div class="testimonial card-body">
-                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <a href="">{{news.title}}</a>
                           <br>
                           <a href="" class="btn btn-danger mt-2">Read More</a>
                         </div>
                         
                       </div>
-                      <div class="col-md-4 card p-3 m-2">
-                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                        <div class="testimonial card-body">
-                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                          <br>
-                          <a href="" class="btn btn-danger mt-2">Read More</a>
-                        </div>
-                      </div>
+                      {% endfor %}
+                      
                     </div>
                   </div>
                 </div>
@@ -352,50 +342,41 @@ Home
                 <!-- Carousel -->
                 <div class="carousel-inner">
                   <div class="item carousel-item active">
-                      <div class="row justify-content-center">
-                        <div class=" col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
-                          <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                            <br>
-                            <a href="" class="btn btn-danger mt-2">Read More</a>
-                          </div>
-                          
-                        </div>
-                        <div class="col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                          <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                            <br>
-                            <a href="" class="btn btn-danger mt-2">Read More</a>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-
-
-                  <div class="item carousel-item ">
                     <div class="row justify-content-center">
+                      {% for insight in insights|slice:"2" %}
                       <div class=" col-md-4 card p-3 m-2">
-                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                        <img src="{{insight.image.url}}" class=" card-img-top" alt="">
                         <div class="testimonial card-body">
-                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                          <a href="">{{insight.title}}</a>
                           <br>
                           <a href="" class="btn btn-danger mt-2">Read More</a>
                         </div>
                         
                       </div>
-                      <div class="col-md-4 card p-3 m-2">
-                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                        <div class="testimonial card-body">
-                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                          <br>
-                          <a href="" class="btn btn-danger mt-2">Read More</a>
-                        </div>
-                      </div>
+                      {% endfor %}
+
+                      
                     </div>
+                </div>
+
+                <div class="item carousel-item ">
+                  <div class="row justify-content-center">
+                    {% for insight in insights|slice:"2:" %}
+                    <div class=" col-md-4 card p-3 m-2">
+                      <img src="{{insight.image.url}}" class=" card-img-top" alt="">
+                      <div class="testimonial card-body">
+                        <a href="">{{insight.title}}</a>
+                        <br>
+                        <a href="" class="btn btn-danger mt-2">Read More</a>
+                      </div>
+                      
+                    </div>
+                    {% endfor %}
+                    
                   </div>
                 </div>
+                </div>
+
                 <!-- Carousel Controls -->
                 <a class="carousel-control left carousel-control-prev" href="#insights" data-slide="prev">
                   <i class="fa fa-angle-left"></i>
@@ -413,31 +394,28 @@ Home
               <div id="cash_studies" class="carousel slide" data-ride="carousel">
                 <!-- Carousel -->
                 <div class="carousel-inner">
+                
                   <div class="item carousel-item active">
                       <div class="row justify-content-center">
+                        {%for case in case_studies|slice:"2" %}
                         <div class=" col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
+                          <img src="{{case.image.url}}" class=" card-img-top" alt="">
                           <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                            <a href="">{{case.title}}</a>
                             <br>
                             <a href="" class="btn btn-danger mt-2">Read More</a>
                           </div>
                           
                         </div>
-                        <div class="col-md-4 card p-3 m-2">
-                          <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                          <div class="testimonial card-body">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                            <br>
-                            <a href="" class="btn btn-danger mt-2">Read More</a>
-                          </div>
-                        </div>
+                        {% endfor %}
+                       
                       </div>
                   </div>
 
 
                   <div class="item carousel-item ">
                     <div class="row justify-content-center">
+                      {%for case in case_studies|slice:"2:" %}
                       <div class=" col-md-4 card p-3 m-2">
                         <img src="https://i.ibb.co/d5DY64w/img1.jpg" class=" card-img-top" alt="">
                         <div class="testimonial card-body">
@@ -447,14 +425,8 @@ Home
                         </div>
                         
                       </div>
-                      <div class="col-md-4 card p-3 m-2">
-                        <img src="https://i.ibb.co/d5DY64w/img1.jpg" class="card-img-top" alt="">
-                        <div class="testimonial card-body">
-                          <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
-                          <br>
-                          <a href="" class="btn btn-danger mt-2">Read More</a>
-                        </div>
-                      </div>
+                      {% endfor %}
+                      
                     </div>
                   </div>
                 </div>
@@ -487,21 +459,18 @@ Home
       <div id="testimonial" class="carousel slide" data-ride="carousel">
         <!-- Carousel -->
         <div class="carousel-inner">
-          <div class="item carousel-item active">
-            <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
-            <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-            <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+          {% for testimonial in testimonials %}
+          <div class="item carousel-item {% if forloop.first %}active {% endif %}">
+            <div class="img-box">
+              <img src="{{testimonial.image.url}}" alt="">
+            </div>
+            <p class="testimonial">
+              {{testimonial.descriptions}}
+            </p>
+            <p class="overview"><b>{{testimonial.name}}</b>, {{testimonial.position}}</p>
           </div>
-          <div class="item carousel-item">
-            <div class="img-box"><img src="https://i.ibb.co/5FF1vqz/img2.jpg" alt=""></div>
-            <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
-            <p class="overview"><b>Dauglas McNun</b>, Financial Advisor</p>
-          </div>
-          <div class="item carousel-item">
-            <div class="img-box"><img src="https://i.ibb.co/Trv7hDv/img3.jpg" alt=""></div>
-            <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
-            <p class="overview"><b>Hellen Wright</b>, Athelete</p>
-          </div>
+          {% endfor %}
+          
         </div>
         <!-- Carousel Controls -->
         <a class="carousel-control left carousel-control-prev" href="#testimonial" data-slide="prev">

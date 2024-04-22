@@ -1,7 +1,8 @@
 from typing import Any
 from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse
-from .models import Banner,Solutions,Sector,Location,Client
+from .models import Banner,Solutions,Sector,Location,Client,Testimonials
+from news.models import Resources
 from django.views import generic
 
 class IndexView(generic.ListView):
@@ -15,6 +16,10 @@ class IndexView(generic.ListView):
         context['sectors'] = Sector.objects.all()
         context['locations'] = Location.objects.all()
         context['clients'] = Client.objects.all()
+        context['all_news'] = Resources.objects.filter(resource_type='news')
+        context['insights'] = Resources.objects.filter(resource_type='insights')
+        context['case_studies'] = Resources.objects.filter(resource_type='case_studies')
+        context['testimonials'] = Testimonials.objects.all()
         return context
 
 

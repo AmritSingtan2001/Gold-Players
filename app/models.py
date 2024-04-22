@@ -79,3 +79,15 @@ class Client(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+'''TESTIMONIALS '''
+
+class Testimonials(models.Model):
+    image = models.ImageField(upload_to='testimonialsimage/')
+    name = models.CharField(max_length=150)
+    descriptions = models.TextField()
+    position = models.CharField(max_length=150, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    

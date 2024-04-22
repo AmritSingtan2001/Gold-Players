@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Banner, Solutions,Sector,Location,Client
+from . models import Banner, Solutions,Sector,Location,Client,Testimonials
 
 class BannerAdmin(admin.ModelAdmin):
     model = Banner
@@ -28,3 +28,9 @@ class ClientAdmin(admin.ModelAdmin):
     model = Client
     list_display =['id','client_logo']
 admin.site.register(Client, ClientAdmin)
+
+
+class TestimonialsAdmin(admin.ModelAdmin):
+    model =Testimonials
+    list_display =['name','image','position']
+admin.site.register(Testimonials,TestimonialsAdmin)

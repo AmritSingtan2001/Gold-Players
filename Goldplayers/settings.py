@@ -41,7 +41,12 @@ INSTALLED_APPS = [
     'app',
     'account',
     'news',
+    'ckeditor',
+
 ]
+
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
