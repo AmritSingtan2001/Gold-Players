@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from autoslug import AutoSlugField
+from ckeditor.fields import RichTextField
+
+
 
 ''' bannar model '''
 class Banner(models.Model):
@@ -16,7 +19,9 @@ class Solutions(models.Model):
     image = models.ImageField(verbose_name='Solution Main Image',upload_to='solutionimages/')
     title = models.CharField(verbose_name='Solution Name',max_length=150)
     short_descriptions = models.TextField(verbose_name='Enter short descriptions', max_length=300)
-    descriptions = models.TextField(verbose_name='Enter descriptions')
+    descriptions = RichTextField(verbose_name='Enter descriptions')
+    slug = AutoSlugField(populate_from='title', unique=True, default=None)
+
     class Meta:
         ordering =['id']
         verbose_name='Solution'
@@ -32,7 +37,7 @@ class Solutions(models.Model):
 class Sector(models.Model):
     icon_image = models.ImageField(upload_to='sectorsicon/',verbose_name='Choose Icon Image')
     title = models.CharField(max_length=150,verbose_name='Enter Title')
-    descriptions = models.TextField(verbose_name='Enter descriptions')
+    descriptions = RichTextField(verbose_name='Enter descriptions')
     slug = AutoSlugField(populate_from='title', unique=True, default=None)
 
     class Meta:
@@ -90,4 +95,7 @@ class Testimonials(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
     
