@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app',
     'account',
     'news',
+    'careers',
     'ckeditor',
 
 ]
