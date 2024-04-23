@@ -24,11 +24,7 @@ class IndexView(generic.ListView):
 def aboutus(request):
     return render(request,'app/about.html')
 
-def blog(request):
-    return render(request,'app/blog.html')
 
-def blog_detail(request):
-    return render(request,'app/blog-single.html')
 
 def solution(request):
     about_solution = AboutSolution.objects.first()
