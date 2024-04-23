@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Banner,AboutSolution, Solutions,SolutionSubCategory,Sector,AboutSector,Location,Client,Testimonials
+from . models import Office,Banner,AboutSolution, Solutions,SolutionSubCategory,Sector,AboutSector,Location,Client,Testimonials
 
 class AboutSolutionAdmin(admin.ModelAdmin):
     model = AboutSolution
@@ -38,6 +38,12 @@ class LocationAdmin(admin.ModelAdmin):
     model = Location
     list_display =['company_name','address']
 admin.site.register(Location, LocationAdmin)
+
+
+class OfficeAdmin(admin.ModelAdmin):
+    model  = Office
+    list_display =['office_name','image','map_url']
+admin.site.register(Office,OfficeAdmin)
 
 
 class ClientAdmin(admin.ModelAdmin):

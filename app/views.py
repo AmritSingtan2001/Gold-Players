@@ -1,7 +1,5 @@
-from typing import Any
-from django.http import HttpRequest
-from django.shortcuts import render, HttpResponse
-from .models import Banner,AboutSolution,Solutions,SolutionSubCategory,AboutSector,Sector,Location,Client,Testimonials
+from django.shortcuts import render
+from .models import Banner,AboutSolution,Office,Solutions,SolutionSubCategory,AboutSector,Sector,Location,Client,Testimonials
 from news.models import Resources
 from django.views import generic
 
@@ -56,11 +54,25 @@ def sectors(request):
     sectors = Sector.objects.all()
     return render(request,'app/sectors.html',{'about_sectors':about_sectors,'sectors':sectors})
 
-def sector_detail(request):
-    return render(request,'app/sectors_detail.html')
 
-def location(request):
-    return render(request,'app/location.html')
+class SectorbDetailView(generic.DetailView):
+    model = Sector
+    template_name = 'app/sectors_detail.html'
+    context_object_name = 'detail'
+    slug_url_kwarg = 'slug'
+
+
+class LocationsList(generic.ListView):
+    model = Location
+    template_name = 'app/location.html'
+    context_object_name = 'locations'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['locations'] = self.get_queryset()
+        context['offices'] = Office.objects.all()
+        return context
+        
 
 def testimonials(request):
     return render(request,'app/testimonials.html')

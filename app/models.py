@@ -73,7 +73,9 @@ class AboutSector(models.Model):
 '''Sector model '''
 class Sector(models.Model):
     icon_image = models.ImageField(upload_to='sectorsicon/',verbose_name='Choose Icon Image')
+    image = models.ImageField(upload_to='sectorimage/')
     title = models.CharField(max_length=150,verbose_name='Enter Title')
+    short_descriptions =RichTextField(verbose_name='Short Description',max_length=500)
     descriptions = RichTextField(verbose_name='Enter descriptions')
     slug = AutoSlugField(populate_from='title', unique=True, default=None)
 
@@ -112,7 +114,22 @@ class Location(models.Model):
     
     def get_absolute_url(self):
         return reverse('location-detail', kwargs={'pk': self.pk})
+    
 
+'''office model'''
+class Office(models.Model):
+    office_name = models.CharField(max_length=150)
+    logo = models.ImageField(upload_to='Office Image/', verbose_name='Office Logo')
+    image  = models.ImageField(verbose_name='Office Image', upload_to='Office Image/')
+    descriptions = models.TextField(verbose_name='Short Description About Office Maximum 200 characters ', max_length=200)
+    map_url = models.URLField(verbose_name='Map URL')
+
+    def __str__(self):
+        return self.office_name
+    
+    class Meta:
+        ordering =['id']
+    
 
 
 ''' client models '''

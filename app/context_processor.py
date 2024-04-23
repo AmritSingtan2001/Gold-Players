@@ -1,4 +1,4 @@
-from . models import Solutions, Sector
+from . models import Solutions, Sector,Location
 
 def solutions(request):
     solutions_data = Solutions.objects.all()
@@ -10,9 +10,8 @@ def solutions(request):
 
 def sectors(request):
     secots_all = Sector.objects.all()
-    sector_category = [secotr.title for secotr in secots_all]
 
     context = {
-        'sector_category': sector_category
+        'secotrs':secots_all
     }
     return context

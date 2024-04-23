@@ -163,8 +163,10 @@
                 <i class="bi bi-chevron-down"></i>
             </a>
             <ul>
-              {% for sector in sector_category%}
-              <li><a href="#">{{sector.title}}</a></li>
+              {% for sector in secotrs%}
+              <li>
+                <a href="{% url 'app:sector_detail' sector.slug %}">{{sector.title}}</a>
+              </li>
               {% endfor %}
               
             </ul>
