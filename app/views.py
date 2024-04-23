@@ -74,9 +74,14 @@ class LocationsList(generic.ListView):
         return context
         
 
-def testimonials(request):
-    return render(request,'app/testimonials.html')
 
+class TestimonialsListView(generic.ListView):
+    model = Testimonials
+    template_name = 'app/testimonials.html'
+    context_object_name = 'testimonials'
+
+    
+ 
 def careers(request):
     return render(request,'app/careers.html')
 

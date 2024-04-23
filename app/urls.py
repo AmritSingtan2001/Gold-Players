@@ -1,7 +1,7 @@
 
 from django.urls import path
 from . import views
-from .views import IndexView,SolutionDetailView,SolutionSubDetailView,SectorbDetailView,LocationsList
+from .views import IndexView,SolutionDetailView,SolutionSubDetailView,SectorbDetailView,LocationsList,TestimonialsListView
 app_name ='app'
 
 
@@ -16,6 +16,6 @@ urlpatterns = [
     path('sectors', views.sectors, name='sectors'),
     path('sectors/<slug:slug>', SectorbDetailView.as_view(), name='sector_detail'),
     path('location', LocationsList.as_view(), name='location'),
-    path('testimonials', views.testimonials, name='testimonials'),
+    path('testimonials', TestimonialsListView.as_view(), name='testimonials'),
     path('careers', views.careers, name='careers')
 ]
