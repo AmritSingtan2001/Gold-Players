@@ -10,6 +10,15 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
     
+''' career types '''
+JOB_TYPE_CHOICES = [
+        ('full_time', 'Full Time'),
+        ('part_time', 'Part Time'),
+        ('freelance', 'Freelance'),
+        ('internship','Internship'),
+        ('temporary','Temporary')
+    ]
+
 
 '''career model '''
 class Careers(models.Model):
@@ -20,6 +29,7 @@ class Careers(models.Model):
     salary = models.CharField(verbose_name='Salary', max_length=150, null=True, blank=True)
     created_date = models.DateTimeField(auto_now=True)
     valid_date = models.DateField(verbose_name='Valid Date')
+    job_type = models.CharField(verbose_name='Job Type', max_length=20, choices=JOB_TYPE_CHOICES, default='full_time')
     descriptions = RichTextField(verbose_name='Job Descriptions(responsibility,qualification)')
     slug = AutoSlugField(populate_from ='job_title', default=None, unique=True)
 
