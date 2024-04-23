@@ -7,11 +7,11 @@ class Careers(models.Model):
     job_title = models.CharField(verbose_name='Job Title', max_length=150)
     location = models.CharField(verbose_name='Location', max_length=150)
     salary = models.CharField(verbose_name='Salary', max_length=150, null=True, blank=True)
-    created_date = models.DateTimeField(auto_created=True)
+    created_date = models.DateTimeField(auto_now=True)
     valid_date = models.DateField(verbose_name='Valid Date')
     descriptions = RichTextField(verbose_name='Job Descriptions(responsibility,qualification)')
     slug = AutoSlugField(populate_from=job_title)
-    
+
     class Meta:
         ordering =['-id']
 
