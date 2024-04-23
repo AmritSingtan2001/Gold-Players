@@ -1,0 +1,72 @@
+{% extends 'app/base.html' %}
+{% load static %} 
+{% block title %}
+{{career_detail.job_title}} 
+{% endblock %}
+{% block content %}
+<style>
+    .form-control{
+        width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    }
+
+    .job_types {
+        display:flex; 
+        zoom: 1;
+        background: #f9f9f9;
+        border-top: 1px solid #e5e5e5;
+        font-size: .83em;
+        list-style: none outside;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" style="
+      background-image:url(https://4984701.fs1.hubspotusercontent-na1.net/hubfs/4984701/Imdaad_2019/Images/Blog/News-01-01-01.jpg);
+      background-size:cover;">
+      <div class="container ">
+
+        <ol>
+          <li><a href="/" class="text-white">Home</a></li>
+          <li class="text-white"><a href="{% url 'careers:careers' %}">Careers</a></li>
+        </ol>
+        <center>
+          <h2 class="text-white bg-danger w-50 p-3">{{career_detail.job_title}}</h2>
+        </center>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- Careers detail  start -->
+   
+    <section id="blog" class="blog pt-2" >
+        <div class="container" data-aos="fade-up">
+            <div class="row bg-white  py-2  ">
+                <div class="col-md-12 py-2 small text-muted">
+                    {{career_detail.created_date}}
+                </div>
+                <div class="col-md-2 py-2">
+                    <i class="bi bi-geo-alt fs-4 text-dark"></i>{{career_detail.location}}
+                </div>
+                <div class="col-md-auto py-2">
+                    <i class="bi bi-calendar3"></i> Posted 1 Month ago
+                </div>
+                <div class="col-md-12 py-2">
+                    {{career_detail.descriptions|safe}}
+                </div>
+                <center>
+                    <a class="btn btn-outline-dark text-center w-25" href="{% url 'careers:careers' %}">Back To Career</a>
+                </center>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+
+{% endblock %}

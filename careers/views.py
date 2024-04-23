@@ -9,3 +9,9 @@ class CareersListView(generic.ListView):
     template_name ='careers/careers.html'
     context_object_name= 'careers'
 
+'''career detail'''
+class CareerDetailView(generic.DetailView):
+    model = Careers 
+    template_name ='careers/career_detail.html'
+    context_object_name ='career_detail'
+    slug_url_kwarg = 'slug'
