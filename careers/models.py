@@ -10,11 +10,11 @@ class Careers(models.Model):
     created_date = models.DateTimeField(auto_now=True)
     valid_date = models.DateField(verbose_name='Valid Date')
     descriptions = RichTextField(verbose_name='Job Descriptions(responsibility,qualification)')
-    slug = AutoSlugField(populate_from=job_title)
+    slug = AutoSlugField(populate_from ='job_title', default=None, unique=True)
 
     class Meta:
         ordering =['-id']
 
     def __str__(self):
-        return self.job_title
+        return str(self.job_title)
     
