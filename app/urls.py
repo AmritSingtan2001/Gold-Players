@@ -15,5 +15,4 @@ urlpatterns = [
     path('sectors/<slug:slug>', SectorbDetailView.as_view(), name='sector_detail'),
     path('location', LocationsList.as_view(), name='location'),
     path('testimonials', TestimonialsListView.as_view(), name='testimonials'),
-    path('careers', views.careers, name='careers')
 ]

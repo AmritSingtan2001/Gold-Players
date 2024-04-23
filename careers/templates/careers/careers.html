@@ -21,6 +21,13 @@ Careers
         margin: 0;
         padding: 0;
     }
+    .form-control{
+        border-color: black;
+        outline-color: none;
+        box-shadow: none;
+        border-radius: 0px;
+    
+    }
 </style>
 <main id="main">
 
@@ -43,35 +50,37 @@ Careers
     <!-- End Breadcrumbs -->
     <!-- Careers Section  start -->
     <div class="container">
+        <form method="GET" action="{% url 'careers:careers' %}">
+
         <div class="row justify-content-between p-5" style="background: #ededed;">
             <div class="col-md-12 text-center">
                 <h4>COME WORK WITH US </h4>
             </div>
+
             <div class="col-md-6 pt-2 pb-2">
-                <input type="text" class="form-control" placeholder="Keywords">
+                {{ form.keywords }}
             </div>
             <div class="col-md-6 pt-2 pb-2">
-                <input type="text" class="form-control" placeholder="Keywords">
+                {{ form.location }}
 
             </div>
 
             <div class="col-md-12 pt-2 pb-2">
-                <select class="form-control">
-                    <option>Careers</option>
-                </select>
+                {{ form.category }}
 
             </div>
 
             <div class="col-md-12 my-3 text-center">
-                <button class="btn btn-dark">Search Job</button>
+                <button type="submit" class="btn btn-dark">Search Job</button>
             </div>
+            </form>
             <div class="col-md-12  ">
                 <ul class=" d-flex justify-content-between job_types p-3">
-					<li><label class=" pe-2 freelance"><input type="checkbox" name="filter_job_type[]" value="freelance" checked="checked" id="job_type_freelance"> Freelance</label>|</li>
-					<li><label class=" pe-2 full-time"><input type="checkbox" name="filter_job_type[]" value="full-time" checked="checked" id="job_type_full-time"> Full Time</label>| </li>
-					<li><label  class=" pe-2 internship"><input type="checkbox" name="filter_job_type[]" value="internship" checked="checked" id="job_type_internship"> Internship</label>| </li>
-					<li><label class=" pe-2 part-time"><input type="checkbox" name="filter_job_type[]" value="part-time" checked="checked" id="job_type_part-time"> Part Time</label>| </li>
-					<li><label class=" pe-2 temporary"><input type="checkbox" name="filter_job_type[]" value="temporary" checked="checked" id="job_type_temporary"> Temporary</label>| </li>
+					<li><label class=" pe-2 freelance"><input class="shadow-none" type="checkbox" name="filter_job_type[]" value="freelance" checked="checked" id="job_type_freelance"> Freelance</label>|</li>
+					<li><label class=" pe-2 full-time"><input class="shadow-none" type="checkbox" name="filter_job_type[]" value="full-time" checked="checked" id="job_type_full-time"> Full Time</label>| </li>
+					<li><label  class=" pe-2 internship"><input class="shadow-none" type="checkbox" name="filter_job_type[]" value="internship" checked="checked" id="job_type_internship"> Internship</label>| </li>
+					<li><label class=" pe-2 part-time"><input class="shadow-none" type="checkbox" name="filter_job_type[]" value="part-time" checked="checked" id="job_type_part-time"> Part Time</label>| </li>
+					<li><label class=" pe-2 temporary"><input class="shadow-none" type="checkbox" name="filter_job_type[]" value="temporary" checked="checked" id="job_type_temporary"> Temporary</label>| </li>
 			    </ul>
             </div>
         </div>
@@ -84,7 +93,7 @@ Careers
             <div class="row bg-white shadow py-2 my-2 ">
                 <div class="col-md-2">
                     <div class="pt-1">
-                        <img src="{{career.image.url}}" alt="" class="img-fluid h-75 w-75">
+                        <img src="{{career.company_logo.url}}" alt="" class="img-fluid h-75 w-75">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -109,17 +118,47 @@ Careers
           
   
           
-          <div class="blog-pagination my-5">
-            <ul class="justify-content-center">
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-            </ul>
-          </div>
+            <div class="blog-pagination">
+                {% if is_paginated %}
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="" href="#">&laquo;</a>
+                        </li>
+                    {% endif %}
+      
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><a >{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+      
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{ page_obj.next_page_number }}" class="">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+      
+              </div>
   
         </div>
-      </section><!-- End Blog Section -->
+      </section>
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
 {% endblock %}

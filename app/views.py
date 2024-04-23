@@ -77,7 +77,4 @@ class TestimonialsListView(generic.ListView):
     context_object_name = 'testimonials'
 
     
- 
-def careers(request):
-    return render(request,'app/careers.html')
 

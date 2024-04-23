@@ -1,4 +1,5 @@
-from . models import Solutions, Sector,Location
+from . models import Solutions, Sector
+from careers.models import Category
 
 def solutions(request):
     solutions_data = Solutions.objects.all()
@@ -15,3 +16,10 @@ def sectors(request):
         'secotrs':secots_all
     }
     return context
+
+def career_category(request):
+    categories = Category.objects.all()
+    return({
+        'careers_categories':categories
+    })
+
