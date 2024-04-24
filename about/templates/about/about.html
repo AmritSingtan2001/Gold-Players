@@ -152,84 +152,31 @@ About
     <!-- blog section -->
     <section >
       <div class="container" data-aos="fade-up">
-
+        {% for resource in resources %}
         <div class="row shadow p-2 bg-white rounded">
-          <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
+          <div class="col-md-3">
+            <img src="{{resource.image.url}}" alt="" class="img-fluid">
           </div>
-          <div class="col-md-8">
-            <h4 class="entry-title pt-3">
-              <a href="">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+          <div class="col-md-9">
+            <h4 class="entry-title">
+              <a href="{% url 'resources:resource_detail' resource.slug %}">{{resource.title}}</a>
             </h4>
             <div class="entry-content">
               <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                  {{resource.descriptions|safe|truncatewords:50}}
               </p>
-              <div class="read-more btn " style="   
-                    background: #173d6e;
-                    padding: 10px 20px;
-                    color: #fff;
-                    margin-right: 30px;
-                ">
-                <a href="" class="text-white">Learn More </a>
+              <div class="read-more">
+                <a href="{% url 'resources:resource_detail' resource.slug %}">Read More</a>
               </div>
             </div>
           </div>
         </div>
-        <br>
 
-        <div class="row shadow p-2 bg-white rounded">
-          <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
-          </div>
-          <div class="col-md-8">
-            <h4 class="entry-title pt-3">
-              <a href="">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-            </h4>
-            <div class="entry-content">
-              <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-              </p>
-              <div class="read-more btn " style="   
-                    background: #173d6e;
-                    padding: 10px 20px;
-                    color: #fff;
-                    margin-right: 30px;
-                ">
-                <a href="" class="text-white">Learn More </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         <br>
+        {% endfor %}
 
-        <div class="row shadow p-2 bg-white rounded">
-          <div class="col-md-4">
-            <img src="{% static 'app/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
-          </div>
-          <div class="col-md-8">
-            <h4 class="entry-title pt-3">
-              <a href="">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-            </h4>
-            <div class="entry-content">
-              <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-              </p>
-              <div class="read-more btn " style="   
-                    background: #173d6e;
-                    padding: 10px 20px;
-                    color: #fff;
-                    margin-right: 30px;
-                ">
-                <a href="" class="text-white">Learn More </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
+        
 
         
       </div>
@@ -237,32 +184,28 @@ About
     <!-- End Blog Section -->
 
     
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+     <!-- client section start -->
+     <section id="clients" class="clients pb-0">
       <div class="container">
-
         <div class="section-title">
-          <h2>Clients</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2 class="pt-0">Clients</h2>
         </div>
 
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'app/assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
+        <div class="clients-slider swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+          <div class="swiper-wrapper align-items-center justify-content-center" id="swiper-wrapper-28a77e5599049f3e" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-412px, 0px, 0px); transition-delay: 0ms;">
+            {% for client in clients %}
+            <div class="swiper-slide swiper-slide-prev" style="width: 86px; margin-right: 120px;" role="group" aria-label="{{ forloop.counter }} / {{ clients|length }}" data-swiper-slide-index="{{forloop.counter}}"><img src="{{client.client_logo.url}}" class="img-fluid" alt=""></div>
+            {% endfor %}
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+          <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span></div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+          
+        <div class="rectangle_line"></div>
 
       </div>
-    </section><!-- End Clients Section -->
-
+    </section>
+    
+    <!-- end client section -->
    
   </main><!-- End #main -->
 
