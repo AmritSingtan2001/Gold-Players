@@ -50,8 +50,8 @@ INSTALLED_APPS = [
 
 ]
 
-X_FRAME_OPTIONS = "SAMEORIGIN"              # allows you to use modals insated of popups
-SILENCED_SYSTEM_CHECKS = ["security.W019"]  # ignores redundant warning messages
+X_FRAME_OPTIONS = "SAMEORIGIN"             
+SILENCED_SYSTEM_CHECKS = ["security.W019"]  
 
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
@@ -152,6 +152,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom user model 
 AUTH_USER_MODEL = 'account.User'
+
+LOGIN_URL = '/account/login'  
+LOGIN_REDIRECT_URL = '/' 
 
 #unknow person image
 DEFAULT_UNKNOWN_PERSON_IMAGE_URL='https://www.svgrepo.com/show/311076/person-question-mark.svg'
