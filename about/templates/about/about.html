@@ -16,7 +16,7 @@ About
           <li><a href="/" class="text-white">Home</a></li>
           <li class="text-white">About Us</li>
         </ol>
-        <h2 class="text-white">About Us</h2>
+        <h2 class="text-white">{{about_us.title}}</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -24,22 +24,14 @@ About
     <!-- ======= About Section ======= -->
     <section id="about" class="about pb-0">
       <div class="container">
-
         <div class="row">
           <div class="col-lg-2">
-            <img src="{% static 'app/assets/img/about.jpg' %}" class="img-fluid" alt="">
+            <img src="{{about_us.image.url}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-10 pt-4 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            <p>
+              {{about_us.short_descriptions|safe}}
             </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
            
           </div>
         </div>
@@ -47,21 +39,7 @@ About
         <div class="row">
           <div class="col-md-12">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-              <br>
-              <br>
-              Imdaad is owned by Investment Corporation of Dubai (ICD) and is comprised of a group of companies which provide integrated and sustainable facilities management services. Established in 2007, the company is headquartered in Dubai with site offices and branches across the UAE, including Abu Dhabi.
-              <br>
-              <br>
-              Imdaad is known for enhancing the operational capabilities of its clients, amongst which are Free Zones, Residential Communities, Banks and Malls.
-              <br>
-              <br>
-              Hard FM and Environmental Services are provided directly under the main Imdaad brand, whilst FARZ (Materials Recovery Facility), Isnaad (Soft FM), Imtedaad (Energy Management), HomePro (Residential Maintenance), Vision Safety (Fire Safety), Nigma (Automation) and Imdaad Al-Batinah (Waste Collection) are all companies within the group that can unite to offer a complete turnkey solution for any client.
-              <br>
-              <br>
-              Imdaad is certified to ISO 9001, ISO 14001, ISO 50001 and OHSAS 18000 standards since 2006. It has won 32+ prestigious awards recognized by the industry, establishing itself as the partner of choice for property owners and managers.
+              {{about_us.descriptions|safe}}  
             </p>
           </div>
         </div>
@@ -76,112 +54,45 @@ About
     <!-- our vission mission -->
     <div class="container">
       <div class="row">
+        {% for objective in objectives|slice:4 %}
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_21x-1-110x110.png" class="img-fluid" alt="no image found...">
+            <div class="col-4 col-md-4">
+              <img src="{{objective.image.url}}" class="img-fluid" alt="no image found...">
             </div>
-            <div class="col-md-8">
-              <b class="fs-3">Our Vission</b>
+            <div class="col-8 col-md-8">
+              <b class="fs-3">{{objective.title}}</b>
               <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
+                {{objective.descriptions|safe}}
               </p>
             </div>
           </div>
         </div>
+        {% endfor %}
 
-
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_11x-1-110x110.png" class="img-fluid" alt="no image found...">
-            </div>
-            <div class="col-md-8">
-              <b class="fs-3">Our Mission</b>
-              <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_21x-1-110x110.png" class="img-fluid" alt="no image found...">
-            </div>
-            <div class="col-md-8">
-              <b class="fs-3">Our Core Value</b>
-              <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
-              </p>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>
 
     <div class="container">
       <div class="row justify-content-center">
+        {% for objective in objectives|slice:"4:" %}
         <div class="col-md-5">
           <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_31x-1-80x80.png" class="img-fluid" alt="no image found...">
+            <div class="col-4 col-md-4">
+              <img src="{{objective.image.url}}" class="img-fluid" alt="no image found...">
             </div>
-            <div class="col-md-8">
-              <b class="fs-3">People</b>
+            <div class="col-8 col-md-8">
+              <b class="fs-3">{{objective.title}}</b>
               <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
+                {{objective.descriptions|safe}}
               </p>
             </div>
           </div>
         </div>
+        {% endfor %}
 
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_41x-1-80x80.png" class="img-fluid" alt="no image found...">
-            </div>
-            <div class="col-md-8">
-              <b class="fs-3">SERVICE</b>
-              <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_61x-1-80x80.png" class="img-fluid" alt="no image found...">
-            </div>
-            <div class="col-md-8">
-              <b class="fs-3">SUSTAINABLE</b>
-              <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="https://www.imdaad.ae/wp-content/uploads/2024/02/Artboard-1_51x-1-80x80.png" class="img-fluid" alt="no image found...">
-            </div>
-            <div class="col-md-8">
-              <b class="fs-3">MAKING A DIFFERENCE</b>
-              <p>
-                To excel as a trusted regional leader in providing sustainable, integrated facilities and resource management solutions
-              </p>
-            </div>
-          </div>
-        </div>
-
-
+        
       </div>
     </div>
     <div class="rectangle_line"></div>
