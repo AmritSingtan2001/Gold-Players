@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import About,Objective
+from .models import About,Objective,OrganizationSetting
+
+class OrganizationSettingAdmin(admin.ModelAdmin):
+    model = OrganizationSetting
+    list_display =['site_name','phone_number','email','logo']
+
+    def has_add_permission(self, request):
+        existing_objects_count = self.model.objects.count()
+        return existing_objects_count == 0
+    
+admin.site.register(OrganizationSetting,OrganizationSettingAdmin)
 
 class AboutAdmin(admin.ModelAdmin):
     model = About
