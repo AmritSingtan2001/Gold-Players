@@ -82,7 +82,8 @@ TEMPLATES = [
                 'app.context_processor.solutions',
                 'app.context_processor.sectors',
                 'app.context_processor.career_category',
-                'app.context_processor.organizationsetting'
+                'app.context_processor.organizationsetting',
+                'app.context_processor.locations'
             ],
         },
     },

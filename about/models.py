@@ -7,6 +7,7 @@ class OrganizationSetting(models.Model):
     logo =models.ImageField(verbose_name='Organization Logo',upload_to='aboutus/')
     fav_icon = models.ImageField(verbose_name='Organization Fav Icon',upload_to='aboutus/')
     site_name = models.CharField(verbose_name='Organization Name',max_length=150)
+    location = models.CharField(verbose_name='Organizaton Location', max_length=200)
     phone_number = models.CharField(verbose_name='Organization Phone Number',max_length=150)
     email = models.EmailField(verbose_name='Organization Email')
     fb_url = models.URLField(verbose_name='Facebook Page URL', null=True,blank=True)

@@ -1,6 +1,7 @@
 from . models import Solutions, Sector
 from careers.models import Category
 from about.models import OrganizationSetting
+from app.models import Office
 
 def solutions(request):
     solutions_data = Solutions.objects.all()
@@ -29,4 +30,11 @@ def organizationsetting(request):
     organization_setting = OrganizationSetting.objects.first()
     return ({
         'organization_settings': organization_setting
+    })
+
+
+def locations(request):
+    all_office_locations = Office.objects.all()[:5]
+    return({
+        'office_locations':all_office_locations
     })
