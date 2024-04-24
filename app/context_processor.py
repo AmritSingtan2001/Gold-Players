@@ -1,5 +1,6 @@
 from . models import Solutions, Sector
 from careers.models import Category
+from about.models import OrganizationSetting
 
 def solutions(request):
     solutions_data = Solutions.objects.all()
@@ -23,3 +24,9 @@ def career_category(request):
         'careers_categories':categories
     })
 
+
+def organizationsetting(request):
+    organization_setting = OrganizationSetting.objects.first()
+    return ({
+        'organization_settings': organization_setting
+    })
