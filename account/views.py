@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 from django.contrib import messages
 from .decorators import login_required
+from django.conf import settings
 
 
 def login(request):
@@ -14,12 +15,20 @@ def login(request):
 
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
+        remember_me = request.POST.get('remember_me', False)
         if login_form.is_valid():
             email = login_form.cleaned_data['email']  
             password = login_form.cleaned_data['password']
             user_obj = auth.authenticate(request, email=email, password=password)
 
             if user_obj is not None:
+                if remember_me:
+                    request.session.set_expiry(settings.SESSION_COOKIE_AGE)
+                    return redirect('/')
+                else:
+                    request.session.set_expiry(0)
+                    messages.warning(request,'Your session has been expired')
+                
                 auth.login(request, user_obj)
                 messages.success(request, "Login successful!")
                 return redirect('app:index')

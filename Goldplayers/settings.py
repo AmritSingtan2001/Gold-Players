@@ -150,9 +150,15 @@ MEDIA_ROOT = BASE_DIR/'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# session cookie age
+SESSION_COOKIE_AGE = 24 * 60 * 60  
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
 # custom user model 
 AUTH_USER_MODEL = 'account.User'
 
+# login or login redirect url
 LOGIN_URL = '/account/login'  
 LOGIN_REDIRECT_URL = '/' 
 
