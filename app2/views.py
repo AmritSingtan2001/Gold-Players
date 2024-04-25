@@ -267,6 +267,16 @@ class TestimonialsListView(generic.ListView):
     context_object_name ='testimonials'
 
 
+class TestimonialsCreateView(generic.CreateView):
+    model = Testimonials 
+    template_name ='app2/testimonials_form.html'
+    form_class = TestimonialsForm
+    def get_success_url(self):
+        messages.success(self.request,"New Testimonials Created Successfully !")
+        return reverse_lazy('dashboard:testimonials')
+
+
+
 class TestimonialsUpdateView(generic.UpdateView):
     model = Testimonials
     template_name ='app2/testimonials_form.html'

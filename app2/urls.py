@@ -32,6 +32,7 @@ urlpatterns = [
         path('careers/delete/<int:id>', views.delete_career,name='delete_career'),
 
         path('testimonials', TestimonialsListView.as_view(), name='testimonials'),
+        path('testimonials/add', TestimonialsCreateView.as_view(), name='testimonials_add'),
         path('testimonials/update/<int:id>', TestimonialsUpdateView.as_view(), name='testimonials_update'),
         path('testimonials/delete/<int:id>', views.delete_testimonials, name='delete_testimonials'),
 
