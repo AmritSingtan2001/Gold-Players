@@ -12,14 +12,14 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
 
-
+''''index page'''
 @login_required
 def index(request):
     return render(request,'app2/index.html')
 
 
 
-
+''' about organization'''
 @login_required
 def aboutUs(request):
     instance = None
@@ -48,7 +48,7 @@ def aboutUs(request):
     context = {'form': form, 'instance': instance}
     return render(request, 'app2/create_about_us.html', context)
 
-
+'''organization settings '''
 @login_required
 def organizationsetting(request):
     instance = None
@@ -77,7 +77,7 @@ def organizationsetting(request):
     context = {'form': form, 'instance': instance}
     return render(request, 'app2/organization_setting.html', context)
 
-
+'''objectives '''
 @method_decorator(login_required, name='dispatch')
 class ObjectiveCreatView(generic.CreateView):
     model = Objective
@@ -111,35 +111,43 @@ def objective_delete(request, id):
     return redirect('dashboard:objective')
 
 
+
+'''' Location '''
+@method_decorator(login_required, name='dispatch')
+class LocationListView(generic.ListView):
+    model = Location
+    template_name ='app2/location.html'
+    context_object_name ='locations'
+
+
+@method_decorator(login_required, name='dispatch')
+class LocationCreateView(generic.CreateView):
+    model = Location
+    template_name ='app2/location_form.html'
+    form_class = LocationForm
+    def get_success_url(self):
+        return reverse_lazy('dashboard:locations')
     
+
+@method_decorator(login_required, name='dispatch')
+class LocationUpdateDetailView(generic.UpdateView):
+    model = Location
+    template_name ='app2/location_form.html'
+    pk_url_kwarg ='id'
+    form_class = LocationForm
+    def get_success_url(self):
+        messages.success(self.request,'Updated Successfully !')
+        return reverse_lazy('dashboard:location_detail_update', kwargs={'id': self.object.id})
+
 @login_required
-def edit_add_organization_objectives(request):
-    instance = None
-    try:
-        if id:
-            instance = Objective.objects.first()
-    except Exception as e:
-        messages.warning(request, 'An error occurred while retrieving the AboutUS.')
-        return redirect('dashboard:organizations_setting')
+def location_delete(request, id):
+    instance = get_object_or_404(Location, id=id)
+    instance.delete()
+    messages.success(request, "Deleted Successfully!")
+    return redirect('dashboard:locations')
 
-    if request.method == 'POST':
-        form = ObjectiveForm(request.POST, request.FILES, instance=instance)
-        if form.is_valid():
-            form.save()
-            if instance: 
-                messages.success(request, 'AboutUS edited successfully.')
-                return redirect('dashboard:organizations_setting') 
-            else: 
-                messages.success(request, 'AboutUS added successfully.')
-                return redirect('dashboard:organizations_setting') 
-        else:
-            messages.warning(request, 'Form is not valid. Please correct the errors.')
-    else:
-        form = ObjectiveForm(instance=instance)
 
-    context = {'form': form, 'instance': instance}
-    return render(request, 'app2/objectivs.html', context)
-
+''' office section '''
 
 
 

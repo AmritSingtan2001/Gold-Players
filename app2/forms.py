@@ -44,6 +44,31 @@ class ObjectiveForm(forms.ModelForm):
 
 
 
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Location
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(LocationForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+class OfficeForm(forms.ModelForm):
+    class Meta:
+        model= Office
+        fields= '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(OfficeForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+
 # class MainCategorieForm(forms.ModelForm):
 #     class Meta:
 #         model = MainCategorie

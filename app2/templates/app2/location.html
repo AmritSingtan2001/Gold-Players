@@ -1,0 +1,100 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Our  Office Locations 
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3">Our Locations </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <a href="{% url 'dashboard:add_new_location' %}" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add New Objective</a>
+                                </div> 
+                            </div>
+                        
+                            <div class="tab-content ">
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                            <th >S.N</th>
+                                            <th>Logo</th>
+                                            <th class="text-nowrap">Company Name</th>
+                                            <th>Country</th>
+                                            <th>Address</th>
+                                            <th style="width: 200px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for location in locations%}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                        <td>
+                                            <div class="image-gallery" style="width:auto">
+                                                <img class="thumbnail" src="{{location.logo.url}}" style="height: 200px; width: auto;" alt="Thumbnail Image">
+                                            </div>
+                                            <div class="modal" id="imageModal">
+                                                <span class="close-btn" onclick="closeModal()">&times;</span>
+                                                <img class="modal-content" id="modalImage">
+                                            </div>
+                                        
+                                            <script src="script.js"></script>
+                                        </td>
+                                        <td style="width:auto; text-align:justify;">
+                                            {{location.company_name|safe}}
+                                        </td>
+                                        <td style="width:auto; text-align:justify;">
+                                            {{location.country}}
+                                        </td>
+                                        <td style="width:auto; text-align:justify;">
+                                            {{location.address}}
+                                        </td>
+                                    
+                                    
+                                        
+                                    
+                                        <td>
+                                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                            <a href="{% url 'dashboard:location_detail_update' location.id %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="{% url 'dashboard:delete_location' location.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>                                           
+                                
+                            </div> 
+                            <!-- end tab-content-->
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}
