@@ -106,7 +106,7 @@ class TestimonialsForm(forms.ModelForm):
         fields ='__all__'
 
     def __init__(self, *args, **kwargs):
-        super(CareerForm, self).__init__(*args, **kwargs)
+        super(TestimonialsForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'
