@@ -87,12 +87,16 @@ class CareerForm(forms.ModelForm):
     class Meta:
         model= Careers
         fields= '__all__'
+        widgets = {
+            'valid_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'placeholder': 'Enter valid date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(CareerForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'
+            
 
 
 

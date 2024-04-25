@@ -185,6 +185,7 @@ def office_delete(request, id):
 
 
 ''' career category '''
+@method_decorator(login_required, name='dispatch')
 class CareerCategoryListView(generic.ListView):
     model = Category
     context_object_name ='categories'
@@ -203,7 +204,7 @@ class CareerCategoryListView(generic.ListView):
         else:
             return self.render_to_response(self.get_context_data(form=form))
         
-
+@login_required
 def update_category(request):
     if request.method =="POST":
         id = request.POST.get('category_id')
@@ -214,9 +215,48 @@ def update_category(request):
     else:
         return redirect('dashboard:career_category')
     
-    
+@login_required   
 def delete_career_category(request,id):
     instance = Category.objects.get(id=id)
     instance.delete()
     messages.success(request,'Category Delete Successfully !')
     return redirect('dashboard:career_category')
+
+
+''' Careers '''
+@method_decorator(login_required, name='dispatch')
+class CareerListView(generic.ListView):
+    model = Careers
+    template_name ='app2/careers.html'
+    context_object_name ='careers'
+
+
+@method_decorator(login_required, name='dispatch')
+class CareerCreateView(generic.CreateView):
+    model = Careers
+    template_name ='app2/career_form.html'
+    form_class = CareerForm
+    def get_success_url(self):
+        messages.success(self.request,"Career Added Successfully !")
+        return reverse_lazy('dashboard:careers_list')
+
+
+
+@method_decorator(login_required, name='dispatch')
+class CareerUpdateView(generic.UpdateView):
+    model = Careers
+    template_name ='app2/career_form.html'
+    pk_url_kwarg ='id'
+    form_class = CareerForm
+    def get_success_url(self):
+        messages.success(self.request,'Career Updated Successfully !')
+        return reverse_lazy('dashboard:career_update', kwargs={'id': self.object.id})
+    
+
+@login_required
+def delete_career(request,id):
+    Careers.objects.get(id=id).delete()
+    messages.success(request,"Deleted Successfully !")
+    return redirect('dashboard:careers_list')
+
+    
