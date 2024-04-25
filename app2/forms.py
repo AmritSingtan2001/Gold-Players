@@ -31,6 +31,19 @@ class OrganizationSettingForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
+class ObjectiveForm(forms.ModelForm):
+    class Meta:
+        model = Objective
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ObjectiveForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+
 # class MainCategorieForm(forms.ModelForm):
 #     class Meta:
 #         model = MainCategorie

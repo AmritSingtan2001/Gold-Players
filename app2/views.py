@@ -78,6 +78,35 @@ def organizationsetting(request):
     return render(request, 'app2/organization_setting.html', context)
 
 
+@login_required
+def organization_objectives(request):
+    instance = None
+    try:
+        if id:
+            instance = Objective.objects.first()
+    except Exception as e:
+        messages.warning(request, 'An error occurred while retrieving the AboutUS.')
+        return redirect('dashboard:organizations_setting')
+
+    if request.method == 'POST':
+        form = ObjectiveForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            if instance: 
+                messages.success(request, 'AboutUS edited successfully.')
+                return redirect('dashboard:organizations_setting') 
+            else: 
+                messages.success(request, 'AboutUS added successfully.')
+                return redirect('dashboard:organizations_setting') 
+        else:
+            messages.warning(request, 'Form is not valid. Please correct the errors.')
+    else:
+        form = ObjectiveForm(instance=instance)
+
+    context = {'form': form, 'instance': instance}
+    return render(request, 'app2/organization_setting.html', context)
+
+
 
 
 # #news categorei
