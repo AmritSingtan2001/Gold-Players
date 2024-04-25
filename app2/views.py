@@ -260,3 +260,8 @@ def delete_career(request,id):
     return redirect('dashboard:careers_list')
 
     
+'''testimonials '''
+class TestimonialsListView(generic.ListView):
+    model = Testimonials
+    template_name ='app2/testimonials.html'
+    context_object_name ='testimonials'
