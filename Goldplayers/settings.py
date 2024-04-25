@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #local app
     'about',
     'app',
+    'app2',
     'account',
     'news',
     'careers',

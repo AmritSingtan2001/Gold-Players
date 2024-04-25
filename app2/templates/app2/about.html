@@ -1,0 +1,115 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+{% if instance %}Edit About Us{% else %}Add About Us{% endif %}
+{% endblock %}
+{% block body %}
+<title>{% if instance %}Edit About Us{% else %}Add About Us{% endif %}
+</title>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">About Us
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                      
+                        <form method="post" enctype="multipart/form-data" action="{% url 'dashboard:aboutupdate' %}">
+                            {% csrf_token %}
+                                {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <input type="hidden" name="id" value="{{about.id}}">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Introduction </label>
+                                                        <textarea  name="introduction"  class="form-control" required
+                                                                placeholder="Enter Introduction">{{about.introduction}}</textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Our team </label>
+                                                        <textarea  name="our_team"  class="form-control" required
+                                                         placeholder="Enter title">{{about.our_team}}</textarea> 
+                                                    </div> 
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Our story </label>
+                                                        <textarea  name="our_story"  class="form-control" required
+                                                                placeholder="">{{about.our_story}}</textarea>
+                                                    </div>
+                                                    <div class="mb-3 mt-3 mt-xl-0">
+                                                        <label for="" class="form-label">Story Image</label>
+                                                        <input type="file" name="image1" id="" class="form-control custom-class" onchange="showPreview(this);">
+                                                        <div id="imageContainer" style="width:auto">   
+                                                            <img class="img-fluid" id="imagePreview" src="{{about.story_image.url}}" alt="">
+                                                        </div>
+                                                    </div>
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-6">
+                                                                                           
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Our value </label>
+                                                    <textarea name="our_values" class="form-control" required>{{about.our_values}}</textarea>
+                                                  </div>
+
+                                                <div class="mb-3">
+                                                    <label for="{{ form.website.id_for_label }}" class="form-label">Our mission</label>
+                                                    <textarea  name="our_mission"  class="form-control" required
+                                                     placeholder="">{{about.our_mission}}</textarea>
+                                                </div>
+
+                                                <div class="mb-3 mt-3 mt-xl-0">
+                                                    <label for="" class="form-label">Mission Image</label>
+                                                    <input type="file" name="image2" id="" class="form-control custom-class" onchange="showPreview1(this);">
+                                                    <div id="imageContainer" style="width:auto">   
+                                                        <img class="img-fluid" id="imagePreview1" src="{{about.mission_image.url}}" alt="">
+                                                    </div>
+                                                </div>
+                                       
+                                            </div> <!-- end col-->
+                                            
+                                            <div class="col-auto">
+                                                <button type="submit" class="btn btn-danger chat-send waves-effect waves-light">Update </button>                                           
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                    </form>
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+       {%endblock%}

@@ -28,11 +28,7 @@ class UserRegisterForm(forms.ModelForm):
         
         if len(password) < 8:
             raise forms.ValidationError("Password contain at least 8 character long.")
-        
-        # if not re.match(r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:";<>,.?`~]).*$', password):
-        #     raise forms.ValidationError("Password must contain at least one number, one uppercase letter, and one special character.")
-
-
+       
         if not re.match(r'^[0-9]{10}$', phone_No):
             raise forms.ValidationError("Enter a valid phone number.")
 

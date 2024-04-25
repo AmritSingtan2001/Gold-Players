@@ -83,7 +83,7 @@
                 {% if request.user.is_admin %}
                 <li class="text-dark  d-flex ps-3 pt-2 ">
                   <i class="bi bi-gear text-dark fs-6"></i>
-                  <a href="/admin" class="ps-0 text-dark fs-6" target="_blank">Dashboard</a>
+                  <a href="{% url 'dashboard:index' %}" class="ps-0 text-dark fs-6" target="_blank">Dashboard</a>
                 </li>
                 {% endif %}
                 <li class="text-dark  d-flex ps-3 pt-2">

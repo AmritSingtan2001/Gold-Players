@@ -1,0 +1,104 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+{% if instance %}Edit Privacy Policy{% else %}Add Privacy Policy{% endif %}
+{% endblock %}
+{% block body %}
+<title>{% if instance %}Edit Privacy Policy{% else %}Add About Us{% endif %}
+</title>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">{% if instance %}Edit Privacy Policy{% else %}Add Privacy Policy{% endif %}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                      
+                        <form method="post" enctype="multipart/form-data"  action="{% url 'dashboard:privacyupdate' %}">
+                            {% csrf_token %}
+
+                                {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <input type="hidden" name="id" value="{{policy.id}}">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="mb-3">
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Title </label>
+                                                        <input type="text" name="title"  class="form-control" required  value="{{policy.title}}" placeholder="Enter title">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <div class="col-sm-12 col-md-7">
+                                                      <label class="form-label"> Description </label>
+                                                        
+                                                          <textarea  class="form-control" name="privacy_policy" rows="5"  id="editor2"  required placeholder="Enter Privacy Policy">
+                                                            {{policy.privacy_policy|safe}}
+                                                          </textarea>
+                                                        
+                                                    </div>
+                                                    
+                                                </div> 
+                                                   
+                                            </div> <!-- end col-->
+                                            
+                                            <div class="col-auto">
+                                                <button type="submit" class="btn btn-danger chat-send waves-effect waves-light">Update</button>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                    </form>
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+                <script>
+                  ClassicEditor
+                      .create(document.querySelector('#editor2'))
+                      .catch(error => {
+                          console.error(error);
+                      });
+                  
+              </script>
+      
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+      
+       {%endblock%}

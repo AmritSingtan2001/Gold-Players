@@ -1,0 +1,135 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+{% if instance %}Edit Digital Marketing{% else %}Add Digital Marketing{% endif %}
+{% endblock %}
+{% block body %}
+<title>{% if instance %}Edit Digital Marketing{% else %}Add Digital Marketing{% endif %}
+</title>
+{% comment %} <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script> {% endcomment %}
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">{% if instance %}Edit Digital Marketing{% else %}Add Digital Marketing{% endif %}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                      
+                        <form method="post" enctype="multipart/form-data" action="{% if instance %}{% url 'dashboard:edit_digitalMarketing' instance.id %}{% else %}{% url 'dashboard:add_digitalMarketing' %}{% endif %}">
+                            {% csrf_token %}
+                            {{form.media}}
+                                {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                    
+
+                                                <div class="mb-3">
+                                                    <label for="{{ form.title.id_for_label }}" class="form-label">Title</label>
+                                                    <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control" required
+                                                           value="{% if instance %}{{ instance.title }}{% endif %}" placeholder="Enter title">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="{{ form.ordering.id_for_label }}" class="form-label">Ordering</label>
+                                                    <input type="number" name="{{ form.ordering.name }}" id="{{ form.ordering.id_for_label }}" class="form-control" required
+                                                           value="{% if instance %}{{ instance.ordering }}{% endif %}" placeholder="Enter ordering">
+                                                </div>
+                                               
+                                                <div class="mb-3">
+                                                    <label for="{{ form.previousPrice.id_for_label }}" class="form-label"> Previous Price</label>
+                                                    <input type="number" name="{{ form.previousPrice.name }}" id="{{ form.previousPrice.id_for_label }}" class="form-control" required
+                                                           value="{% if instance %}{{ instance.previousPrice }}{% endif %}" placeholder="Enter previousPrice">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="{{ form.currentPrice.id_for_label }}" class="form-label">Current Price</label>
+                                                    <input type="number" name="{{ form.currentPrice.name }}" id="{{ form.currentPrice.id_for_label }}" class="form-control" required
+                                                           value="{% if instance %}{{ instance.currentPrice }}{% endif %}" placeholder="Enter currentPrice">
+                                                </div>
+                                               
+                                                     <!-- Date View -->
+                                                 
+                                                     <div class="mb-3">
+                                                        <label for="{{ form.image.id_for_label }}" class="form-label"> Image:</label>
+                                                        <input type="file" name="{{ form.image.name }}" id="{{ form.image.id_for_label }}" class="form-control custom-class" {% if not instance %}required{% endif %} onchange="showPreview(this);">
+                                                        <div id="imageContainer">
+                                                            <img id="imagePreview" src="{% if instance %}{{ instance.image.url }}{% endif %}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-6">
+                                                
+                                                <div class="mb-3">
+                                                    <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                                                    {{form.description}}
+                                                    {% comment %} <textarea id="editor" name="{{ form.description.name }}" rows="10" required placeholder="Enter Description">{% if instance %}{{ instance.description }}{% endif %}</textarea> {% endcomment %}
+                                                </div>
+                                             
+                                              
+                                              
+                                           
+                                            </div> <!-- end col-->
+                                            
+                                            <div class="col-auto">
+                                                <a href="{% url 'dashboard:digitalMarketing' %}" class="btn btn-danger"><i class=""></i>Back to Table</a>
+                                                {% if instance %}
+                                                    <button type="submit" class="btn btn-danger chat-send waves-effect waves-light">Update Digital Marketing</button>
+                                                {% else %}
+                                                    <button type="submit" name="submit" class="btn btn-danger  waves-effect waves-light">Add Digital Marketing</button>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                    </form>
+                   
+
+                   
+                    </div> <!-- container -->
+                    {% comment %} <script>
+                        ClassicEditor
+                            .create(document.querySelector('#editor'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+
+                    </script> {% endcomment %}
+                </div> <!-- content -->
+
+
+       {%endblock%}
