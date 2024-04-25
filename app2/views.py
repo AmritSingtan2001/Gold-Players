@@ -2,14 +2,14 @@ from django.shortcuts import render,HttpResponse, HttpResponseRedirect,redirect,
 from django.views import View
 from . decorators import login_required
 from django.contrib import messages
-from django.contrib import auth
 from . forms import *
 from app.models import *
 from about.models import *
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.paginator import Paginator
-from . new_file_handler import validate_file
-from django.http import JsonResponse
+from django.views import generic
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 
 
 
@@ -78,8 +78,42 @@ def organizationsetting(request):
     return render(request, 'app2/organization_setting.html', context)
 
 
+@method_decorator(login_required, name='dispatch')
+class ObjectiveCreatView(generic.CreateView):
+    model = Objective
+    template_name = 'app2/objectivs_detail.html'
+    form_class = ObjectiveForm
+    def get_success_url(self):
+        return reverse_lazy('dashboard:objective')
+    
+@method_decorator(login_required, name='dispatch')
+class ObjectivesListView(generic.ListView):
+    model = Objective
+    template_name ='app2/objectivs.html'
+    context_object_name ='objectives'
+
+@method_decorator(login_required, name='dispatch')
+class ObjectivesDetailView(generic.UpdateView):
+    model = Objective
+    template_name ='app2/objectivs_detail.html'
+    context_object_name ='objective_detail'
+    pk_url_kwarg ='id'
+    form_class = ObjectiveForm
+    def get_success_url(self):
+        messages.success(self.request,'Updated Successfully !')
+        return reverse_lazy('dashboard:objective_detail', kwargs={'id': self.object.id})
+
 @login_required
-def organization_objectives(request):
+def objective_delete(request, id):
+    objective = get_object_or_404(Objective, id=id)
+    objective.delete()
+    messages.success(request, "Deleted Successfully!")
+    return redirect('dashboard:objective')
+
+
+    
+@login_required
+def edit_add_organization_objectives(request):
     instance = None
     try:
         if id:
@@ -104,7 +138,7 @@ def organization_objectives(request):
         form = ObjectiveForm(instance=instance)
 
     context = {'form': form, 'instance': instance}
-    return render(request, 'app2/organization_setting.html', context)
+    return render(request, 'app2/objectivs.html', context)
 
 
 
