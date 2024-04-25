@@ -274,5 +274,10 @@ class TestimonialsUpdateView(generic.UpdateView):
     form_class = TestimonialsForm
     def get_success_url(self):
         messages.success(self.request,'Testimonials Updated Successfully !')
-        return reverse_lazy('dashboard:testimonials', kwargs={'id': self.object.id})
+        return reverse_lazy('dashboard:testimonials_detail', kwargs={'id': self.object.id})
     
+
+def delete_testimonials(request, id):
+    Testimonials.objects.get(id=id).delete()
+    messages.success(request,'Testimonials Deleted Successfully !')
+    return redirect('dashboard:testimonials')
