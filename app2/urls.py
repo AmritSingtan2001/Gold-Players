@@ -16,5 +16,9 @@ urlpatterns = [
         path('location', LocationListView.as_view(), name='locations'),
         path('location/add', LocationCreateView.as_view(), name='add_new_location'),
         path('location/update/<int:id>',LocationUpdateDetailView.as_view(), name='location_detail_update'),
-        path('location/delete/<int:id>', views.location_delete, name='delete_location')
+        path('location/delete/<int:id>', views.location_delete, name='delete_location'),
+        path('office', OfficeLocationListView.as_view(), name='office'),
+        path('office/add', OfficeLocationCreateView.as_view(), name='add_office'),
+        path('office/update/<int:id>',OfficeUpdateDetailView.as_view(),name='office_detail_update'),
+        path('office/delete/<int:id>',views.office_delete, name='office_delete'),
 ]
