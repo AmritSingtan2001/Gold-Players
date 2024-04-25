@@ -265,3 +265,14 @@ class TestimonialsListView(generic.ListView):
     model = Testimonials
     template_name ='app2/testimonials.html'
     context_object_name ='testimonials'
+
+
+class TestimonialsUpdateView(generic.UpdateView):
+    model = Testimonials
+    template_name ='app2/testimonials_form.html'
+    pk_url_kwarg ='id'
+    form_class = TestimonialsForm
+    def get_success_url(self):
+        messages.success(self.request,'Testimonials Updated Successfully !')
+        return reverse_lazy('dashboard:testimonials', kwargs={'id': self.object.id})
+    
