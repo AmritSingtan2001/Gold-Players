@@ -1,6 +1,7 @@
 from django import forms
 from app.models import *
 from about.models import *
+from careers.models import *
 from ckeditor.fields import RichTextField
 from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
@@ -66,6 +67,34 @@ class OfficeForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'
+
+
+
+
+class CareerCategoryForm(forms.ModelForm):
+    class Meta:
+        model= Category
+        fields= '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(CareerCategoryForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+class CareerForm(forms.ModelForm):
+    class Meta:
+        model= Careers
+        fields= '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(CareerForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
 
 
 

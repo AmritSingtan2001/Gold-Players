@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render,HttpResponse, HttpResponseRedirect,redirect,get_object_or_404
 from django.views import View
 from . decorators import login_required
@@ -5,6 +6,7 @@ from django.contrib import messages
 from . forms import *
 from app.models import *
 from about.models import *
+from careers.models import *
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.paginator import Paginator
 from django.views import generic
@@ -182,3 +184,39 @@ def office_delete(request, id):
     return redirect('dashboard:office')
 
 
+''' career category '''
+class CareerCategoryListView(generic.ListView):
+    model = Category
+    context_object_name ='categories'
+    template_name ='app2/career_category.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context= super().get_context_data(**kwargs)
+        context['form'] = CareerCategoryForm
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = CareerCategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return self.get(request, *args, **kwargs)
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
+        
+
+def update_category(request):
+    if request.method =="POST":
+        id = request.POST.get('category_id')
+        instance = Category.objects.get(id=id)
+        instance.category_name = request.POST.get('category_name')
+        instance.save()
+        return redirect('dashboard:career_category')
+    else:
+        return redirect('dashboard:career_category')
+    
+    
+def delete_career_category(request,id):
+    instance = Category.objects.get(id=id)
+    instance.delete()
+    messages.success(request,'Category Delete Successfully !')
+    return redirect('dashboard:career_category')

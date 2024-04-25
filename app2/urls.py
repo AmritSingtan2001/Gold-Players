@@ -21,4 +21,10 @@ urlpatterns = [
         path('office/add', OfficeLocationCreateView.as_view(), name='add_office'),
         path('office/update/<int:id>',OfficeUpdateDetailView.as_view(),name='office_detail_update'),
         path('office/delete/<int:id>',views.office_delete, name='office_delete'),
+
+        path('career/category', CareerCategoryListView.as_view(), name='career_category'),
+        path('career/category/delete/<int:id>',views.delete_career_category, name='delete_category'),
+        path('career/category/update',views.update_category, name='category_update'),
+
+        
 ]

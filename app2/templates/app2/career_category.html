@@ -1,0 +1,125 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Career Category 
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3">Career Category</div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add New Category</button>
+                                </div> 
+                            </div>
+                        
+
+
+
+                            <div class="tab-content ">
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                        
+                                            <th >S.N</th>
+                                            <th class="">Title</th>
+                                            <th  style="width: 120px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for category in categories%}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                        
+                                    
+                                        <td class="">
+                                            {{category.category_name}}
+                                        </td>
+                                        
+                                        <td class="d-flex">
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#editeModal_{{category.id}}" class="border-0 bg-none mb-2 float-end rounded-0"><i class="mdi mdi-square-edit-outline"></i> </button>
+                                            <a href="{% url 'dashboard:delete_category' category.id %}" class="action-icon text-dark"> <i class="mdi mdi-delete"></i></a>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- edit modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade " id="editeModal_{{category.id}}" tabindex="-1" aria-labelledby="editeModal" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <form method="post" action="{% url 'dashboard:category_update' %}">
+                                                    {% csrf_token%}
+                                                    <div class="modal-header bg-white">
+                                                        <h5>Update Category</h5>
+                                                    </div>
+                                                    <div class="modal-body  bg-white">
+                                                        <input type="hidden" name="category_id" value="{{category.id}}">
+                                                        <input type="text" class="form-control" name="category_name" value="{{category.category_name}}" placeholder="Enter Category Name">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <input type="submit" class="btn btn-primary" value="Save">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>                                           
+                                
+                            </div> 
+                            <!-- end tab-content-->
+
+       
+  
+                            <!--add Modal -->
+                            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content ">
+                                        <form method="post" action="{% url 'dashboard:career_category' %}">
+                                            <div class="modal-body  bg-white">
+                                                {% csrf_token%}
+                                                {{form.as_p}}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Save">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}
