@@ -111,6 +111,17 @@ class TestimonialsForm(forms.ModelForm):
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'
             
+'''client form '''
+class ClientForm(forms.ModelForm):
+    class Meta:
+        models = Client
+        fields ='__all__'
+    
+    def __init__(self, *args, **kwargs):
+        super(TestimonialsForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
 
 
 
