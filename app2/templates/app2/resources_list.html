@@ -79,11 +79,24 @@ Resources {{resource_type}}
                                         
                                     
                                         <td>
-                                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                             <a href="{% url 'dashboard:resource_update' news.slug %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#resourceDeleteModal_{{news.id}}" class="border-0 text-danger float-end rounded-0">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
                                         </td>
                                     </tr>
+
+                                    <!--delete client Modal -->
+                                    <div class="modal fade " id="resourceDeleteModal_{{news.id}}" tabindex="-1" aria-labelledby="resourceDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  h-50"  >
+                                            <div class="modal-content " style="background: white; padding: 20px;" >
+                                                <strong class="fs-5">Are your for deleting these client ?</strong>
+                                                <a href="{% url 'dashboard:delete_resources' news.slug %}" class="action-icon btn btn-danger w-50 mt-2 float-center">Delete</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end client delete modal-->
                                     {%endfor%}
                                     </tbody>
                                 </table>                                           
