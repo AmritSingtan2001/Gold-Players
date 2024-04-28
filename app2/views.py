@@ -261,12 +261,13 @@ def delete_career(request,id):
 
     
 '''testimonials '''
+@method_decorator(login_required, name='dispatch')
 class TestimonialsListView(generic.ListView):
     model = Testimonials
     template_name ='app2/testimonials.html'
     context_object_name ='testimonials'
 
-
+@method_decorator(login_required, name='dispatch')
 class TestimonialsCreateView(generic.CreateView):
     model = Testimonials 
     template_name ='app2/testimonials_form.html'
@@ -276,7 +277,7 @@ class TestimonialsCreateView(generic.CreateView):
         return reverse_lazy('dashboard:testimonials')
 
 
-
+@method_decorator(login_required, name='dispatch')
 class TestimonialsUpdateView(generic.UpdateView):
     model = Testimonials
     template_name ='app2/testimonials_form.html'
@@ -286,8 +287,16 @@ class TestimonialsUpdateView(generic.UpdateView):
         messages.success(self.request,'Testimonials Updated Successfully !')
         return reverse_lazy('dashboard:testimonials_update', kwargs={'id': self.object.id})
     
-
+@login_required
 def delete_testimonials(request, id):
     Testimonials.objects.get(id=id).delete()
     messages.success(request,'Testimonials Deleted Successfully !')
     return redirect('dashboard:testimonials')
+
+
+'''client section '''
+class CleintListView(generic.ListView):
+    model = Client
+    template_name ='app2/client_list.html'
+    context_object_name ='clients'
+    
