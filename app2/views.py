@@ -323,7 +323,7 @@ def delete_client(request, id):
 
 
 ''' resources '''
-class ResourcesListCreateView(generic.ListView):
+class NewsResourcesListCreateView(generic.ListView):
     model = Resources
     context_object_name ='resources'
     template_name ='app2/resources_list.html'
