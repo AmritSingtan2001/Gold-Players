@@ -47,4 +47,7 @@ urlpatterns = [
 
 
         path('about/sector', views.aboutSector, name='about_sector'),
+        path('sectors',SectorListView.as_view(), name='sectors'),
+        path('sectors/create',SectorCreateView.as_view(), name='sector_create'),
+        path('sectors/update/<slug:slug>',SectorUpdateView.as_view(), name='update_sector'),
 ]

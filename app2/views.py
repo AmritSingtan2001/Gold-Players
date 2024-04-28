@@ -403,3 +403,30 @@ def aboutSector(request):
     return render(request, 'app2/about_sector.html', context)
 
     
+
+class SectorListView(generic.ListView):
+    model = Sector
+    context_object_name ='sectors'
+    template_name ='app2/sector_list.html'
+
+
+class SectorCreateView(generic.CreateView):
+    model = Sector
+    form_class = SectorForm
+    template_name ='app2/sector_form.html'
+    context_object_name ='forms'
+    
+    def get_success_url(self) -> str:
+        messages.success(self.request,"New Sector created successfully !")
+        return reverse_lazy("dashboard:sector_create")
+    
+
+class SectorUpdateView(generic.UpdateView):
+    model = Sector
+    form_class = SectorForm
+    slug_url_kwarg ='slug'
+    template_name ='app2/sector_form.html'
+
+    def get_success_url(self) -> str:
+        messages.success(self.request,'Sector updated successfully')
+        return reverse_lazy('dashboard:update_sector', kwargs={'slug': self.object.slug})
