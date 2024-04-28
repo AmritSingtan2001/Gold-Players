@@ -331,20 +331,20 @@ class NewsResourcesListView(generic.ListView):
     def get_context_data(self, *args, **kwargs):
         context= super().get_context_data(**kwargs)
         resources_slug = self.kwargs.get('resource_type')
+        context['resource_type'] = resources_slug
         context['news_resources'] = self.model.objects.filter(resource_type=resources_slug)
         return context
    
 
 class NewsResourcesCreateView(generic.CreateView):
     model = Resources
-    template_name ='app2/resources_form.html'
-    form_class = ResourcesForm
+    template_name = 'app2/resources_form.html'
+    form_class = ResourcesForm  
 
     def form_valid(self, form):
-        form.instance.resource_type = 'news'
-        response = super().form_valid(form)
-        messages.success(self.request, 'News created successfully!')
-        return response
+        form.instance.resource_type = self.kwargs.get('resource_type')
+        return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('dashboard:resources_news')
+        messages.success(self.request,f"New - {self.kwargs.get('resource_type')} created successfully !")
+        return reverse_lazy('dashboard:resources_news', kwargs={'resource_type': self.kwargs.get('resource_type')})

@@ -40,6 +40,6 @@ urlpatterns = [
         path('clients/delete/<int:id>',views.delete_client, name='delete_client'),
 
 
-        path('resources/<str:resource_type>',NewsResourcesListView.as_view(), name='resources_news'),
-        path('resources/create', NewsResourcesCreateView.as_view(), name='news_resources_create')
+        path('resources/<slug:resource_type>',NewsResourcesListView.as_view(), name='resources_news'),
+        path('resources/create/<slug:resource_type>/', NewsResourcesCreateView.as_view(), name='news_resources_create'),
 ]
