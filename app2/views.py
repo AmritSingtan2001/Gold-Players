@@ -467,3 +467,74 @@ def aboutSolution(request):
     context = {'form': form, 'instance': instance}
     return render(request, 'app2/about_solution.html', context)
 
+
+
+
+''' solution '''
+class SolutionListView(generic.ListView): 
+    model = Solutions
+    context_object_name ='solutions'
+    template_name='app2/soliton_list.html'
+
+
+class SolutionCreateView(generic.CreateView):
+    model = Solutions
+    form_class = SolutionForm
+    template_name ='app2/solution_form.html'
+    context_object_name ='forms'
+    
+    def get_success_url(self) -> str:
+        messages.success(self.request,"New Solution created successfully !")
+        return reverse_lazy("dashboard:sector_create")
+    
+
+class SolutionUpdateView(generic.UpdateView):
+    model= Solutions
+    form_class = SolutionForm
+    slug_url_kwarg ='slug'
+    template_name ='app2/solution_form.html'
+    def get_success_url(self) -> str:
+        messages.success(self.request,f'{self.object.title} - updated successfully')
+        return reverse_lazy('dashboard:solution_update', kwargs={'slug': self.object.slug})
+    
+
+@login_required
+def delete_solution(request, slug):
+    Solutions.objects.get(slug=slug).delete()
+    messages.success(request,'Deleted Successfully !')
+    return redirect('dashboard:solution_list')
+
+
+
+''' solution sub category '''
+class SolutionSubCategoryListView(generic.ListView):
+    model = SolutionSubCategory
+    template_name ='app2/solution_sub_category.html'
+    context_object_name ='solution_sub_categories'
+    
+
+
+class SolutionSubCategoryCreateView(generic.CreateView):
+    model = SolutionSubCategory
+    form_class = SolutionSubCategoryForm
+    template_name ='app2/solution_sub_category_form.html'
+
+    def get_success_url(self) -> str:
+        messages.success(self.request,"Solution sub-category created successfully !")
+        return reverse_lazy("dashboard:solution_sub_category_create")
+    
+
+class SolutionSubCategoryUpdateView(generic.UpdateView):
+    model= SolutionSubCategory
+    form_class = SolutionSubCategoryForm
+    slug_url_kwarg ='slug'
+    template_name ='app2/solution_sub_category_form.html'
+    def get_success_url(self) -> str:
+        messages.success(self.request,f'{self.object.sub_category_name} - updated successfully')
+        return reverse_lazy('dashboard:solution_sub_category_update', kwargs={'slug': self.object.slug})
+    
+@login_required
+def delete_SolutionSubCategor(request, slug):
+    SolutionSubCategory.objects.get(slug=slug).delete()
+    messages.success(request,'Deleted Successfully !')
+    return redirect('dashboard:solution_sub_category')

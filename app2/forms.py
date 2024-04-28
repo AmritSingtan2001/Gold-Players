@@ -180,6 +180,34 @@ class AboutSolutionForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
+'''solution form'''
+class SolutionForm(forms.ModelForm):
+    class Meta:
+        model = Solutions
+        fields ='__all__'
+    def __init__(self, *args, **kwargs):
+        super(SolutionForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+'''solution sub category form'''
+class SolutionSubCategoryForm(forms.ModelForm):
+    class Meta:
+        model =SolutionSubCategory
+        fields ='__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(SolutionSubCategoryForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+
+
+
 
 
 

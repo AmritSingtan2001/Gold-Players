@@ -53,5 +53,16 @@ urlpatterns = [
         path('sectors/delete/<slug:slug>', views.delete_sectors, name='delete_sectors'),
 
 
-        path('about/solution', views.AboutSolution, name='solution'),
+        path('about/solution', views.aboutSolution, name='solution'),
+        path('solutions', SolutionListView.as_view(), name='solution_list'),
+        path('solutions/create', SolutionCreateView.as_view(), name='solution_create'),
+        path('solutions/update/<slug:slug>', SolutionUpdateView.as_view(), name='solution_update'),
+        path('solutions/delete/<slug:slug>', views.delete_solution, name='delete_solution'),
+
+
+        path('solution/sub-category',SolutionSubCategoryListView.as_view(), name='solution_sub_category'),
+        path('solution/sub-category/create',SolutionSubCategoryCreateView.as_view(), name='solution_sub_category_create'),
+        path('solution/sub-category/update/<slug:slug>',SolutionSubCategoryUpdateView.as_view(), name='solution_sub_category_update'),
+        path('solution/sub-category/delete/<slug:slug>', views.delete_SolutionSubCategor, name='delete_solution_sub_category')
+
 ]

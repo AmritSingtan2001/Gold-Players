@@ -1,0 +1,130 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Solution -Sub Categories
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3 text-capitalize"> Solution</div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <a href="{% url 'dashboard:solution_sub_category_create' %}" class="btn btn-success mb-2 float-end rounded-0 text-capitalize"><i class="mdi mdi-plus-circle me-2"></i> Add Solution</a>
+                                </div> 
+                            </div>
+                        
+                            <div class="tab-content ">
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                            <th >S.N</th>                                            
+                                            <th>Category</th>
+                                            <th class="text-nowrap">Sub Category</th>
+                                            <th>Image</th>
+                                            <th class="text-nowrap">Short Description</th>
+                                            <th>Description</th>
+                                            <th style="width: 170px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for solution in solution_sub_categories %}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                       
+                                        <td style="width:auto; text-align:justify;">
+                                            {{solution.category}}
+                                        </td>
+
+                                        <td style="width:auto; text-align:justify;">
+                                            {{solution.sub_category_name}}
+                                        </td>
+
+                                        <td>
+                                            <div class="image-gallery" >
+                                                <img class="thumbnail object-fit-contain " src="{{solution.image.url}}" style="height: 100px; width: 100px;" alt="Thumbnail Image">
+                                            </div>
+                                            <div class="modal" id="imageModal">
+                                                <span class="close-btn" onclick="closeModal()">&times;</span>
+                                                <img class="modal-content img-fluid" id="modalImage">
+                                            </div>
+                                        
+                                            <script src="script.js"></script>
+                                        </td>
+                                        
+                                        <td style="width:auto; text-align:justify;">
+                                            {{solution.short_descriptions|safe|truncatewords:10}}
+                                        </td>
+
+                                        <td style="width:auto; text-align:justify;">
+                                            {{solution.descriptions|safe|truncatewords:10}}
+                                        </td>
+                                    
+                                    
+                                        
+                                    
+                                        <td>
+                                            <a href="{% url 'dashboard:solution_sub_category_update' solution.slug %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#solutionDeleteModal_{{solution.id}}" class="border-0 text-danger float-end rounded-0">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!--delete client Modal -->
+                                    <div class="modal fade " id="solutionDeleteModal_{{solution.id}}" tabindex="-1" aria-labelledby="solutionDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  h-50"  >
+                                            <div class="modal-content " style="background: white; padding: 20px;" >
+                                                <strong class="fs-5">Are your for deleting these ?</strong>
+                                                <a href="{% url 'dashboard:delete_solution_sub_category' solution.slug %}" class="action-icon btn btn-danger w-50 mt-2 float-center">Delete</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end client delete modal-->
+                                    {%endfor%}
+                                    </tbody>
+                                </table>                                           
+                                
+                            </div> 
+                            <!-- end tab-content-->
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}
