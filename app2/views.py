@@ -360,3 +360,12 @@ class NewsResourcesUpdateView(generic.UpdateView):
     def get_success_url(self):
         messages.success(self.request,f"Update successfully !")
         return reverse_lazy('dashboard:resource_update', kwargs={'slug': self.object.slug})
+    
+
+@login_required
+def delete_resources(request, slug):
+    instance =Resources.objects.get(slug=slug)
+    resource_type= instance.resource_type
+    instance.delete()
+    messages.success(request,'Deleted Successfully !')
+    return redirect('dashboard:resources_news', resource_type)

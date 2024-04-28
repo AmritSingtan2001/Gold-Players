@@ -43,4 +43,5 @@ urlpatterns = [
         path('resources/<slug:resource_type>',NewsResourcesListView.as_view(), name='resources_news'),
         path('resources/create/<slug:resource_type>/', NewsResourcesCreateView.as_view(), name='news_resources_create'),
         path('resources/update/<slug:slug>',NewsResourcesUpdateView.as_view(), name='resource_update'),
+        path('resources/delete/<slug:slug>', views.delete_resources,name='delete_resources'),
 ]
