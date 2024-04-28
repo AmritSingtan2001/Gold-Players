@@ -44,4 +44,7 @@ urlpatterns = [
         path('resources/create/<slug:resource_type>/', NewsResourcesCreateView.as_view(), name='news_resources_create'),
         path('resources/update/<slug:slug>',NewsResourcesUpdateView.as_view(), name='resource_update'),
         path('resources/delete/<slug:slug>', views.delete_resources,name='delete_resources'),
+
+
+        path('about/sector', AboutSectorListView.as_view(), name='about_sector'),
 ]

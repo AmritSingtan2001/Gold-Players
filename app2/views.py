@@ -295,6 +295,7 @@ def delete_testimonials(request, id):
 
 
 '''client section '''
+@method_decorator(login_required, name='dispatch')
 class ClientListCreateView(generic.ListView):
     model = Client
     context_object_name ='clients'
@@ -323,6 +324,7 @@ def delete_client(request, id):
 
 
 ''' resources '''
+@method_decorator(login_required, name='dispatch')
 class NewsResourcesListView(generic.ListView):
     model = Resources
     context_object_name ='resources'
@@ -335,7 +337,7 @@ class NewsResourcesListView(generic.ListView):
         context['news_resources'] = self.model.objects.filter(resource_type=resources_slug)
         return context
    
-
+@method_decorator(login_required, name='dispatch')
 class NewsResourcesCreateView(generic.CreateView):
     model = Resources
     template_name = 'app2/resources_form.html'
@@ -350,7 +352,7 @@ class NewsResourcesCreateView(generic.CreateView):
         return reverse_lazy('dashboard:resources_news', kwargs={'resource_type': self.kwargs.get('resource_type')})
     
 
-
+@method_decorator(login_required, name='dispatch')
 class NewsResourcesUpdateView(generic.UpdateView):
     model = Resources
     template_name = 'app2/resources_form.html'
@@ -369,3 +371,15 @@ def delete_resources(request, slug):
     instance.delete()
     messages.success(request,'Deleted Successfully !')
     return redirect('dashboard:resources_news', resource_type)
+
+
+''' about sector '''
+class AboutSectorListView(generic.ListView):
+    model = AboutSector
+    template_name ='app2/about_sector.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['about_sector'] = self.get_queryset().first()
+        return context
+    
