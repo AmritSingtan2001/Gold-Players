@@ -348,3 +348,15 @@ class NewsResourcesCreateView(generic.CreateView):
     def get_success_url(self):
         messages.success(self.request,f"New - {self.kwargs.get('resource_type')} created successfully !")
         return reverse_lazy('dashboard:resources_news', kwargs={'resource_type': self.kwargs.get('resource_type')})
+    
+
+
+class NewsResourcesUpdateView(generic.UpdateView):
+    model = Resources
+    template_name = 'app2/resources_form.html'
+    form_class = ResourcesForm  
+    slug_url_kwarg ='slug'
+    
+    def get_success_url(self):
+        messages.success(self.request,f"Update successfully !")
+        return reverse_lazy('dashboard:resource_update', kwargs={'slug': self.object.slug})
