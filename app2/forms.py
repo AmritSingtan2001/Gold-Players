@@ -156,6 +156,7 @@ class AboutSectorForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
+'''sector '''
 class SectorForm(forms.ModelForm):
     class Meta:
         model  = Sector
@@ -163,6 +164,17 @@ class SectorForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SectorForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+'''solution'''
+class AboutSolutionForm(forms.ModelForm):
+    class Meta:
+        model = AboutSolution
+        fields ='__all__'
+    def __init__(self, *args, **kwargs):
+        super(AboutSolutionForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'

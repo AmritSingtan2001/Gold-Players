@@ -403,7 +403,7 @@ def aboutSector(request):
     return render(request, 'app2/about_sector.html', context)
 
     
-
+'''sectors'''
 class SectorListView(generic.ListView):
     model = Sector
     context_object_name ='sectors'
@@ -436,3 +436,34 @@ def delete_sectors(request, slug):
     Sector.objects.get(slug=slug).delete()
     messages.success(request,'Deleted Successfully !')
     return redirect('dashboard:sectors')
+
+
+'''solution '''
+@login_required
+def aboutSolution(request):
+    instance = None
+    try:
+        if id:
+            instance = AboutSolution.objects.first()
+    except Exception as e:
+        messages.warning(request, 'An error occurred while retrieving the About Solution.')
+        return redirect('dashboard:solution')
+
+    if request.method == 'POST':
+        form = AboutSolutionForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            if instance: 
+                messages.success(request, 'About Solution edited successfully.')
+                return redirect('dashboard:solution') 
+            else: 
+                messages.success(request, 'About Solution added successfully.')
+                return redirect('dashboard:solution') 
+        else:
+            messages.warning(request, 'Form is not valid. Please correct the errors.')
+    else:
+        form = AboutSolutionForm(instance=instance)
+
+    context = {'form': form, 'instance': instance}
+    return render(request, 'app2/about_solution.html', context)
+
