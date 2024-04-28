@@ -303,7 +303,7 @@
                             
                         </li>
 
-                        <!-- resources  -->
+                        <!-- resources  --> 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarPages4" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
                                 <i class="uil-diamond"></i>
@@ -323,6 +323,25 @@
                                     <li>
                                         <a href="{% url 'dashboard:resources_news' resource_type='case_studies'  %}">Case Studies</a>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <!-- about_sector  --> 
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarPages5" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                                <i class="uil-user"></i>
+                                <span> Sector </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarPages5">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{% url 'dashboard:about_sector'   %}">About Sector</a>
+                                    </li>
+                                   
+                                    
                                 </ul>
                             </div>
                         </li>
