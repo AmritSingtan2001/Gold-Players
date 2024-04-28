@@ -374,12 +374,32 @@ def delete_resources(request, slug):
 
 
 ''' about sector '''
-class AboutSectorListView(generic.ListView):
-    model = AboutSector
-    template_name ='app2/about_sector.html'
+@login_required
+def aboutSector(request):
+    instance = None
+    try:
+        if id:
+            instance = AboutSector.objects.first()
+    except Exception as e:
+        messages.warning(request, 'An error occurred while retrieving the About Sector.')
+        return redirect('dashboard:about_sector')
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['about_sector'] = self.get_queryset().first()
-        return context
+    if request.method == 'POST':
+        form = AboutSectorForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            if instance: 
+                messages.success(request, 'About Sector edited successfully.')
+                return redirect('dashboard:about_sector') 
+            else: 
+                messages.success(request, 'About Sector added successfully.')
+                return redirect('dashboard:about_sector') 
+        else:
+            messages.warning(request, 'Form is not valid. Please correct the errors.')
+    else:
+        form = AboutSectorForm(instance=instance)
+
+    context = {'form': form, 'instance': instance}
+    return render(request, 'app2/about_sector.html', context)
+
     

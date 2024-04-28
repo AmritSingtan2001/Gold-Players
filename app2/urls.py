@@ -46,5 +46,5 @@ urlpatterns = [
         path('resources/delete/<slug:slug>', views.delete_resources,name='delete_resources'),
 
 
-        path('about/sector', AboutSectorListView.as_view(), name='about_sector'),
+        path('about/sector', views.aboutSector, name='about_sector'),
 ]
