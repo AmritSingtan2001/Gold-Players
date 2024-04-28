@@ -26,7 +26,7 @@ News Resources
                                     <div class="fs-3">Our News </div>
                                 </div> 
                                 <div class="col-sm-6">
-                                    <a href="" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add News</a>
+                                    <a href="{% url 'dashboard:news_resources_create' %}" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add News</a>
                                 </div> 
                             </div>
                         
@@ -35,23 +35,26 @@ News Resources
                                     <thead>
                                         <tr>
                                             <th >S.N</th>
-                                            <th>Logo</th>
-                                            <th class="text-nowrap">Company Name</th>
-                                            <th>Country</th>
-                                            <th>Address</th>
-                                            <th style="width: 200px;">Action</th>
+                                            <th>Title</th>
+                                            <th>Image</th>
+                                            <th>Description</th>
+                                            <th style="width: 170px;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {%for location in locations%}
+                                    {%for news in news_resources %}
                                     <tr>
                             
                                         <td>
                                             {{forloop.counter}}
                                         </td>
+                                       
+                                        <td style="width:auto; text-align:justify;">
+                                            {{news.title}}
+                                        </td>
                                         <td>
                                             <div class="image-gallery" style="width:auto">
-                                                <img class="thumbnail" src="{{location.logo.url}}" style="height: 200px; width: auto;" alt="Thumbnail Image">
+                                                <img class="thumbnail" src="{{news.image.url}}" style="height: 200px; width: auto;" alt="Thumbnail Image">
                                             </div>
                                             <div class="modal" id="imageModal">
                                                 <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -61,13 +64,7 @@ News Resources
                                             <script src="script.js"></script>
                                         </td>
                                         <td style="width:auto; text-align:justify;">
-                                            {{location.company_name|safe}}
-                                        </td>
-                                        <td style="width:auto; text-align:justify;">
-                                            {{location.country}}
-                                        </td>
-                                        <td style="width:auto; text-align:justify;">
-                                            {{location.address}}
+                                            {{news.descriptions|safe|truncatewords:20}}
                                         </td>
                                     
                                     
@@ -75,8 +72,8 @@ News Resources
                                     
                                         <td>
                                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            <a href="{% url 'dashboard:location_detail_update' location.id %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <a href="{% url 'dashboard:delete_location' location.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            <a href="" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                     {%endfor%}

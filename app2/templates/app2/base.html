@@ -313,13 +313,16 @@
                             <div class="collapse" id="sidebarPages4">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'dashboard:resources_news' %}">News</a>
+                                        <a href="{% url 'dashboard:resources_news' resource_type='news'  %}">News</a>
                                     </li>
+                                   
                                     <li>
-                                        <a href="{% url 'dashboard:office' %}">Inslight</a>
+                                        <a href="{% url 'dashboard:resources_news' resource_type='insights'  %}">Insights</a>
                                     </li>
-                                    
-            
+
+                                    <li>
+                                        <a href="{% url 'dashboard:resources_news' resource_type='case_studies'  %}">Case Studies</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
