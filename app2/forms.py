@@ -132,6 +132,7 @@ class ResourcesForm(forms.ModelForm):
     class Meta:
         model = Resources
         fields ='__all__'
+        exclude = ('resource_type',)
     
     def __init__(self, *args, **kwargs):
         super(ResourcesForm, self).__init__(*args, **kwargs)

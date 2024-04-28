@@ -323,22 +323,28 @@ def delete_client(request, id):
 
 
 ''' resources '''
-class NewsResourcesListCreateView(generic.ListView):
+class NewsResourcesListView(generic.ListView):
     model = Resources
     context_object_name ='resources'
     template_name ='app2/resources_list.html'
 
     def get_context_data(self, *args, **kwargs):
         context= super().get_context_data(**kwargs)
-        context['form'] = ResourcesForm
+        resources_slug = self.kwargs.get('resource_type')
+        context['news_resources'] = self.model.objects.filter(resource_type=resources_slug)
         return context
-    
-    def post(self, request, *args, **kwargs):
-        form = ResourcesForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return self.get(request, *args, **kwargs)
-        else:
-            return self.render_to_response(self.get_context_data(form=form))
-        
+   
 
+class NewsResourcesCreateView(generic.CreateView):
+    model = Resources
+    template_name ='app2/resources_form.html'
+    form_class = ResourcesForm
+
+    def form_valid(self, form):
+        form.instance.resource_type = 'news'
+        response = super().form_valid(form)
+        messages.success(self.request, 'News created successfully!')
+        return response
+
+    def get_success_url(self):
+        return reverse_lazy('dashboard:resources_news')
