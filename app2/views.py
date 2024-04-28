@@ -322,3 +322,23 @@ def delete_client(request, id):
 
 
 
+''' resources '''
+class ResourcesListCreateView(generic.ListView):
+    model = Resources
+    context_object_name ='resources'
+    template_name ='app2/resources_list.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context= super().get_context_data(**kwargs)
+        context['form'] = ResourcesForm
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = ResourcesForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return self.get(request, *args, **kwargs)
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
+        
+

@@ -38,4 +38,7 @@ urlpatterns = [
 
         path('clients', ClientListCreateView.as_view(), name='client_list'),
         path('clients/delete/<int:id>',views.delete_client, name='delete_client'),
+
+
+        path('resources',ResourcesListCreateView.as_view(), name='resources'),
 ]
