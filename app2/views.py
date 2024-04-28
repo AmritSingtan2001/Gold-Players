@@ -295,8 +295,30 @@ def delete_testimonials(request, id):
 
 
 '''client section '''
-class CleintListView(generic.ListView):
+class ClientListCreateView(generic.ListView):
     model = Client
-    template_name ='app2/client_list.html'
     context_object_name ='clients'
+    template_name ='app2/client_list.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context= super().get_context_data(**kwargs)
+        context['form'] = ClientForm
+        return context
     
+    def post(self, request, *args, **kwargs):
+        form = ClientForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return self.get(request, *args, **kwargs)
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
+        
+
+@login_required
+def delete_client(request, id):
+    Client.objects.get(id=id).delete()
+    messages.success(request,'Client Deleted Successfully !')
+    return redirect('dashboard:client_list')
+
+
+

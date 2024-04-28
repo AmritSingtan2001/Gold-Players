@@ -26,7 +26,7 @@ Clients
                                     <div class="fs-3">Clients </div>
                                 </div> 
                                 <div class="col-sm-6">
-                                    <a href="" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add New Clients</a>
+                                    <button type="button"  data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add New Category</button>
                                 </div> 
                             </div>
                         
@@ -73,16 +73,51 @@ Clients
                                         
                                     
                                         <td>
-                                        
-                                            <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#clientDeleteModal_{{client.id}}" class="border-0 text-danger float-end rounded-0">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
                                         </td>
                                     </tr>
+
+                                    <!--delete client Modal -->
+                                    <div class="modal fade " id="clientDeleteModal_{{client.id}}" tabindex="-1" aria-labelledby="clientDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  h-50"  >
+                                            <div class="modal-content " style="background: white; padding: 20px;" >
+                                                <strong class="fs-5">Are your for deleting these client ?</strong>
+                                                <a href="{% url  'dashboard:delete_client' client.id %}" class="action-icon btn btn-danger w-50 mt-2 float-center">Delete</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end client delete modal-->
+
                                     {%endfor%}
                                     </tbody>
                                 </table>                                           
                                 
                             </div> 
                             <!-- end tab-content-->
+
+                            
+                            <!--add Modal -->
+                            <div class="modal fade " id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content ">
+                                        <form method="post" action="" enctype="multipart/form-data">
+                                            {% csrf_token%}
+                                            <div class="modal-body  bg-white">
+                                                {{form.as_p}}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Save">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- end client add modal-->
                             
                         </div> <!-- end card body-->
                     </div> <!-- end card -->
