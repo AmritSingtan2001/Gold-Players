@@ -1,0 +1,98 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Clients 
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3">Clients </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <a href="" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add New Clients</a>
+                                </div> 
+                            </div>
+                        
+                            <div class="tab-content ">
+
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                        
+                                            <th class="text-nowrap" >S.N</th>
+                                            <th class="text-nowrap">Clients Logo</th>
+                                            <th style="width: 120px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for client in clients%}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="image-gallery" style="width:auto">
+                                                <img class="thumbnail" src="{{client.client_logo.url}}" style="height: 80px; width: 100px;" alt="Thumbnail Image">
+                                            </div>
+                                            <div class="modal" id="imageModal">
+                                                <span class="close-btn" onclick="closeModal()">&times;</span>
+                                                <img class="modal-content" id="modalImage">
+                                            </div>
+                                        
+                                            <script src="script.js"></script>
+                                        </td>
+                                        
+                                        
+                                    
+                                        <td>
+                                        
+                                            <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>                                           
+                                
+                            </div> 
+                            <!-- end tab-content-->
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}
