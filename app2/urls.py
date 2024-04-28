@@ -36,5 +36,5 @@ urlpatterns = [
         path('testimonials/update/<int:id>', TestimonialsUpdateView.as_view(), name='testimonials_update'),
         path('testimonials/delete/<int:id>', views.delete_testimonials, name='delete_testimonials'),
 
-        
+        path('clients', CleintListView.as_view(), name='client_list'),
 ]
