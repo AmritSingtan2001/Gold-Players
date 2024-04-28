@@ -1,10 +1,12 @@
 from django import forms
 from app.models import *
 from about.models import *
+from news.models import *
 from careers.models import *
 from ckeditor.fields import RichTextField
 from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 
 class AboutUSForm(forms.ModelForm):
     class Meta:
@@ -122,6 +124,21 @@ class ClientForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['placeholder'] = f"Enter {field_name}"
             field.widget.attrs['class'] = 'form-control'
+
+
+
+'''resources form'''
+class ResourcesForm(forms.ModelForm):
+    class Meta:
+        model = Resources
+        fields ='__all__'
+    
+    def __init__(self, *args, **kwargs):
+        super(ResourcesForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
 
 
 
