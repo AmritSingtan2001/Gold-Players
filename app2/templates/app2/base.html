@@ -265,12 +265,12 @@
 
                         <!-- career -->
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="#sidebarPages1" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
                                 <i class="uil-book"></i>
                                 <span> Careers </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarPages">
+                            <div class="collapse" id="sidebarPages1">
                                 <ul class="side-nav-second-level">
                                     <li>
                                         <a href="{% url 'dashboard:career_category' %}">Career Category</a>
@@ -293,7 +293,7 @@
                             
                         </li>
 
-
+                        
                         <!-- clients  -->
                         <li class="side-nav-item">
                             <a href="{% url 'dashboard:client_list' %}" class="side-nav-link">
@@ -301,6 +301,27 @@
                                 <span> Clients </span>
                             </a>
                             
+                        </li>
+
+                        <!-- resources  -->
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarPages4" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                                <i class="uil-diamond"></i>
+                                <span> Resources </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarPages4">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{% url 'dashboard:locations' %}">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'dashboard:office' %}">Inslight</a>
+                                    </li>
+                                    
+            
+                                </ul>
+                            </div>
                         </li>
                         
 
