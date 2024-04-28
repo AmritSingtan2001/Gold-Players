@@ -3,7 +3,7 @@
 {% extends 'app2/base.html' %}
 {% load static %}
 {% block title %} 
-News Resources 
+Resources {{resource_type}}
 {% endblock %}
 {% block body %}
 
@@ -23,10 +23,10 @@ News Resources
 
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <div class="fs-3">Our News </div>
+                                    <div class="fs-3 text-capitalize">Our {{resource_type}} </div>
                                 </div> 
                                 <div class="col-sm-6">
-                                    <a href="{% url 'dashboard:news_resources_create' resource_type %}" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add News</a>
+                                    <a href="{% url 'dashboard:news_resources_create' resource_type %}" class="btn btn-success mb-2 float-end rounded-0 text-capitalize"><i class="mdi mdi-plus-circle me-2"></i> Add {{resource_type}}</a>
                                 </div> 
                             </div>
                         
@@ -66,7 +66,7 @@ News Resources
                                             </div>
                                             <div class="modal" id="imageModal">
                                                 <span class="close-btn" onclick="closeModal()">&times;</span>
-                                                <img class="modal-content" id="modalImage">
+                                                <img class="modal-content img-fluid" id="modalImage">
                                             </div>
                                         
                                             <script src="script.js"></script>
@@ -80,7 +80,7 @@ News Resources
                                     
                                         <td>
                                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            <a href="" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="{% url 'dashboard:resource_update' news.slug %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                             <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>

@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">{% if form.initial %}Edit News {% else %}Add News{% endif %}
+                                    <h4 class="page-title">{% if form.initial %}Edit {{ form.instance.resource_type }} {% else %}Add {{ form.instance.resource_type }} {% endif %}
                                     </h4>
                                 </div>
                             </div>
@@ -56,9 +56,9 @@
                                             
                                             <div class="col-auto">
                                             {% if form.initial %}
-                                                <button type="submit" class="btn btn-success chat-send waves-effect waves-light">Update News</button>
+                                                <button type="submit" class="btn btn-success chat-send waves-effect waves-light">Update </button>
                                             {% else %}
-                                                <button type="submit" class="btn btn-primary chat-send waves-effect waves-light">Add News </button>
+                                                <button type="submit" class="btn btn-primary chat-send waves-effect waves-light">Add  </button>
                                             {% endif %}
                                             </div>
                                         </div>
