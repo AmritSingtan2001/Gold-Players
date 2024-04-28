@@ -430,3 +430,9 @@ class SectorUpdateView(generic.UpdateView):
     def get_success_url(self) -> str:
         messages.success(self.request,'Sector updated successfully')
         return reverse_lazy('dashboard:update_sector', kwargs={'slug': self.object.slug})
+    
+@login_required
+def delete_sectors(request, slug):
+    Sector.objects.get(slug=slug).delete()
+    messages.success(request,'Deleted Successfully !')
+    return redirect('dashboard:sectors')
