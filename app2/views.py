@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render,HttpResponse, HttpResponseRedirect,redirect,get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
 from . decorators import login_required
 from django.contrib import messages
@@ -123,6 +124,7 @@ class ObjectivesListView(generic.ListView):
     model = Objective
     template_name ='app2/objectivs.html'
     context_object_name ='objectives'
+    paginate_by =5
 
 @method_decorator(login_required, name='dispatch')
 class ObjectivesDetailView(generic.UpdateView):
@@ -259,6 +261,7 @@ class CareerListView(generic.ListView):
     model = Careers
     template_name ='app2/careers.html'
     context_object_name ='careers'
+    paginate_by =5
 
 
 @method_decorator(login_required, name='dispatch')
@@ -296,6 +299,7 @@ class TestimonialsListView(generic.ListView):
     model = Testimonials
     template_name ='app2/testimonials.html'
     context_object_name ='testimonials'
+    paginate_by =5
 
 @method_decorator(login_required, name='dispatch')
 class TestimonialsCreateView(generic.CreateView):
@@ -330,6 +334,7 @@ class ClientListCreateView(generic.ListView):
     model = Client
     context_object_name ='clients'
     template_name ='app2/client_list.html'
+    paginate_by =5
 
     def get_context_data(self, *args, **kwargs):
         context= super().get_context_data(**kwargs)
@@ -357,14 +362,17 @@ def delete_client(request, id):
 @method_decorator(login_required, name='dispatch')
 class NewsResourcesListView(generic.ListView):
     model = Resources
-    context_object_name ='resources'
-    template_name ='app2/resources_list.html'
+    template_name = 'app2/resources_list.html'
+    paginate_by = 5
 
-    def get_context_data(self, *args, **kwargs):
-        context= super().get_context_data(**kwargs)
+    def get_queryset(self):
+        resources_slug = self.kwargs.get('resource_type')
+        return self.model.objects.filter(resource_type=resources_slug)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         resources_slug = self.kwargs.get('resource_type')
         context['resource_type'] = resources_slug
-        context['news_resources'] = self.model.objects.filter(resource_type=resources_slug)
         return context
    
 @method_decorator(login_required, name='dispatch')
@@ -434,12 +442,14 @@ def aboutSector(request):
 
     
 '''sectors'''
+@method_decorator(login_required, name='dispatch')
 class SectorListView(generic.ListView):
     model = Sector
     context_object_name ='sectors'
     template_name ='app2/sector_list.html'
+    paginate_by = 5
 
-
+@method_decorator(login_required, name='dispatch')
 class SectorCreateView(generic.CreateView):
     model = Sector
     form_class = SectorForm
@@ -450,7 +460,7 @@ class SectorCreateView(generic.CreateView):
         messages.success(self.request,"New Sector created successfully !")
         return reverse_lazy("dashboard:sector_create")
     
-
+@method_decorator(login_required, name='dispatch')
 class SectorUpdateView(generic.UpdateView):
     model = Sector
     form_class = SectorForm
@@ -501,12 +511,14 @@ def aboutSolution(request):
 
 
 ''' solution '''
+@method_decorator(login_required, name='dispatch')
 class SolutionListView(generic.ListView): 
     model = Solutions
     context_object_name ='solutions'
     template_name='app2/soliton_list.html'
+    paginate_by =5
 
-
+@method_decorator(login_required, name='dispatch')
 class SolutionCreateView(generic.CreateView):
     model = Solutions
     form_class = SolutionForm
@@ -517,7 +529,7 @@ class SolutionCreateView(generic.CreateView):
         messages.success(self.request,"New Solution created successfully !")
         return reverse_lazy("dashboard:sector_create")
     
-
+@method_decorator(login_required, name='dispatch')
 class SolutionUpdateView(generic.UpdateView):
     model= Solutions
     form_class = SolutionForm
@@ -537,13 +549,15 @@ def delete_solution(request, slug):
 
 
 ''' solution sub category '''
+@method_decorator(login_required, name='dispatch')
 class SolutionSubCategoryListView(generic.ListView):
     model = SolutionSubCategory
     template_name ='app2/solution_sub_category.html'
     context_object_name ='solution_sub_categories'
+    paginate_by =5
     
 
-
+@method_decorator(login_required, name='dispatch')
 class SolutionSubCategoryCreateView(generic.CreateView):
     model = SolutionSubCategory
     form_class = SolutionSubCategoryForm
@@ -553,7 +567,7 @@ class SolutionSubCategoryCreateView(generic.CreateView):
         messages.success(self.request,"Solution sub-category created successfully !")
         return reverse_lazy("dashboard:solution_sub_category_create")
     
-
+@method_decorator(login_required, name='dispatch')
 class SolutionSubCategoryUpdateView(generic.UpdateView):
     model= SolutionSubCategory
     form_class = SolutionSubCategoryForm
