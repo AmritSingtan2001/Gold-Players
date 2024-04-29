@@ -3,9 +3,9 @@ from app.models import *
 from about.models import *
 from news.models import *
 from careers.models import *
-from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField  
 from ckeditor.widgets import CKEditorWidget
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+# from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 '''bannar form'''
@@ -25,6 +25,7 @@ class BannerForm(forms.ModelForm):
 
 
 class AboutUSForm(forms.ModelForm):
+    descriptions = forms.CharField(widget=CKEditorWidget())  
     class Meta:
         model = About
         fields = '__all__'

@@ -56,6 +56,13 @@ SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
+CKEDITOR_UPLOAD_PATH = "uploads/"  
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  
+        'height': 300, 
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
