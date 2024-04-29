@@ -30,6 +30,7 @@
                       
                         <form method="post" enctype="multipart/form-data" action="">
                             {% csrf_token %}
+                            {{form.media}}
                                 {% if messages %}
                                 {% for msg in messages %}
                                     <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
@@ -46,7 +47,7 @@
 
                                         <div class="row">
                                             {% for field in form %}
-                                            <div class="col-xl-6">
+                                            <div class="col-xl-{% if forloop.last%}12 {% else %}6{% endif %}">
                                                 {{field.label}}
                                                 <div class="mb-3">
                                                     {{field}}

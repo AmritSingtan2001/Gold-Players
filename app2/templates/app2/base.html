@@ -138,7 +138,6 @@
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                    {% comment %} <img src="{% static 'app2/assets/images1/users/avatar-1.jpg'%}" alt="user-image" width="32" class="rounded-circle"> {% endcomment %}
                                 </span>
                                 <span class="d-lg-flex flex-column gap-1 d-none">
                                     <h5 class="my-0"> {{request.user.fullname}}</h5>
@@ -226,9 +225,6 @@
                                 <ul class="side-nav-second-level">
                                     <li>
                                         <a href="{% url 'dashboard:about' %}">About US</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'dashboard:organizations_setting' %}">Organization Setting</a>
                                     </li>
 
 
@@ -341,7 +337,7 @@
                         <!-- sectors  --> 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarPages5" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
-                                <i class="uil-user"></i>
+                                <i class="uil-moon-eclipse"></i>
                                 <span> Sector </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -364,7 +360,7 @@
                          <!-- solution  --> 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarPages6" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
-                                <i class="uil-user"></i>
+                                <i class="uil-brightness"></i>
                                 <span>Solution </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -384,6 +380,16 @@
                                     
                                 </ul>
                             </div>
+                        </li>
+
+
+                        <li class="side-nav-item">
+                            <a href="{% url 'dashboard:organizations_setting' %}" class="side-nav-link">
+
+                                <i class="ri-settings-3-line"></i>
+                                <span> Organization Setting </span>
+                            </a>
+                            
                         </li>
                         
 

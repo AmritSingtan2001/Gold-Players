@@ -30,6 +30,7 @@
                       
                         <form method="post" enctype="multipart/form-data" action="">
                             {% csrf_token %}
+                            {{form.media}}
                                 {% if messages %}
                                 {% for msg in messages %}
                                     <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
