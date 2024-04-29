@@ -1,0 +1,133 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Banners 
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3">Banners </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <button type="button"  data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i>Add Banner</button>
+                                </div> 
+                            </div>
+                        
+                            <div class="tab-content ">
+
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                        
+                                            <th class="text-nowrap" >S.N</th>
+                                            <th class="text-nowrap">Banner Image</th>
+                                            <th style="width: 120px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for banner in banners%}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="image-gallery" style="width:auto">
+                                                <img class="thumbnail" src="{{banner.bannar_image.url}}" style="height: 80px; width: auto;" alt="Thumbnail Image">
+                                            </div>
+                                            <div class="modal" id="imageModal">
+                                                <span class="close-btn" onclick="closeModal()">&times;</span>
+                                                <img class="modal-content" id="modalImage">
+                                            </div>
+                                        
+                                            <script src="script.js"></script>
+                                        </td>
+                                        
+                                        
+                                    
+                                        <td>
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#bannerDeleteModal_{{banner.id}}" class="border-0 text-danger float-end rounded-0">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!--delete client Modal -->
+                                    <div class="modal fade " id="bannerDeleteModal_{{banner.id}}" tabindex="-1" aria-labelledby="bannerDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  h-50"  >
+                                            <div class="modal-content " style="background: white; padding: 20px;" >
+                                                <strong class="fs-5">Are your for deleting these client ?</strong>
+                                                <a href="{% url 'dashboard:banner_delete' banner.id %}" class="action-icon btn btn-danger w-50 mt-2 float-center">Delete</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end client delete modal-->
+
+                                    {%endfor%}
+                                    </tbody>
+                                </table>                                           
+                                
+                            </div> 
+                            <!-- end tab-content-->
+
+                            
+                            <!--add Modal -->
+                            <div class="modal fade " id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content ">
+                                        <form method="post" action="{% url 'dashboard:banner_create' %}" enctype="multipart/form-data">
+                                            {% csrf_token%}
+                                            <div class="modal-body  bg-white">
+                                                {{form.as_p}}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Save">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- end client add modal-->
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}

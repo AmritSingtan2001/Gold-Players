@@ -8,6 +8,22 @@ from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
+'''bannar form'''
+class BannerForm(forms.ModelForm):
+    class Meta:
+        model = Banner
+        fields ='__all__'
+
+    
+    def __init__(self, *args, **kwargs):
+        super(BannerForm, self).__init__(*args, **kwargs)
+        
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
+
+
+
 class AboutUSForm(forms.ModelForm):
     class Meta:
         model = About

@@ -7,6 +7,11 @@ app_name ='dashboard'
 
 urlpatterns = [
         path('',views.index,name='index'),
+
+        path('banners/', BannarListView.as_view(), name="banners"),
+        path('banners/create', BannerCreateView.as_view(), name='banner_create'),
+        path('banners/delete/<int:id>', views.delete_banner, name='banner_delete'),
+
         path('about/', views.aboutUs, name='about'),
         path('about/organizatin/setting', views.organizationsetting, name='organizations_setting'),
         path('about/objectives/add',ObjectiveCreatView.as_view(), name='objective_create'),

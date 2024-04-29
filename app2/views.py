@@ -21,6 +21,36 @@ def index(request):
 
 
 
+'''bannar '''
+class BannarListView(generic.ListView):
+    model = Banner
+    context_object_name ='banners'
+    template_name ='app2/banner.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = BannerForm()  
+        return context
+    
+
+class BannerCreateView(generic.CreateView):
+    model = Banner
+    form_class = BannerForm
+    
+    def get_success_url(self) -> str:
+        messages.success(self.request,'Banner Created successfully !')
+        return reverse_lazy('dashboard:banners')
+
+@login_required
+def delete_banner(request, id):
+    instance = get_object_or_404(Banner, id=id)
+    instance.delete()
+    messages.success(request, "Deleted Successfully!")
+    return redirect('dashboard:banners')
+
+    
+    
 ''' about organization'''
 @login_required
 def aboutUs(request):
