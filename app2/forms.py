@@ -25,7 +25,6 @@ class BannerForm(forms.ModelForm):
 
 
 class AboutUSForm(forms.ModelForm):
-    descriptions = forms.CharField(widget=CKEditorWidget())  
     class Meta:
         model = About
         fields = '__all__'
