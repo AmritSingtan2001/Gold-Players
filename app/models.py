@@ -121,8 +121,9 @@ class Office(models.Model):
     office_name = models.CharField(max_length=150)
     logo = models.ImageField(upload_to='Office Image/', verbose_name='Office Logo')
     image  = models.ImageField(verbose_name='Office Image', upload_to='Office Image/')
-    descriptions = models.TextField(verbose_name='Short Description About Office Maximum 200 characters ', max_length=200)
     map_url = models.URLField(verbose_name='Map URL')
+    descriptions = RichTextField(verbose_name='Short Description About Office Maximum 200 characters ', max_length=200)
+
 
     def __str__(self):
         return self.office_name
