@@ -24,7 +24,7 @@ class AboutSolution(models.Model):
         return self.title
     
 
-
+'''solutions'''
 class Solutions(models.Model):
     icon_image = models.ImageField(verbose_name='Solution Icon Image *',upload_to='solutionimages/')
     image = models.ImageField(verbose_name='Solution Main Image *',upload_to='solutionimages/')
@@ -152,4 +152,14 @@ class Testimonials(models.Model):
 
 
 
+'''associated company'''
+class AssocialtedCompany(models.Model):
+    company_name = models.CharField(verbose_name='Company Name', max_length=150)
+    website_url = models.URLField(verbose_name='Company Website URL')
+    company_logo = models.ImageField(upload_to='associatedlogo/',verbose_name='Associated Company Logo')
+
+
+    def __str__(self) -> str:
+        return self.company_name
+    
     

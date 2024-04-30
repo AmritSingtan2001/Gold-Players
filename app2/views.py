@@ -582,3 +582,11 @@ def delete_SolutionSubCategor(request, slug):
     SolutionSubCategory.objects.get(slug=slug).delete()
     messages.success(request,'Deleted Successfully !')
     return redirect('dashboard:solution_sub_category')
+
+
+'''associated company '''
+class AssocialtedCompanyListView(generic.ListView):
+    model = AssocialtedCompany
+    context_object_name='associated_companies'
+    template_name ='app2/associated_company.html'
+    

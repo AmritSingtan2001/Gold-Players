@@ -224,6 +224,17 @@ class SolutionSubCategoryForm(forms.ModelForm):
 
 
 
+'''associated company form'''
+class AssocialtedCompanyForm(forms.ModelForm):
+    class Meta:
+        model = AssocialtedCompany
+        fields ='__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(AssocialtedCompanyForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['placeholder'] = f"Enter {field_name}"
+            field.widget.attrs['class'] = 'form-control'
 
 
 

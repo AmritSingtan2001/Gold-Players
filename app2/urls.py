@@ -68,6 +68,10 @@ urlpatterns = [
         path('solution/sub-category',SolutionSubCategoryListView.as_view(), name='solution_sub_category'),
         path('solution/sub-category/create',SolutionSubCategoryCreateView.as_view(), name='solution_sub_category_create'),
         path('solution/sub-category/update/<slug:slug>',SolutionSubCategoryUpdateView.as_view(), name='solution_sub_category_update'),
-        path('solution/sub-category/delete/<slug:slug>', views.delete_SolutionSubCategor, name='delete_solution_sub_category')
+        path('solution/sub-category/delete/<slug:slug>', views.delete_SolutionSubCategor, name='delete_solution_sub_category'),
+
+
+        path('associated/company',AssocialtedCompanyListView.as_view(), name='associated_company_list'),
+        
 
 ]
