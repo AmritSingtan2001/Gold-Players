@@ -1,7 +1,7 @@
 from . models import Solutions, Sector
 from careers.models import Category
 from about.models import OrganizationSetting
-from app.models import Office
+from app.models import Office,AssocialtedCompany
 
 def solutions(request):
     solutions_data = Solutions.objects.all()
@@ -37,4 +37,11 @@ def locations(request):
     all_office_locations = Office.objects.all()[:5]
     return({
         'office_locations':all_office_locations
+    })
+
+
+def associated_compnay(request):
+    associated_companies = AssocialtedCompany.objects.all()
+    return ({
+        'associated_companies':associated_companies
     })
