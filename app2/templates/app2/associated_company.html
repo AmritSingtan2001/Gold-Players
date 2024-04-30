@@ -1,0 +1,156 @@
+
+
+{% extends 'app2/base.html' %}
+{% load static %}
+{% block title %} 
+Associated Companies  
+{% endblock %}
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <div class="fs-3">Associated Companies </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <a href="{% url 'dashboard:associated_company_create' %}" class="btn btn-success mb-2 float-end rounded-0"><i class="mdi mdi-plus-circle me-2"></i> Add Associated Company</a>
+                                </div> 
+                            </div>
+                        
+                            <div class="tab-content ">
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <div class="alert alert-{{ msg.tags }} alert-dismissible text-bg-{{ msg.tags }} border-0 fade show" role="alert">
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <strong>{% if msg.tags == 'success' %}Success{% elif msg.tags == 'warning' %}Warning{% endif %} - </strong>{{ msg.message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 ">
+                                    <thead>
+                                        <tr>
+                                        
+                                            <th >S.N</th>
+                                            <th>Company Name</th>
+                                            <th>Company Logo</th>
+                                            <th>Company Website URL</th>
+                                            <th >Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for company in associated_companies%}
+                                    <tr>
+                            
+                                        <td>
+                                            {{forloop.counter}}
+                                        </td>
+                                        
+                                    
+                                        <td style="width:auto; text-align:justify;">
+                                            {{company.company_name}}
+                                        </td>
+                                        <td>
+                                            <div class="image-gallery" style="width:auto">
+                                                <img class="thumbnail" src="{{company.company_logo.url}}" style="height: 200px; width: auto;" alt="Thumbnail Image">
+                                            </div>
+                                            <div class="modal" id="imageModal">
+                                                <span class="close-btn" onclick="closeModal()">&times;</span>
+                                                <img class="modal-content" id="modalImage">
+                                            </div>
+                                        
+                                            <script src="script.js"></script>
+                                        </td>
+                                        <td style="width:auto; text-align:justify;">
+                                            {{company.website_url}}
+                                        </td>
+                                    
+                                    
+                                        
+                                    
+                                        <td>
+                                        
+                                            <a href="{% url 'dashboard:associated_company_update' company.id %}" class="action-icon ps-2"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <button type="button"  data-bs-toggle="modal" data-bs-target="#associatedcompanyDeleteModal_{{company.id}}" class="border-0 text-danger float-end rounded-0">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!--delete client Modal -->
+                                    <div class="modal fade " id="associatedcompanyDeleteModal_{{company.id}}" tabindex="-1" aria-labelledby="associatedcompanyDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  h-50"  >
+                                            <div class="modal-content " style="background: white; padding: 20px;" >
+                                                <strong class="fs-5">Are your for deleting these ?</strong>
+                                                <a href="{% url 'dashboard:associated_company_delete' company.id %}" class="action-icon btn btn-danger w-50 mt-2 float-center">Delete</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end client delete modal-->
+                                    {%endfor%}
+                                    </tbody>
+                                </table>   
+                                
+                                
+                                <!-- pagination -->
+                                {% if is_paginated %}
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                                            </li>
+                                        {% endif %}
+                                        
+                                        {% for num in page_obj.paginator.page_range %}
+                                            {% if num == page_obj.number %}
+                                                <li class="page-item active">
+                                                    <span class="page-link">{{ num }}</span>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        
+                                        {% if page_obj.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                                {% endif %}
+                                <!-- end pagination -->
+
+                                
+                                
+                            </div> 
+                            <!-- end tab-content-->
+                            
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div> <!-- end row-->
+
+
+
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>
+
+{%endblock%}
