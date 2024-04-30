@@ -43,7 +43,7 @@
 <body>
 
   <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
+  <section id="topbar" >
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
        
@@ -208,7 +208,9 @@
           </li>  
 
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <div class="">
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </div>
       </nav><!-- .navbar -->
       <i class="bi mobile-nav-toggle bi-x"></i>
     </div>
@@ -220,49 +222,22 @@
 
 <div class="navbar-collapse">
   <ul class="pmenu">
-    <li><a class="scroll" href="#home"><i class="fa fa-home"></i><span>Home</span></a></li>
-    <li><a class="scroll" href="#numbers"><i class="fa fa-pie-chart"></i><span>Numbers</span></a></li>
-    <li><a class="scroll" href="#solutions"><i class="fa fa-cogs"></i><span>Solutions</span></a></li>
-    <li><a class="scroll" href="#sectors"><i class="fa fa-sitemap"></i><span>Sectors</span></a></li>
-    <li><a class="scroll" href="#locations"><i class="fa fa-map-marker"></i><span>Locations</span></a></li>
-    <li><a class="scroll" href="#people"><i class="fa fa-user"></i><span>People</span></a></li>
-    <li><a class="scroll" href="#resources"><i class="fa fa-newspaper-o"></i><span>Resources</span></a></li>
-    <li><a class="scroll" href="#testimonials"><i class="fa fa-comments"></i><span>Testimonials</span></a></li>
+    {% for company in associated_companies %}
+    <li>
+      <a class="scroll" href="{{company.website_url}}" target="_blank">
+        <img src="{{company.company_logo.url}}" class="img-fluid object-fit-cover h-100">
+        <span>{{company.company_name}}</span>
+      </a>
+    </li>
+    {% endfor %}
   </ul>
-  </div>
+</div>
 
 
 {% block content %}
 
 {% endblock %}
 
-
-<div class="btn-sticky hmpro_stick">
-  <a class="icon" href="" target="_blank">
-  <img loading="lazy" src="https://www.imdaad.ae/wp-content/uploads/2019/02/homepro.png" alt="" data-animation="bounceIn" data-delay=".4s">
-    <h3>Click here to visit Homepro »</h3>
-  </a>
-</div>
-
-
-<div class="btn-sticky isnd_stick">
-  <a class="icon" href="" target="_blank">
-  <img loading="lazy" src="https://www.imdaad.ae/wp-content/uploads/2019/02/isnaad.png" alt="Isnaad" data-animation="bounceIn" data-delay=".4s">
-    <h3>Click here to visit Isnaad »</h3>
-  </a>
-  </div>
-
-
-<div class="btn-sticky vs_stick">
-  <a class="icon" href="" target="_blank">
-  <img loading="lazy" src="https://imdaad.ae/wp-content/uploads/2020/04/VS_Logo.png" alt="Vision Safety" data-animation="bounceIn" data-delay=".4s">
-    <h3>Click here to visit VisionSafety »</h3>
-  </a>
-  </div>
-
-
-
-<!-- toast section -->
 
 
 <!-- ======= Footer ======= -->
@@ -272,14 +247,14 @@
          background-size: contain;
          background-repeat: no-repeat;
          background-position: top center;
-         height: 50vh;
+         height: auto;
          ">
 
          <div class="footer-top">
           <div class="container">
             <div class="row">
     
-              <div class="col-lg-3 col-md-6 footer-links">
+              <div class=" col-md-6 col-lg-3 footer-links">
                 <h4>RESOURCES</h4>
                 <ul>
                   <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -290,7 +265,7 @@
                 </ul>
               </div>
     
-              <div class="col-lg-3 col-md-6 footer-links">
+              <div class=" col-md-6 col-lg-3 footer-links">
                 <h4>Our Locations</h4>
                 <ul>
                   {% for location in office_locations %}
@@ -302,7 +277,7 @@
                 </ul>
               </div>
     
-              <div class="col-lg-3 col-md-6 footer-contact">
+              <div class=" col-md-6 col-lg-3 footer-contact">
                 <h4>Contact Us</h4>
                 <p>
                  {{organization_settings.location}}
@@ -317,7 +292,7 @@
     
               </div>
     
-              <div class="col-lg-3 col-md-6 footer-info">
+              <div class=" col-md-6 col-lg-3 footer-info">
                 <h3>About Eterna</h3>
                 <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                 <div class="social-links mt-3">
