@@ -72,6 +72,9 @@ urlpatterns = [
 
 
         path('associated/company',AssocialtedCompanyListView.as_view(), name='associated_company_list'),
-        
+        path('associated/company/create',AssociatedCreateView.as_view(), name='associated_company_create'),
+        path('associated/compnay/update/<int:id>',AssociatedCompanyUpdateView.as_view(), name='associated_company_update'),
+        path('associated/company/delete/<int:id>', views.delete_Associated_company, name='associated_company_delete'),
+
 
 ]

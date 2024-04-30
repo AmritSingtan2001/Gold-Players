@@ -585,8 +585,38 @@ def delete_SolutionSubCategor(request, slug):
 
 
 '''associated company '''
+@method_decorator(login_required, name='dispatch')
 class AssocialtedCompanyListView(generic.ListView):
     model = AssocialtedCompany
     context_object_name='associated_companies'
     template_name ='app2/associated_company.html'
+    paginate_by =5
+
+@method_decorator(login_required, name='dispatch')
+class AssociatedCreateView(generic.CreateView):
+    model = AssocialtedCompany
+    form_class = AssocialtedCompanyForm
+    template_name ='app2/associated_company_form.html'
+
+    def get_success_url(self) -> str:
+        messages.success(self.request,"New associated company added successfully !")
+        return reverse_lazy("dashboard:associated_company_create")
     
+
+@method_decorator(login_required, name='dispatch')
+class AssociatedCompanyUpdateView(generic.UpdateView):
+    model = AssocialtedCompany
+    form_class = AssocialtedCompanyForm
+    pk_url_kwarg ='id'
+    template_name ='app2/associated_company_form.html'
+
+    def get_success_url(self) -> str:
+        messages.success(self.request,f'{self.object.company_name} - updated successfully')
+        return reverse_lazy('dashboard:associated_company_update', kwargs={'id': self.object.id})
+    
+
+@login_required
+def delete_Associated_company(request, id):
+    AssocialtedCompany.objects.get(id=id).delete()
+    messages.success(request,'Associated Company Deleted Successfully !')
+    return redirect('dashboard:associated_company_list')
